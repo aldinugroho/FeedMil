@@ -1,0 +1,170 @@
+package com.uniteksolusi.otomill.controller;
+
+import java.io.File;
+
+import com.uniteksolusi.otomill.simulator.StubBufferSiloSimulator;
+import com.uniteksolusi.otomill.simulator.StubLoadCellSimulator;
+
+public class SimulatorController {
+	
+	public static final String STUB_STATE_FOLDER = "./stub/";
+	
+	private static SimulatorController instance = new SimulatorController();
+	
+	public static SimulatorController getInstance() {
+		return instance;
+	}
+	
+	
+	private SimulatorController() {
+//		this.mController = mController;
+	}
+
+	private boolean shouldRun = false;
+	
+	private StubLoadCellSimulator x21Simulator;
+	private StubLoadCellSimulator x22Simulator;
+	private StubLoadCellSimulator x23Simulator;
+	private StubLoadCellSimulator x24Simulator;
+	private StubLoadCellSimulator x25Simulator;
+//	private StubLoadCellSimulator x26Simulator;
+	private StubBufferSiloSimulator sbm1SiloSimulator;
+	private StubBufferSiloSimulator sbm2SiloSimulator;
+//	private StubBufferSiloSimulator jagung1SiloSimulator;
+//	private StubBufferSiloSimulator jagung2SiloSimulator;
+	private StubBufferSiloSimulator mbmSiloSimulator;
+	private StubBufferSiloSimulator gritSiloSimulator;
+	private StubBufferSiloSimulator katulSiloSimulator;
+	
+	
+	private void initializeSimulator() {
+		
+		//x21
+		File x21StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x21" + ".state");
+		File x21SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" + "0x21" + ".softwareserial");
+		byte x21PinRelayInputScrew = 3;
+		byte x21PinRelayEject = 4;
+		x21Simulator = new StubLoadCellSimulator(x21StateFile, x21SoftwareSerialFile, x21PinRelayInputScrew, x21PinRelayEject);
+		
+		//x22
+		File x22StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x22" + ".state");
+		File x22SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" + "0x22" + ".softwareserial");
+		byte x22PinRelayInputScrew = 3;
+		byte x22PinRelayEject = 4;
+		x22Simulator = new StubLoadCellSimulator(x22StateFile, x22SoftwareSerialFile, x22PinRelayInputScrew, x22PinRelayEject);
+		
+		//x23
+		File x23StateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x23" + ".state");
+		File x23SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" +"0x23" + ".softwareserial");
+		byte x23PinRelayInputScrew = 3;
+		byte x23PinRelayEject = 4;
+		x23Simulator = new StubLoadCellSimulator(x23StateFile, x23SoftwareSerialFile, x23PinRelayInputScrew, x23PinRelayEject);
+		
+		//x24
+		File x24StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x24" + ".state");
+		File x24SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" + "0x24" + ".softwareserial");
+		byte x24PinRelayInputScrew = 3;
+		byte x24PinRelayEject = 4;
+		x24Simulator = new StubLoadCellSimulator(x24StateFile, x24SoftwareSerialFile, x24PinRelayInputScrew, x24PinRelayEject);
+				
+		//x25
+		File x25StateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x25" + ".state");
+		File x25SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" +"0x25" + ".softwareserial");
+		byte x25PinRelayInputScrew = 3;
+		byte x25PinRelayEject = 4;
+		x25Simulator = new StubLoadCellSimulator(x25StateFile, x25SoftwareSerialFile, x25PinRelayInputScrew, x25PinRelayEject);
+		
+/*		//x26
+		File x26StateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x26" + ".state");
+		File x26SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" +"0x26" + ".softwareserial");
+		byte x26PinRelayInputScrew = 13;
+		byte x26PinRelayEject = 14;
+		x26Simulator = new StubLoadCellSimulator(x26StateFile, x26SoftwareSerialFile, x26PinRelayInputScrew, x26PinRelayEject);
+*/		
+		//SBM2
+		File sbm2StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelSBM2[] = {14,15,16};
+		byte pinRelayBucketSBM2 = 17;
+		sbm2SiloSimulator = new StubBufferSiloSimulator(sbm2StateFile, pinBufferLevelSBM2, pinRelayBucketSBM2);
+/*		
+		//SBM1
+		File sbm1StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelSBM1[] = {10,11,12};
+		sbm1SiloSimulator = new StubBufferSiloSimulator(sbm1StateFile, pinBufferLevelSBM1);
+		
+		//Jagung1
+		File jagung1StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelJagung1[] = {2,3,4};
+		jagung1SiloSimulator = new StubBufferSiloSimulator(jagung1StateFile, pinBufferLevelJagung1);
+		
+		//Jagung1
+		File jagung2StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelJagung2[] = {6,7,8};
+		jagung2SiloSimulator = new StubBufferSiloSimulator(jagung2StateFile, pinBufferLevelJagung2);
+*/		
+		//MBM
+		File mbmStateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelMBM[] = {18,19,20};
+		byte pinRelayBucketMBM = 21;
+		mbmSiloSimulator = new StubBufferSiloSimulator(mbmStateFile, pinBufferLevelMBM, pinRelayBucketMBM);
+		
+		//Grit
+		File gritStateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelGrit[] = {36,37,38};
+		byte pinRelayBucketGrit = 39;
+		gritSiloSimulator = new StubBufferSiloSimulator(gritStateFile, pinBufferLevelGrit, pinRelayBucketGrit);
+		
+		//Katul
+		File katulStateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelKatul[] = {41,42,43};
+		byte pinRelayBucketKatul = 44;
+		katulSiloSimulator = new StubBufferSiloSimulator(katulStateFile, pinBufferLevelKatul, pinRelayBucketKatul);
+	
+	}
+	
+	
+	public synchronized void start() {
+		
+		if(!shouldRun) {
+			
+			shouldRun = true;
+			initializeSimulator();
+
+			System.out.println("--- starting simulator ---");
+			
+			x21Simulator.start();
+			x22Simulator.start();
+			x23Simulator.start();
+			x24Simulator.start();
+			x25Simulator.start();
+//			x26Simulator.start();
+			
+			sbm2SiloSimulator.start();
+			mbmSiloSimulator.start();
+			gritSiloSimulator.start();
+			katulSiloSimulator.start();
+			
+			
+		}
+		
+	}
+	
+	public void stop() {
+		
+		shouldRun = false;
+		
+		x21Simulator.stop();
+		x22Simulator.stop();
+		x23Simulator.stop();
+		x24Simulator.stop();
+		x25Simulator.stop();
+//		x26Simulator.stop();
+
+		sbm2SiloSimulator.stop();
+		
+	
+	}
+
+
+
+}

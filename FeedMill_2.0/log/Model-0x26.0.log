@@ -1,0 +1,1211 @@
+Oct 24, 2016 10:40:51 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:40:51 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 228 
+Oct 24, 2016 10:42:12 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:12 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 234 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 0 0 0 234 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> Not Initialized Yet
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelManualLoad(38)> initializeToDevice()
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelManualLoad(38)> Pin MDOE:  00111000 000000
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelManualLoad(38)> 1 28 0 89 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 186 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 186 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00100000 000000
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 4 0 33 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 33 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 124 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 124 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00100000 000000
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 4 0 227 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 227 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 62 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 62 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00100000 000000
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 4 0 166 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 166 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 1 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 1 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 102 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 102 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 194 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 194 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 38 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 38 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 128 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 128 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 230 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 230 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 64 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 64 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 165 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 165 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 0 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 0 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 102 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 102 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 192 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 192 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 36 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 36 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 126 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 126 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 228 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 228 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 62 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 62 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 163 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 163 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 253 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 253 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 98 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 98 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 187 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 187 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 32 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 32 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 121 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 121 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 221 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 221 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 54 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 54 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 155 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 155 
+Oct 24, 2016 10:42:24 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:42:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:42:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 243 
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 219 
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 0 0 0 219 
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> Not Initialized Yet
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> initializeToDevice()
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> Pin MDOE:  00111000 000000
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> 1 28 0 67 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 161 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 161 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 11 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 11 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 103 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 103 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 205 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 205 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 40 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 40 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 142 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 142 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 234 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 234 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 79 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 79 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 168 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 168 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 14 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 14 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 104 
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 228 
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 0 0 0 228 
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> Not Initialized Yet
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelManualLoad(38)> initializeToDevice()
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelManualLoad(38)> Pin MDOE:  00111000 000000
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelManualLoad(38)> 1 28 0 136 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 242 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 242 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00100000 000000
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 4 0 135 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 135 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 235 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 235 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00100000 000000
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 4 0 90 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 90 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 189 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 189 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00100000 000000
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 4 0 37 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 37 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 127 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 4 0 127 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 229 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 229 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelManualLoad(38)> loop()
+
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)> pullFromDevice()
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   requestByte: 0 0 0 62 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 62 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ModelManualLoad mainLoop
+FINE: Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)> pushToDevice()
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   pinState:  00000000 000000
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   requestByte: 2 0 0 163 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelManualLoad(38)>   responseByte: 2 0 0 163 
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 78 
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 0 0 0 78 
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> Not Initialized Yet
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> initializeToDevice()
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> Pin MDOE:  00111000 000000
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> 1 28 0 189 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 62 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 62 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 173 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 173 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 41 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 41 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 158 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 158 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 253 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 253 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 99 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 99 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 189 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 189 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 0 -> Ready
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00100000 000000
+State:	 0 / READY
+Output:	 0
+Loaded Sensor:	 0 > LOADED!
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 36 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 36 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 125 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 125 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 226 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 226 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 60 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 60 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 161 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 161 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 249 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 249 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 95 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 95 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 184 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 184 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 28 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 28 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 118 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 118 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 219 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 219 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 52 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 52 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 153 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 153 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 242 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 242 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ModelManualLoad mainLoop Type:	 ModelManualLoad
+Id:	 0x26
+Pin Mode:	  00111000 000000
+Pin State:	  00000000 000000
+State:	 1 / FILLING
+Output:	 0
+Loaded Sensor:	 0 > Filling State = 1 -> FILLING
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 87 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 87 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 111 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 0 0 0 111 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> Not Initialized Yet
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> initializeToDevice()
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> Pin MDOE:  00111000 000000
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(38)> 1 28 0 215 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 56 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 56 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 159 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 159 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 250 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 250 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 96 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 96 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 190 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 190 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00100000 000000
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 4 0 38 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 4 0 38 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 131 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 4 0 131 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 234 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 234 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 69 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 69 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 171 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 171 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 7 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 7 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 108 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 108 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 197 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 197 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 42 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 42 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 131 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 131 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 232 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 232 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 65 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 65 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 166 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 166 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(38)> loop()
+
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)> pullFromDevice()
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   requestByte: 0 0 0 1 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(38)>   responseByte: 2 0 0 1 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)> pushToDevice()
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   pinState:  00000000 000000
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   requestByte: 2 0 0 103 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(38)>   responseByte: 2 0 0 103 
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 181 
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 0 0 0 181 
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> Not Initialized Yet
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(0x26)> initializeToDevice()
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(0x26)> Pin MDOE:  00111000 000000
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelManualLoad(0x26)> 1 28 0 63 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 160 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 160 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00100000 000000
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 4 0 21 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 4 0 21 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 115 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 4 0 115 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00100000 000000
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 4 0 219 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 4 0 219 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 56 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 4 0 56 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00100000 000000
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 4 0 157 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 4 0 157 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 251 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 4 0 251 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 98 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 98 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 191 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 191 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 39 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 39 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 129 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 129 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 231 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 231 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 64 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 64 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 166 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 166 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 255 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 166 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 100 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 100 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 190 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 190 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 34 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 34 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 124 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 124 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 224 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 224 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 59 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 59 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 160 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 160 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelManualLoad(0x26)> end-of-loop()
+
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)> pullFromDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   requestByte: 0 0 0 249 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelManualLoad(0x26)>   responseByte: 2 0 0 249 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)> pushToDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   pinState:  00000000 000000
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelManualLoad(0x26)>   requestByte: 2 0 0 94 
+2016-10-31 17:58:21 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState State Output from device (0) is NOT the same as model (0) 
+2016-10-31 17:59:25 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState State Output [2] from device (0) is NOT the same as model (1) 
+2016-10-31 18:04:32 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState State Output [2] from device (0) is NOT the same as model (1) 
+2016-10-31 18:05:37 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-10-31 18:06:37 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-10-31 18:07:32 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-11-05 12:24:27 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-11-05 12:28:21 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-11-05 12:30:28 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-11-05 12:32:44 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 
+2016-11-05 17:07:45 WARNING com.uniteksolusi.otomill.model.ArduinoModel pullDigitalPinState Type . . :	 ModelManualLoad (Id: 0x26)
+Pin Mode :	  00111000 000000
+Pin State:	  00100000 000000
+
+State:	 0 / READY
+
+Output Close/Open:	 0
+Sensor Loaded/Not:	 0State Output [2] from device (0) is NOT the same as model (1) 

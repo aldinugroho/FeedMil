@@ -1,0 +1,910 @@
+Oct 24, 2016 10:40:51 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:40:51 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 226 
+Oct 24, 2016 10:42:12 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:12 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 227 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 0 0 0 0 255 227 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> Not Initialized Yet
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelLoadCellMultiIn(33)> initializeToDevice()
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelLoadCellMultiIn(33)> Pin MDOE:  00111000 000000
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelLoadCellMultiIn(33)> 1 28 0 81 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 176 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 0 0 0 255 176 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 23 
+Oct 24, 2016 10:42:13 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 23 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 113 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 113 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 216 
+Oct 24, 2016 10:42:14 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 216 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 51 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 51 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 154 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 154 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 246 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 246 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:15 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 92 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 92 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 182 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 182 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 27 
+Oct 24, 2016 10:42:16 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 27 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 117 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 117 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 219 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 219 
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:17 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 52 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 52 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 152 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 152 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 242 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 242 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 89 
+Oct 24, 2016 10:42:18 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 89 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 179 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 179 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 23 
+Oct 24, 2016 10:42:19 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 23 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 114 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 114 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 216 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 216 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 58 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 58 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 159 
+Oct 24, 2016 10:42:20 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 159 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 249 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 249 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 94 
+Oct 24, 2016 10:42:21 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 94 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 183 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 183 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 27 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 27 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 116 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 116 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:22 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 217 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 217 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 50 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 50 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 152 
+Oct 24, 2016 10:42:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 152 
+Oct 24, 2016 10:42:24 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:42:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:42:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 241 
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 217 
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 0 0 0 0 255 217 
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> Not Initialized Yet
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> initializeToDevice()
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> Pin MDOE:  00111000 000000
+2016-10-24 22:45:13 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> 1 28 0 75 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 188 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 0 0 0 255 188 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 41 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 41 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 131 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 131 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:14 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 233 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 233 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 71 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 71 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 173 
+2016-10-24 22:45:15 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 173 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 6 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 6 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 110 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 110 
+2016-10-24 22:45:16 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 201 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 201 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 53 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 53 
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:17 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 143 
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 211 
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 0 0 0 0 255 211 
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> Not Initialized Yet
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelLoadCellMultiIn(33)> initializeToDevice()
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelLoadCellMultiIn(33)> Pin MDOE:  00111000 000000
+Oct 24, 2016 10:45:22 PM com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice
+FINE: ModelLoadCellMultiIn(33)> 1 28 0 131 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 241 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 0 0 0 255 241 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 138 
+Oct 24, 2016 10:45:23 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 138 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 245 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 245 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 95 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 95 
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:45:24 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 192 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 192 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 39 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 39 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 129 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 129 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 231 
+Oct 24, 2016 10:45:25 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 231 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel run
+FINE: ModelLoadCellMultiIn(33)> loop()
+
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)> pullFromDevice()
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 64 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 64 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific
+FINE: ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)> pushToDevice()
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 168 
+Oct 24, 2016 10:45:26 PM com.uniteksolusi.otomill.model.ArduinoModel pushToDevice
+FINE: ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 168 
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 78 
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 0 0 0 0 255 78 
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> Not Initialized Yet
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> initializeToDevice()
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> Pin MDOE:  00111000 000000
+2016-10-24 22:45:41 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> 1 28 0 193 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 69 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 0 0 0 255 69 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 190 
+2016-10-24 22:45:42 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 190 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 41 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 41 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 167 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 167 
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:43 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 4 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 4 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 107 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 107 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 199 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 199 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 44 
+2016-10-24 22:45:44 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 44 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 135 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 135 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 236 
+2016-10-24 22:45:45 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 236 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 70 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 70 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 171 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 171 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 4 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 4 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 106 
+2016-10-24 22:45:46 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 106 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 194 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 194 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 39 
+2016-10-24 22:45:47 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 39 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 128 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 128 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 228 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 228 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 61 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 61 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:48 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 162 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 162 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 251 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 251 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 95 
+2016-10-24 22:45:49 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 95 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 111 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 0 0 0 0 255 111 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> Not Initialized Yet
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> initializeToDevice()
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> Pin MDOE:  00111000 000000
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(33)> 1 28 0 222 
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:01 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 72 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 0 0 0 255 72 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 190 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 190 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 25 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 25 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 132 
+2016-10-24 22:51:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 132 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 252 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 252 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 123 
+2016-10-24 22:51:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 123 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 218 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 218 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 70 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 70 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 160 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 160 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 7 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 7 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 97 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 97 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 199 
+2016-10-24 22:51:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 199 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 32 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 32 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 133 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 133 
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 223 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 223 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 68 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 68 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 156 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 156 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 7 
+2016-10-24 22:51:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 7 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(33)> loop()
+
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)> pullFromDevice()
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   requestByte: 0 0 0 97 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 97 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)> pushToDevice()
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   pinState:  00010000 000000
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   requestByte: 2 8 0 200 
+2016-10-24 22:51:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(33)>   responseByte: 2 8 0 0 255 200 
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 176 
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 0 0 0 0 255 176 
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Not Initialized Yet
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(0x21)> initializeToDevice()
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(0x21)> Pin MDOE:  00111000 000000
+2016-10-24 22:54:02 FINE com.uniteksolusi.otomill.model.ArduinoModel initializeToDevice ModelLoadCellMultiIn(0x21)> 1 28 0 73 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 187 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 0 0 0 255 187 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 57 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 57 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 152 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 152 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:03 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 13 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 13 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 106 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 106 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 217 
+2016-10-24 22:54:04 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 217 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 55 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 55 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 193 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 193 
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:05 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 28 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 28 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 131 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 131 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 226 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 226 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 71 
+2016-10-24 22:54:06 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 71 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 160 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 160 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 6 
+2016-10-24 22:54:07 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 6 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 96 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 96 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 197 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 197 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 30 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 30 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 131 
+2016-10-24 22:54:08 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 131 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 219 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 219 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 64 
+2016-10-24 22:54:09 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 64 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 154 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 154 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) > READ RESPONSE SPECIFIC: 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ModelLoadCell readResponseByteSpecific ModelLoadCellMultiIn(33) Cur/Tar Weight: 5  /  10
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)> pushToDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   pinState:  00010000 000000
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   requestByte: 2 8 0 255 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pushToDevice ModelLoadCellMultiIn(0x21)>   responseByte: 2 8 0 0 255 154 
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> end-of-loop()
+
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)> pullFromDevice()
+2016-10-24 22:54:10 FINE com.uniteksolusi.otomill.model.ArduinoModel pullFromDevice ModelLoadCellMultiIn(0x21)>   requestByte: 0 0 0 87 
+2017-08-22 09:49:49 WARNING com.uniteksolusi.otomill.model.ArduinoModel start Already Started. Do nothing.
+2017-08-28 11:58:35 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53
+2017-08-28 11:58:36 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53
+2017-08-28 11:58:38 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53
+2017-08-28 11:58:39 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53
+2017-08-28 11:58:41 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53
+2017-08-28 12:02:06 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53
+2017-08-28 12:02:08 SEVERE com.uniteksolusi.otomill.model.ArduinoModel run ModelLoadCellMultiIn(0x21)> Exception: 53

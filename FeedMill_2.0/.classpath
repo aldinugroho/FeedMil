@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/aldi/Desktop/Feedmill/Workspace/Pi/lib/gson/gson-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aldi/Desktop/Feedmill/Workspace/Pi/lib/pi4j/com"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/aldi/Workspace/Pi/FeedMill_2.0/lib/pi4j-core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aldi/Workspace/Pi/FeedMill_2.0/lib/pi4j-device.jar"/>
+	<classpathentry kind="lib" path="C:/Users/aldi/Downloads/javacsv2.1/javacsv.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
