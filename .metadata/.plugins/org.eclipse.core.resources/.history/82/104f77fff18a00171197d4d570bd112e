@@ -1,0 +1,9 @@
+package com.uniteksolusi.otomill.controller;
+
+public class SimulatorController {
+
+	public SimulatorController() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

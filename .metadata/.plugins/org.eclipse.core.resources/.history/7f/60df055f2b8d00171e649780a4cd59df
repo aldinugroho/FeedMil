@@ -1,0 +1,353 @@
+package com.uniteksolusi.otomill.model;
+
+import com.pi4j.io.i2c.I2CBus;
+
+
+public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, LoadCellIfc {
+	
+	//#### CONFIGURATION ###//
+	public static final byte outputOpen = HIGH;   
+	public static final byte outputClose = LOW;  
+	private String[] idMixerLoader;
+	
+	transient byte pinRelayScrewConveyor = 3;
+	transient byte pinRelayPneumaticOutput = 4;
+	transient byte pinVibro = 6;
+
+	public int targetWeight = 10; //target weight in KG
+	public int emptyTolerance = 0; //KG tolerance to indicate it's empty
+	public int fullTolerance = 0; //KG tolerance to indicate it's full	
+	
+	///### END of CONFIGURATION ###///
+
+
+	//### running variables ###//
+	byte fillingState = 0;   //0 = ready, 1 = filling, 2 = full, 3 = ejecting, 4 = stop / suspend
+	int currentWeight = 0;
+	byte vibro = 0;
+
+	//### end of running variables ###//
+	
+	//additional status variable for json
+	boolean isInputScrewOn = false;
+	boolean isOutputOpen = false;
+	boolean isVibroOn = false;
+	
+	
+	public ModelLoadCell(I2CBus bus, int address) {
+		super(bus, address, 14, 4, 6); //2 bytes for weight
+	}
+	
+	public ModelLoadCell(I2CBus bus, int address, int targetWeight) {
+		super(bus, address, 14, 4, 6);
+		this.targetWeight = targetWeight;
+	}
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getCurrentWeight()
+	 */
+	public int getCurrentWeight() {
+		return currentWeight;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getTargetWeight()
+	 */
+	public int getTargetWeight() {
+		return targetWeight;
+	}
+	
+	public void setTargetWeight(int target) {
+		this.targetWeight = target;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getEmptyTolerance()
+	 */
+	public int getEmptyTolerance() {
+		return emptyTolerance;
+	}
+	
+	public void setEmptyTolerance(int toleranceKg) {
+		this.emptyTolerance = toleranceKg;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getFullTolerance()
+	 */
+	public int getFullTolerance() {
+		return fullTolerance;
+	}
+	
+	public void setFullTolerance(int toleranceKg) {
+		this.fullTolerance = toleranceKg;
+	}
+	
+	
+	public boolean isReadyForFilling() {
+		if(fillingState == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isFilling() {
+		if(fillingState == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isReadyForEject() {
+		if(fillingState == 2) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isEjecting() {
+		if(fillingState == 3) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isVibroOn(){
+		if(vibro == 1){
+			return true;
+		}
+		return false;
+	}
+	
+	public void startFilling() {
+		digitalWrite(pinRelayScrewConveyor, HIGH);
+		isInputScrewOn = true;
+		fillingState = 1;
+	}
+	
+	public void stopFilling() {
+		digitalWrite(pinRelayScrewConveyor, LOW);
+		isInputScrewOn = false;
+		fillingState = 2;
+	}
+	
+	public void startEjecting() {
+		digitalWrite(pinRelayPneumaticOutput, outputOpen);
+		isOutputOpen = true;
+		fillingState = 3;
+	}
+	
+	public void stopEjecting() {
+		digitalWrite(pinRelayPneumaticOutput, outputClose); 
+		isOutputOpen = false;
+		fillingState = 0;
+	}
+	
+	public void startVibro() {
+		// TODO Auto-generated method stub
+		digitalWrite(pinVibro, HIGH);
+		isVibroOn = true;
+	}
+	
+	public void stopVibro() {
+		digitalWrite(pinVibro, LOW);
+		isVibroOn = false;
+	}
+	
+	void digitalWrite(byte pinNumber, byte highLow) {
+		super.digitalWrite(pinNumber, highLow);
+		if (highLow == LOW) {
+			isVibroOn = false;
+		} else if(highLow == HIGH) {
+			isVibroOn = true;
+		}
+	}
+	
+	@Override
+	protected void initialize() {
+		pinMode(pinRelayScrewConveyor, OUTPUT);
+		pinMode(pinRelayPneumaticOutput, OUTPUT);
+		
+		//Vibro
+		pinMode(pinVibro, INPUT);
+		pinMode(pinVibro, OUTPUT);
+	}
+
+
+
+	@Override
+	protected void mainLoop() {
+		
+		//fillingState 0 = ready, 1 = filling, 2 = full, 3 = ejecting
+		
+		//check and fill each silos
+		int weightRead = -1;
+		weightRead = getCurrentWeight();
+		
+		if(weightRead == -1) { 	
+			//do nothing, retry next loop
+		} else { //if(weightRead != -1) {
+		
+			int tempCurrentWeight = weightRead;
+			
+			if(fillingState == 0) { //when it's ready to start, just start immediately   
+				
+				startFilling(); 
+				
+			} else if(fillingState == 1) {
+				
+				if(tempCurrentWeight >= (targetWeight - fullTolerance) )  {
+					stopFilling();
+				}
+				
+			} else if(fillingState == 2) {
+				
+				//do nothing, wait for eject command
+			
+			} else if(fillingState == 3) {
+			
+				if(tempCurrentWeight <= (0 + emptyTolerance) ) {
+					stopEjecting();
+				}
+				
+			} 
+		
+		} 
+		
+		
+	}
+
+
+
+	@Override
+	protected void writeRequestByteSpecific(byte[] requestByte) {
+		
+		//if this is to be added, requestBytesize needs to change and receivedI2CData() needs to cahnge
+//		requestByte[3] = (byte) ( ( (targetWeight / 1000) * (1 << 4))  
+//				+ ( (targetWeight / 100 - targetWeight / 1000 * 10) * (1 << 0)) );
+//
+//		requestByte[4] = (byte) ( ( (targetWeight / 10 - targetWeight / 100 * 10) * (1 << 4))  
+//				+ ( (targetWeight / 1 - targetWeight / 10 * 10) * (1 << 0)) );
+
+	}
+
+	private int lastWeight = -1;
+
+	@Override
+	protected void readResponseByteSpecific(byte[] responseByte) {
+
+		logger.fine(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " > READ RESPONSE SPECIFIC: ");
+
+		lastWeight = currentWeight;
+
+		//read the current weight from byte[3] and [4]
+		currentWeight =     (  Math.abs((responseByte[3] >> 4)                       * 1000   )) +
+
+							(  Math.abs(( responseByte[3] - ((responseByte[3] >> 4)*16) ) * 100    )) +
+
+							(  Math.abs((responseByte[4] >> 4)                       * 10     )) +
+
+							(  Math.abs(( responseByte[4] - ((responseByte[4] >> 4)*16) ) * 1      )) ;
+
+		if(currentWeight < 0) {
+
+			logger.warning(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " Current Weight is NEGATIVE!! : " + currentWeight );
+		}
+
+		logger.fine(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " Cur/Tar Weight: " + currentWeight + "  /  " + targetWeight);
+		
+		//check if lastWeight have same weight with currentWeight
+		
+
+	}
+	
+	
+
+	
+	public String getStateString() {
+		
+		switch(fillingState) {
+
+		case 0: 
+			return "READY";
+		case 1: 
+			return "FILLING";
+		case 2: 
+			return "WAITING FOR EJECT (FULL)";
+		case 3: 
+			return "EJECTING";
+		default: 
+			return "STOPPED";
+
+		}
+	
+	}
+	
+	public String printStateDetails() {
+		
+		StringBuffer sb  = new StringBuffer(super.printStateDetails());
+		sb.append("\n");
+		sb.append("\nState:\t " + fillingState + " / " + this.getStateString()); 
+		sb.append("\nWeight:\t " + this.getCurrentWeight() + " / " + this.getTargetWeight() );
+		sb.append("\nVIBRO :\t " + digitalRead(this.pinVibro));
+		
+		sb.append("\n");
+		sb.append("\nOutput Close/Open:\t " + digitalRead(pinRelayPneumaticOutput));
+		sb.append("\nInput Off/On:\t " + digitalRead(pinRelayScrewConveyor));
+		
+		return sb.toString();
+		
+	}
+
+	
+	public String processCommand(String stringCommand) {
+		
+		String[] cmds = stringCommand.trim().split(" ");
+		
+		if(cmds.length > 0) {
+		
+			if("startFilling".equals(cmds[0])) {
+				this.startFilling();
+				return "OK";
+			}
+			
+			if("stopFilling".equals(cmds[0])) {
+				this.stopFilling();
+				return "OK"; 
+			}
+			
+			if("startEjecting".equals(cmds[0])) {
+				this.startEjecting();
+				return "OK"; 
+			}
+			
+			if("stopEjecting".equals(cmds[0])) {
+				this.stopEjecting();
+				return "OK"; 
+			}
+			
+			if("startVibro".equals(cmds[0])) {
+				this.startVibro();
+				return "OK";
+			}
+			
+			if("stopVibro".equals(cmds[0])) {
+				this.stopVibro();
+				return "OK";
+			}
+			
+		}
+		
+		String parentResponse = super.processCommand(stringCommand);
+		if(parentResponse.startsWith("NOK")) {
+			parentResponse = parentResponse 
+								+ "Available commands "+this.getClass().getSimpleName()
+								+": startFilling, stopFilling, startEjecting, stopEjecting, startVibro, stopVibro\n";
+		}
+		return parentResponse;
+	}
+		
+
+}

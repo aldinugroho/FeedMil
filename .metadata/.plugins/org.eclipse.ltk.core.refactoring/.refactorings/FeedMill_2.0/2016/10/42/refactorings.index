@@ -1,0 +1,58 @@
+1475997181432	Rename type 'UnitekI2CBusFactory'
+1475997269534	Rename type 'UnitekI2CFactoryProvider'
+1475998261161	Delete elements
+1475998903155	Move compilation unit
+1475998916770	Delete element
+1475999105278	Rename type 'Pi4jI2cDeviceImpl'
+1475999586978	Move compilation units
+1475999749785	Copy compilation unit
+1476026091960	Delete element
+1476026176922	Copy compilation unit
+1476027147152	Rename field 'pinState'
+1476027203694	Rename type 'ArduinoModel'
+1476071883949	Rename method 'setup'
+1476071894949	Rename field 'initialized'
+1476073546618	Copy compilation unit
+1476074134469	Copy compilation unit
+1476076412154	Copy compilation unit
+1476078688786	Rename method 'getRequestByteToPush'
+1476078707931	Rename method 'generateRequestByteToPush'
+1476078742599	Rename method 'writeRequestByteToPush'
+1476084134052	Copy compilation unit
+1476085271490	Delete element
+1476087087284	Delete element
+1476093521619	Rename type 'UnitekI2CDeviceFactory'
+1476093540883	Rename method 'getDevice'
+1476285743765	Rename package 'com.uniteksolusi.feedmill.dummies.arduino'
+1476285776794	Move compilation unit
+1476286456415	Delete element
+1476286621008	Delete element
+1476287907284	Copy compilation unit
+1476288150721	Rename type 'MainSimpleBuffer'
+1476288254297	Rename type 'MainLoop'
+1476288657957	Rename type 'Main'
+1476290717206	Rename compilation unit 'Wire.java'
+1476292959348	Move compilation units
+1476335279572	Delete element
+1476335304765	Rename package 'com.uniteksolusi.feedmill.dummy.arduino'
+1476335319332	Rename type 'ArduinoUno'
+1476335333623	Rename type 'SimpleBuffer'
+1476335369931	Rename type 'DummyArduinoSimpleBuffer'
+1476335372757	Rename type 'DummyArduinoUno'
+1476347182070	Rename type 'ArduinoLoadCell'
+1476347190898	Rename type 'ArduinoSimpleBuffer'
+1476347195256	Rename type 'ArduinoUno'
+1476347199326	Rename type 'SerialConsole'
+1476347221639	Rename type 'WireQueue'
+1476347226779	Rename type 'DummySerialConsole'
+1476438106259	Rename method 'initializePinSize'
+1476494888176	Copy compilation unit
+1476495237442	Copy compilation unit
+1476503072888	Copy compilation unit
+1476503232493	Rename type 'DummyArduinoSimpleBuffer'
+1476503246156	Rename type 'DummyArduinoLoadCell'
+1476503266768	Rename type 'DummyArduinoCrusherBuffer'
+1476503290410	Rename type 'DummyArduinoMixer'
+1476503432453	Copy compilation unit
+1476523632595	Rename method 'getString'
+1476523648405	Rename method 'getString'

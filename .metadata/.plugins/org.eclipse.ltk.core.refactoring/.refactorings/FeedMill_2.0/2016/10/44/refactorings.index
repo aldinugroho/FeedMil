@@ -1,0 +1,53 @@
+1477216355373	Rename local variable 'logHandler'
+1477221851799	Rename type 'MainSimpleBuffer'
+1477284813543	Rename package 'com.uniteksolusi.feedmill.main'
+1477285097410	Rename package 'com.uniteksolusi.feedmill.controller'
+1477285104264	Rename package 'com.uniteksolusi.feedmill.dummy'
+1477285114717	Rename package 'com.uniteksolusi.feedmill.http'
+1477285122383	Rename package 'com.uniteksolusi.feedmill.i2c'
+1477285130068	Rename package 'com.uniteksolusi.feedmill.model'
+1477285139822	Rename package 'com.uniteksolusi.feedmill.model.tester'
+1477285146730	Rename package 'com.uniteksolusi.feedmill.util'
+1477302281972	Rename compilation unit 'ArduinoMode.java'
+1477303864615	Rename type 'CommandLineInterface'
+1477314729330	Rename type 'OtomillHttpHandler'
+1477314880366	Rename method 'parseQuery'
+1477315878030	Rename field 'theBus'
+1477316785069	Rename package 'com.uniteksolusi.otomill.dummy'
+1477316794172	Rename type 'DummyArduino'
+1477316802213	Rename type 'DummyArduinoMega'
+1477316808934	Rename type 'DummyArduinoUno'
+1477316816642	Rename type 'DummyI2CBus'
+1477316821914	Rename type 'DummyI2CDeviceImpl'
+1477316825776	Rename type 'DummyImplCrusherBuffer'
+1477316829963	Rename type 'DummyImplLoadCell'
+1477316833512	Rename type 'DummyImplManualLoad'
+1477316837775	Rename type 'DummyImplMixer'
+1477316842398	Rename type 'DummyImplSimpleBuffer'
+1477316860472	Rename type 'DummyWire'
+1477316865695	Rename type 'DummySerial'
+1477321071224	Rename local variable 'fh'
+1477323513876	Delete elements
+1477324513643	Delete element
+1477471217368	Rename field 'started'
+1477473251064	Delete elements
+1477474188954	Rename resource 'states'
+1477474194709	Move files
+1477475497214	Rename method 'registerArduino'
+1477475507881	Rename method 'register'
+1477475516398	Rename method 'register'
+1477475523181	Rename method 'getDummyArduino'
+1477487830410	Move files
+1477487862372	Move files
+1477487865927	Delete element
+1477639328051	Rename local variable 'modelsToLoadArray'
+1477642042796	Rename local variable 'modelsToLoad'
+1477642277961	Rename local variable 'models'
+1477723561008	Extract interface 'ArduinoModelIfc'
+1477723587770	Rename type 'MixerLoader'
+1477723778066	Extract interface 'MixerIfc'
+1477724127311	Extract interface 'LoadCellIfc'
+1477725466367	Delete element
+1477725705534	Rename type 'StatusStringHttpHandler'
+1477725757547	Copy compilation unit
+1477728920431	Rename type 'StatusHttpHandler'

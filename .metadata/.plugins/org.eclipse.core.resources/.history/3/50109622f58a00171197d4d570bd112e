@@ -1,0 +1,111 @@
+package com.uniteksolusi.otomill.simulator;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import com.google.gson.Gson;
+import com.uniteksolusi.otomill.util.FileAccessManager;
+
+public class StubLoadCellSimulator implements Runnable {
+	
+	private static final Gson gson = new Gson(); //gson helper class
+	
+	private static final int cycleTime = 500; //milis
+	private static final int interval = 10;
+	
+	File stubStateFile; // = new File(STUB_STATE_FOLDER + "stub-" + "0x21" + ".state");
+	File stubSoftwareSerialFile; // = new File(STUB_STATE_FOLDER + "stub-" + "0x21" + ".softwareserial");
+	byte pinRelayInput; // = 3;
+	byte pinRelayEject; // = 4;
+	
+	
+	boolean shouldRun = false;
+
+	
+	public StubLoadCellSimulator(File stubStateFile, File stubSoftwareSerialFile, byte pinRelayInput, byte pinRelayEject ) {
+		
+		this.stubStateFile = stubStateFile;
+		this.stubSoftwareSerialFile = stubSoftwareSerialFile;
+		this.pinRelayInput = pinRelayInput;
+		this.pinRelayEject = pinRelayEject;
+		
+	}
+
+	public void start() {
+		
+		if(!shouldRun) {
+			shouldRun = true;
+			new Thread(this).start();
+		}
+		
+	}
+	
+	public void stop() {
+		shouldRun = false;
+	}
+	
+	
+	@Override
+	public void run() {
+		
+		while(shouldRun) {
+
+			try {
+
+				//read file, get current state
+				FileAccessManager.getInstance().lock(stubStateFile);
+				String fileString = new String(Files.readAllBytes(stubStateFile.toPath()));
+				byte[] curState = gson.fromJson(fileString, byte[].class);
+				FileAccessManager.getInstance().release(stubStateFile);
+
+
+				if(curState[pinRelayInput]==1 || curState[pinRelayEject]==1) { //if filling or ejecting
+
+//					System.out.println(stubStateFile + " : Filling or ejecting");
+
+					FileAccessManager.getInstance().lock(stubSoftwareSerialFile);
+					String weightStr = new String(Files.readAllBytes(stubSoftwareSerialFile.toPath()));
+					FileAccessManager.getInstance().release(stubSoftwareSerialFile);
+					
+					weightStr = weightStr.trim() + (char) 10;
+					int weightInt = (int) (double) Double.valueOf(weightStr.substring(7,14));
+
+					if(curState[pinRelayInput]==1) { 
+						weightInt = weightInt + interval;
+					} else {
+						weightInt = weightInt - interval;
+						if (weightInt < 0) {
+							weightInt = 0;
+						}
+					}
+
+					String newWeightStr = "ST,NT,+" + String.format("%05d", weightInt) + ".0kg" + (char) 10;
+
+					FileAccessManager.getInstance().lock(stubSoftwareSerialFile);
+					FileWriter fw = new FileWriter(stubSoftwareSerialFile,false);
+					fw.write(newWeightStr);
+					fw.flush();
+					fw.close();
+					FileAccessManager.getInstance().release(stubSoftwareSerialFile);
+
+				} 					
+
+				try {
+					Thread.sleep(cycleTime);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		
+	}
+
+}

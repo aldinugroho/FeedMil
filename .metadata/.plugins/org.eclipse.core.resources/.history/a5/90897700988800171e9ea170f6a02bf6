@@ -1,0 +1,195 @@
+package com.uniteksolusi.otomill.model;
+
+import com.pi4j.io.i2c.I2CBus;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+
+/**
+ * @author nanda
+ * 
+ *
+ */
+public class ModelSimpleBuffer extends ArduinoUnoModel {
+	
+
+	//TO CONFIGURE
+	//digital pin number to trigger the start/stop relay and read sensors
+
+	//MBM
+	transient byte pinBufferLevelMBM[] = {2,3,4};
+	transient byte pinRelayBucketMBM = 5;
+
+
+	//GRIT
+	transient byte pinBufferLevelGrit[] = {6,7,8};
+	transient byte pinRelayBucketGrit = 9;
+
+
+	//KATUL
+	transient byte pinBufferLevelKatul[] = {10,11,12};
+	transient byte pinRelayBucketKatul = 13;
+
+	///### END of CONFIGURATION ###///
+
+
+	//### running variables ###//
+
+	//fill state for each silo. 0=off, 1=fill, 2=auto
+	byte fillStateMBM = 2;
+	byte fillStateGrit = 2;
+	byte fillStateKatul = 2;
+
+	//when to start filling in auto mode. 0 = low level, 1 = half, 2 = full
+	//start filling in auto mode = 2.
+	public byte fillLevelMBM = 0;
+	public byte fillLevelGrit = 1;
+	public byte fillLevelKatul = 2;
+
+	//### end of running variables ###//
+	
+	
+	//status json
+	boolean isMBMBucketOn = false;
+	boolean isGritBucketOn = false;
+	boolean isKatulBucketOn = false;
+	
+	public ModelSimpleBuffer(I2CBus bus, int address) {
+		super(bus, address);
+	}
+	
+
+	protected void mainLoop() {
+		
+		//check and fill each silos
+			
+		//mbm
+		if(fillStateMBM == 2) {
+			if(digitalRead(pinBufferLevelMBM[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
+				digitalWrite(pinRelayBucketMBM, LOW); //full, stop the bucket
+				isMBMBucketOn = false;
+			} else if(digitalRead(pinBufferLevelMBM[fillLevelMBM]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
+				digitalWrite(pinRelayBucketMBM, HIGH); //lower than fill level, start the bucket
+				isMBMBucketOn = true;
+			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
+		} else if(fillStateMBM == 0) {
+			digitalWrite(pinRelayBucketMBM, LOW); //stop the bucket
+			isMBMBucketOn = false;
+		} else if(fillStateMBM == 1) {
+			digitalWrite(pinRelayBucketMBM, HIGH); //start the bucket
+			isMBMBucketOn = true;
+		}
+		
+		
+		//Grit
+		if(fillStateGrit == 2) {
+			if(digitalRead(pinBufferLevelGrit[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
+				digitalWrite(pinRelayBucketGrit, LOW); //full, stop the bucket
+				isGritBucketOn = false;
+			} else if(digitalRead(pinBufferLevelGrit[fillLevelGrit]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
+				digitalWrite(pinRelayBucketGrit, HIGH); //lower than fill level, start the bucket
+				isGritBucketOn = true;
+			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
+		} else if(fillStateGrit == 0) {
+			digitalWrite(pinRelayBucketGrit, LOW); //stop the bucket
+			isGritBucketOn = false;
+		} else if(fillStateGrit == 1) {
+			digitalWrite(pinRelayBucketGrit, HIGH); //start the bucket
+			isGritBucketOn = true;
+		}
+		
+		
+		//Katul
+		if(fillStateKatul == 2) {
+			if(digitalRead(pinBufferLevelKatul[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
+				digitalWrite(pinRelayBucketKatul, LOW); //full, stop the bucket
+				isKatulBucketOn = false;
+			} else if(digitalRead(pinBufferLevelKatul[fillLevelKatul]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
+				digitalWrite(pinRelayBucketKatul, HIGH); //lower than fill level, start the bucket
+				isKatulBucketOn = true;
+			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
+		} else if(fillStateKatul == 0) {
+			digitalWrite(pinRelayBucketKatul, LOW); //stop the bucket
+			isKatulBucketOn = false;
+		} else if(fillStateKatul == 1) {
+			digitalWrite(pinRelayBucketKatul, HIGH); //start the bucket
+			isKatulBucketOn = true;
+		}
+
+	}
+
+
+	@Override
+	protected void initialize() {
+		//MBM
+		pinMode(pinBufferLevelMBM[0], INPUT);   //3 pins of IR OBSTACLE = low level, half, full
+		pinMode(pinBufferLevelMBM[1], INPUT);
+		pinMode(pinBufferLevelMBM[2], INPUT);
+		
+		//Grit
+		pinMode(pinBufferLevelGrit[0], INPUT);
+		pinMode(pinBufferLevelGrit[1], INPUT);
+		pinMode(pinBufferLevelGrit[2], INPUT);
+		
+		//Katul
+		pinMode(pinBufferLevelKatul[0], INPUT);
+		pinMode(pinBufferLevelKatul[1], INPUT);
+		pinMode(pinBufferLevelKatul[2], INPUT);
+
+		pinMode(pinRelayBucketMBM, OUTPUT);
+		pinMode(pinRelayBucketGrit, OUTPUT);
+		pinMode(pinRelayBucketKatul, OUTPUT);
+	}
+
+
+	@Override
+	protected void writeRequestByteSpecific(byte[] requestByte) {
+		//do nothing, no special request byte
+	}
+
+
+	@Override
+	protected void readResponseByteSpecific(byte[] responseByte) {
+		//do nothing, no special response byte
+	}
+
+	public String printStateDetails() {
+		
+		StringBuffer sb  = new StringBuffer(super.printStateDetails());
+		
+		
+		
+		sb.append("\n");
+		String tempString = "STOP";
+		if(digitalRead(pinRelayBucketMBM)==HIGH){
+			tempString = "FILL";
+		}
+		sb.append("\nMBM Fill State .:\t " + tempString + " (Conf: " + fillLevelMBM + ")");
+		sb.append("\nMBM Level . . . :\t " + digitalRead(this.pinBufferLevelMBM[0]) +""+ digitalRead(this.pinBufferLevelMBM[1]) +""+ digitalRead(this.pinBufferLevelMBM[2]));
+
+		sb.append("\n");
+		tempString = "STOP";
+		if(digitalRead(pinRelayBucketGrit)==HIGH){
+			tempString = "FILL";
+		}
+		sb.append("\nGrit Fill State :\t " + tempString + " (Conf: " + fillLevelGrit + ")");
+		sb.append("\nGrit Level . . .:\t " + digitalRead(this.pinBufferLevelGrit[0]) +""+ digitalRead(this.pinBufferLevelGrit[1]) +""+ digitalRead(this.pinBufferLevelGrit[2]));
+
+		sb.append("\n");
+		tempString = "STOP";
+		if(digitalRead(pinRelayBucketKatul)==HIGH){
+			tempString = "FILL";
+		}
+		sb.append("\nKatul Fill State:\t " + tempString + " (Conf: " + fillLevelKatul + ")");
+		sb.append("\nKatul Level . . :\t " + digitalRead(this.pinBufferLevelKatul[0]) +""+ digitalRead(this.pinBufferLevelKatul[1]) +""+ digitalRead(this.pinBufferLevelKatul[2]));
+		
+		return sb.toString();
+		
+	
+	}	
+	
+}

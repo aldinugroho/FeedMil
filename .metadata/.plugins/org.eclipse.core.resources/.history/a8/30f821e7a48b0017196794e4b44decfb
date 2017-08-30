@@ -1,0 +1,86 @@
+package com.uniteksolusi.otomill.controller;
+
+import java.io.File;
+
+import com.uniteksolusi.otomill.simulator.StubBufferSiloSimulator;
+import com.uniteksolusi.otomill.simulator.StubLoadCellSimulator;
+
+public class SimulatorController {
+	
+	public static final String STUB_STATE_FOLDER = "./stub/";
+	
+	private static SimulatorController instance = new SimulatorController();
+	
+	public static SimulatorController getInstance() {
+		return instance;
+	}
+	
+	
+	private SimulatorController() {
+//		this.mController = mController;
+	}
+
+	private boolean shouldRun = false;
+	
+	private StubLoadCellSimulator x21Simulator;
+	private StubLoadCellSimulator x22Simulator;
+	private StubBufferSiloSimulator sbm2SiloSimulator;
+	
+	
+	private void initializeSimulator() {
+		
+		//x21
+		File x21StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x21" + ".state");
+		File x21SeoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" + "0x21" + ".softwareserial");
+		byte x21PinRelayInputScrew = 3;
+		byte x21PinRelayEject = 4;
+		x21Simulator = new StubLoadCellSimulator(x21StateFile, x21SeoftwareSerialFile, x21PinRelayInputScrew, x21PinRelayEject);
+		
+		//x22
+		File x22StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x22" + ".state");
+		File x22SeoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" + "0x22" + ".softwareserial");
+		byte x22PinRelayInputScrew = 3;
+		byte x22PinRelayEject = 4;
+		x22Simulator = new StubLoadCellSimulator(x22StateFile, x22SeoftwareSerialFile, x22PinRelayInputScrew, x22PinRelayEject);
+		
+		//SBM2
+		File sbm2StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+		byte pinBufferLevelSBM2[] = {14,15,16};
+		byte pinRelayBucketSBM2 = 17;
+		sbm2SiloSimulator = new StubBufferSiloSimulator(sbm2StateFile, pinBufferLevelSBM2, pinRelayBucketSBM2);
+		
+	}
+	
+	
+	public synchronized void start() {
+		
+		if(!shouldRun) {
+			
+			shouldRun = true;
+			initializeSimulator();
+
+			System.out.println("--- starting simulator ---");
+			
+			x21Simulator.start();
+			x22Simulator.start();
+			
+			sbm2SiloSimulator.start();
+			
+		}
+		
+	}
+	
+	public void stop() {
+		
+		shouldRun = false;
+		
+		x21Simulator.stop();
+		x22Simulator.stop();
+		
+		sbm2SiloSimulator.stop();
+	
+	}
+
+
+
+}

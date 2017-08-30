@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.i2c{UnitekI2CFactory.java[UnitekI2CFactory" modifiers="1" timestamp="1492333930000"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.model{ModelManualLoad.java[ModelManualLoad" modifiers="1" timestamp="1504075452993"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.model{ModelMixer.java[ModelMixer" modifiers="1" timestamp="1504081714252"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.model{ModelCrusherBuffer.java[ModelCrusherBuffer" modifiers="1" timestamp="1504083014339"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.controller{MainController.java[MainController" modifiers="1" timestamp="1503814946000"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.simulator{StubLoadCellSimulator.java[StubLoadCellSimulator" modifiers="1" timestamp="1503892412000"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.util{FileAccessManager.java[FileAccessManager" modifiers="1" timestamp="1503892412000"/>
+<typeInfo handle="=FeedMill_2.0/src&lt;com.uniteksolusi.otomill.model{ModelLoadCell.java[ModelLoadCell" modifiers="1" timestamp="1504069164221"/>
+</typeInfoHistroy>

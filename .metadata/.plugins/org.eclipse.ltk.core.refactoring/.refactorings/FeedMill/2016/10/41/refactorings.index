@@ -1,0 +1,11 @@
+1475663105400	Rename local variable 'configByte'
+1475663127400	Rename local variable 'configByte'
+1475737380987	Rename field 'katulLevel'
+1475737385421	Rename field 'gritLevel'
+1475737389797	Rename field 'mbmLevel'
+1475748407889	Rename field 'outputOffOnConfig'
+1475751881565	Rename field 'outputOffOnStatus'
+1475752232068	Copy compilation unit
+1475753401616	Rename field 'mbmFillStateConfig'
+1475753409530	Rename field 'gritFillStateConfig'
+1475753418219	Rename field 'katulFillStateConfig'

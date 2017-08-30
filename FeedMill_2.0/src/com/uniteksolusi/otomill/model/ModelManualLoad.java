@@ -1,6 +1,7 @@
 package com.uniteksolusi.otomill.model;
 
 import com.pi4j.io.i2c.I2CBus;
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLService;
 
 public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 	
@@ -92,6 +93,8 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 
 		pinMode(pinButtonDoneLoading, INPUT);
 		pinMode(pinSensorTubeLoaded, INPUT);
+		
+		
 		
 		stopEjecting(); //default state
 	}
@@ -288,6 +291,36 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 		digitalWrite( pinRelayReadyForEjectLight, (byte) (digitalRead(pinRelayReadyForEjectLight)^1) );
 	}
 	
+	public void SwitchInputReadyToFill() {
+		if(digitalRead(pinRelayReadyForFilling) == LOW){
+			digitalWrite(pinRelayReadyForFilling, HIGH);
+			isReadyToFill = true;
+		} else {
+			digitalWrite(pinRelayReadyForFilling, LOW);
+			isReadyToFill = false;
+		}
+	}
+	
+	public void SwitchInputReadyToEject() {
+		if(digitalRead(pinRelayReadyForEjectLight) == LOW){
+			digitalWrite(pinRelayReadyForEjectLight, HIGH);
+			isReadyToEject = true;
+		} else {
+			digitalWrite(pinRelayReadyForEjectLight, LOW);
+			isReadyToEject = false;
+		}
+	}
+	
+	public void SwitchOutputOpen() {
+		if(digitalRead(pinRelayPneumaticOutput) == LOW){
+			digitalWrite(pinRelayPneumaticOutput, HIGH);
+			isOutputOpen = true;
+		} else {
+			digitalWrite(pinRelayPneumaticOutput, HIGH);
+			isOutputOpen = false;
+		}
+	}
+	
 	
 	public String getStateString() {
 		
@@ -348,13 +381,29 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 				return "OK"; 
 			}
 			
+			if("SwitchInputReadyToFill".equals(cmds[0])) {
+				SwitchInputReadyToFill();
+				return "OK";
+			}
+			
+			if("SwitchInputReadyToEject".equals(cmds[0])) {
+				SwitchInputReadyToEject();
+				return "OK";
+			}
+			
+			if("SwitchOutputOpen".equals(cmds[0])) {
+				SwitchOutputOpen();
+				return "OK";
+			}
+			
+			
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startFilling, stopFilling, startEjecting, stopEjecting, startEjectingAll, stopEjectingAll\n";
+								+": startFilling, stopFilling, startEjecting, stopEjecting, startEjectingAll, stopEjectingAll, SwitchInputReadyToFill, SwitchInputReadyToEject, SwitchOutputOpen \n";
 		}
 		return parentResponse;
 	}

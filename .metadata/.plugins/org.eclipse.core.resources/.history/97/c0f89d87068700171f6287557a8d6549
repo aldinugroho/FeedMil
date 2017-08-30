@@ -1,0 +1,99 @@
+#Main Controller
+main.cycletime=500
+main.models=0x11,0x12,0x21,0x22,0x26,0x31
+main.mixerloader=0x21,0x22,0x26
+main.mixer=0x31
+main.eject.first=0x21
+main.eject.all.minweight=5000
+
+#logging
+log.stdout.loglevel=INFO
+log.file.loglevel=INFO
+log.file.dir=./log/
+log.file.maxsize=10000000
+log.file.limitcount=10
+java.util.logging.SimpleFormatter.format=%1$tF %1$tT %4$s %2$s %5$s%6$s%n
+
+#CLI
+cli.enabled=true
+
+#stub
+stub.enabled=true
+stub.log.stdout.loglevel=OFF
+
+#http 
+http.port=8000
+
+
+#0x11 Crusher Buffer Jagung1-2 SBM1-2
+model.0x11.type=ModelCrusherBuffer
+model.0x11.cycletime=500
+model.0x11.attribute.cleaneron.sbm=0
+model.0x11.attribute.crusheron.sbm=0
+model.0x11.attribute.filllevel.jagung1=1
+model.0x11.attribute.filllevel.jagung2=1
+model.0x11.attribute.filllevel.sbm1=1
+model.0x11.attribute.filllevel.sbm2=1
+
+#0x12 Buffer MBM Grit Katul
+model.0x12.type=ModelSimpleBuffer
+model.0x12.cycletime=500
+model.0x12.attribute.filllevel.mbm=0
+model.0x12.attribute.filllevel.grit=1
+model.0x12.attribute.filllevel.katul=2
+
+
+#0x21 LoadCell Jagung
+model.0x21.type=ModelLoadCellMultiIn
+model.0x21.cycletime=500
+model.0x21.attribute.targetWeight=10
+model.0x21.attribute.emptyTolerance=1
+model.0x21.attribute.fullTolerance=0
+
+#0x22 LoadCell SBM
+model.0x22.type=ModelLoadCellMultiIn
+model.0x22.cycletime=500
+model.0x22.attribute.targetWeight=10
+model.0x22.attribute.emptyTolerance=0
+model.0x22.attribute.fullTolerance=0
+
+#0x23 LoadCell MBM
+model.0x23.type=ModelLoadCell
+model.0x23.cycletime=500
+model.0x23.attribute.targetWeight=10
+model.0x23.attribute.emptyTolerance=0
+model.0x23.attribute.fullTolerance=0
+
+#0x24 LoadCell Grit
+model.0x24.type=ModelLoadCell
+model.0x24.enabled=false
+model.0x24.cycletime=500
+model.0x24.attribute.targetWeight=10
+model.0x24.attribute.emptyTolerance=0
+model.0x24.attribute.fullTolerance=0
+
+#0x25 LoadCell Katul
+model.0x25.type=ModelLoadCell
+model.0x25.enabled=false
+model.0x24.cycletime=500
+model.0x25.attribute.targetWeight=10
+model.0x25.attribute.emptyTolerance=0
+model.0x25.attribute.fullTolerance=0
+
+
+#0x26 Manual Load
+model.0x26.type=ModelManualLoad
+model.0x26.enabled=true
+model.0x26.cycletime=500
+model.0x26.attribute.buttonDoneReadingRetry=4
+model.0x26.attribute.tubeLoadedReadingRetry=4
+model.0x26.attribute.tubeEmptyReadingRetry=4
+
+
+#0x31 Mixer
+model.0x31.enabled=true
+model.0x31.cycletime=500
+model.0x31.type=ModelMixer
+model.0x31.attribute.mixerEmptyReadingRetry=30
+model.0x31.attribute.mixingDuration=60000
+model.0x31.attribute.mixingTimeCalibration=500

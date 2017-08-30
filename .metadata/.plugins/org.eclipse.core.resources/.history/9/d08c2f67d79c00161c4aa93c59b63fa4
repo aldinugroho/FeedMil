@@ -1,0 +1,386 @@
+package com.uniteksolusi.otomill.controller;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.InetSocketAddress;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.logging.FileHandler;
+import java.util.logging.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.pi4j.io.i2c.I2CBus;
+import com.pi4j.io.i2c.impl.I2CBusImpl;
+import com.sun.net.httpserver.HttpServer;
+import com.uniteksolusi.otomill.http.StatusStringHttpHandler;
+import com.uniteksolusi.otomill.i2c.UnitekI2CFactory;
+import com.uniteksolusi.otomill.model.ArduinoModel;
+import com.uniteksolusi.otomill.model.MixerLoader;
+import com.uniteksolusi.otomill.model.ModelCrusherBuffer;
+import com.uniteksolusi.otomill.model.ModelLoadCell;
+import com.uniteksolusi.otomill.model.ModelLoadCellMultiIn;
+import com.uniteksolusi.otomill.model.ModelManualLoad;
+import com.uniteksolusi.otomill.model.ModelMixer;
+import com.uniteksolusi.otomill.model.ModelSimpleBuffer;
+import com.uniteksolusi.otomill.stub.StubI2CBus;
+import com.uniteksolusi.otomill.stub.StubImplCrusherBuffer;
+import com.uniteksolusi.otomill.stub.StubImplLoadCell;
+import com.uniteksolusi.otomill.stub.StubImplManualLoad;
+import com.uniteksolusi.otomill.stub.StubImplMixer;
+import com.uniteksolusi.otomill.stub.StubImplSimpleBuffer;
+
+public class MainController {
+	
+	public static long DEFAULT_SLEEP_CYCLE = 1000;
+	
+	private static MainController instance;
+	
+	public static MainController getInstance() {
+		if(instance == null) {
+			try {
+				instance = new MainController();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return instance;
+	}
+
+	private MainController() throws IOException {
+		
+		modelMap = new HashMap<String, ArduinoModel>();
+		idFirstEject = new LinkedList<String>();
+		i2cBus = UnitekI2CFactory.getI2CBus();
+		
+		logger = Logger.getLogger(this.getClass().getSimpleName());
+		
+		
+		
+	}
+	
+	private Logger logger;
+	
+	private I2CBus i2cBus;
+	private Map<String, ArduinoModel> modelMap;
+	private List<String> idFirstEject;
+
+	public I2CBus getBus() {
+		return i2cBus;
+	}
+	
+	public Collection<ArduinoModel> getAllModel() {
+		return modelMap.values();
+	}
+	
+	public ArduinoModel getModel(String id) {
+		return modelMap.get(id);
+	}
+	
+	public ArduinoModel registerModel(ArduinoModel model) {
+		return modelMap.put(model.getId(), model);
+	}
+	
+	
+	
+	private void initAllModel(Properties config) throws IOException {
+		
+		registerModel(new ModelCrusherBuffer(getBus(), 0x11));
+
+		registerModel(new ModelSimpleBuffer(getBus(), 0x12));
+
+		registerModel(new ModelLoadCellMultiIn(getBus(), 0x21));
+
+		registerModel(new ModelManualLoad(getBus(), 0x26));
+
+		registerModel(new ModelMixer(getBus(), 0x31));
+		
+		
+	}
+	
+	private void startAllModel() {
+		
+		Iterator<ArduinoModel> iter = modelMap.values().iterator();
+		while(iter.hasNext()) {
+			iter.next().start();
+		}
+		
+	}
+	
+	
+	
+	private void initLogger(Properties config) {
+		
+		System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tF %1$tT %4$s %2$s %5$s%6$s%n");
+		Formatter logFormatter = new SimpleFormatter();
+		
+		StreamHandler sysoutLogHandler = new StreamHandler(System.out, logFormatter);
+		sysoutLogHandler.setLevel(Level.parse(config.getProperty("log.stdout.loglevel", "OFF")));
+		
+		Iterator<ArduinoModel> iter = modelMap.values().iterator();
+		while(iter.hasNext()) {
+			
+			String logName = "Model-" + iter.next().getId();
+			
+			Logger theLogger = Logger.getLogger(logName);
+			theLogger.setLevel(Level.ALL);
+			theLogger.addHandler(sysoutLogHandler);
+			
+			try {
+				
+				FileHandler fileHandler = 
+						new FileHandler(config.getProperty("log.file.dir", "./log") +"/"+ logName + ".%g.log", 
+											Integer.valueOf(config.getProperty("log.file.maxsize", "10000000")), 
+											Integer.valueOf(config.getProperty("log.file.limitcount", "10")), 
+											true);
+				fileHandler.setFormatter(logFormatter);
+				fileHandler.setLevel(Level.parse(config.getProperty("log.file.loglevel", "OFF")));
+				
+				theLogger.addHandler(fileHandler);
+				
+			} catch (SecurityException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+				
+		}
+		
+//		Logger i2cBusLogger = Logger.getLogger(I2CBusImpl.class.getCanonicalName());
+//		i2cBusLogger.setLevel(Level.INFO);
+//		i2cBusLogger.addHandler(sysoutLogHandler);
+				
+	}
+	
+	private void initStub(Properties config) {
+		
+		StubImplCrusherBuffer cbb = new StubImplCrusherBuffer(0x11);
+		StubI2CBus.getInstance().registerStub(0x11, cbb);
+		cbb.start();
+		
+		StubImplSimpleBuffer sb = new StubImplSimpleBuffer(0x12);
+		StubI2CBus.getInstance().registerStub(0x12, sb);
+		sb.start();
+		
+		StubImplLoadCell lc = new StubImplLoadCell(0x21);
+		StubI2CBus.getInstance().registerStub(0x21, lc);
+		lc.start();
+		
+		StubImplManualLoad ml = new StubImplManualLoad(0x26);
+		StubI2CBus.getInstance().registerStub(0x26, ml);
+		ml.start();
+
+		StubImplMixer mx = new StubImplMixer(0x31);
+		StubI2CBus.getInstance().registerStub(0x31, mx);
+		mx.start();
+		
+		
+		//give some time for stubs to really start
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void initHttpServer(Properties config) throws IOException {
+		
+		int port = Integer.valueOf(config.getProperty("http.port", "8000"));
+
+		HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+        server.createContext("/", new StatusStringHttpHandler());
+        server.setExecutor(null); // creates a default executor
+        server.start();
+        
+	}
+	
+	private boolean isAllMixerLoaderReadyForEject() {
+		
+		boolean readyForEject = true;
+		
+		Iterator<ArduinoModel> iter = modelMap.values().iterator();
+		while(iter.hasNext()) {
+			
+			Object curModel = iter.next();
+			if(curModel instanceof MixerLoader) {
+				
+				if( ((ArduinoModel)curModel).isStarted() ) {
+					readyForEject = readyForEject && ((MixerLoader) curModel).isReadyForEject();
+				}
+				
+			}
+			
+		}
+		
+		return readyForEject;
+		
+		
+	}
+	
+	private void ejectAllMixerLoader() {
+		
+		Iterator<ArduinoModel> iter = modelMap.values().iterator();
+		while(iter.hasNext()) {
+			
+			Object curModel = iter.next();
+			if(curModel instanceof MixerLoader) {
+				
+				if( alreadyLoadedMap.get(curModel)==null && ((ArduinoModel)curModel).isStarted() ) {
+					((MixerLoader) curModel).startEjecting();
+					alreadyLoadedMap.put(curModel, curModel);
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	private Map<Object, Object> alreadyLoadedMap = new HashMap<Object, Object>();
+	
+	private void initialize(Properties config) {
+		
+		try {
+			
+			if("true".equals(System.getProperty("env.stub"))) {
+				initStub(config);
+			}
+
+			initHttpServer(config);
+
+			initAllModel(config);
+
+			initLogger(config);
+
+			startAllModel();
+			logger.info("Init completed.");
+
+		} catch (IOException e) {
+			logger.severe("ERROR on Inits. Exiting.");
+			logger.severe(e.toString());
+			e.printStackTrace();
+			System.exit(0);
+		}
+		
+		
+		System.out.println(new Gson().toJson(this.modelMap.values()));
+		System.out.println(new Gson().toJson(this.getModel("0x21")));
+		
+//		Map amap = new HashMap();
+//		amap.put("model.0x21.attribute.targetweight", "15");
+////		ModelLoadCell am = (ModelLoadCell) this.getModel("0x21");
+//		Object am = this.getModel("0x21");
+//		Field[] farray = am.getClass().getFields();
+//		for(int i=0; i<farray.length; i++) {
+//			String key = ("model.0x21.attribute." + farray[i].getName()).toLowerCase();
+//			System.out.println("key: " + key);
+//			Object val = amap.get(  key );
+//			if(val!=null) {
+//				try {
+//					System.out.println( "setting " + key + " = " + val);
+//					farray[i].set(am, 15 );
+//				} catch (IllegalArgumentException e) {
+//					e.printStackTrace();
+//				} catch (IllegalAccessException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//		
+//		System.out.println(new Gson().toJson(am));
+		
+		String json0x21 = "//sadadaad\n"
+				+ "{ pinRelayPneumaticInput:1,abc:5,pinRelayPneumaticOutput:5,targetWeight:15,emptyTolerance:0,fullTolerance:0,i2cRequestByteLength:4,i2cResponseByteLength:6,id:0x23,isInitialized:true}  ";
+
+		ModelLoadCellMultiIn model1;
+		try {
+			model1 = (ModelLoadCellMultiIn) new Gson().fromJson(json0x21, Class.forName("com.uniteksolusi.otomill.model.ModelLoadCellMultiIn"));
+			System.out.println(new Gson().toJson(model1));
+			
+		} catch (JsonSyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void mainLoop(String[] args) throws IOException {
+		
+		Properties config = new Properties();
+		InputStream is = new FileInputStream(new File("./conf/otomill.conf"));
+		config.load(is);	
+		initialize(config);
+		
+		
+		while(true) {
+			
+			logger.fine("main() - main loop.");
+			
+			//2. check if ejecting state
+			if( ((MixerLoader)getModel("0x21")) .isEjecting()   ) {
+				
+				ModelLoadCell jagungLoadCell = (ModelLoadCell) getModel("0x21");
+				
+				if(jagungLoadCell.getCurrentWeight() <= (0.5 * jagungLoadCell.getTargetWeight()) ) {
+					//if half way, start ejecting others
+					ejectAllMixerLoader();
+				}
+				
+			} else {
+				
+				//when all load cell full and mixer ready, start ejecting (1st is jagung)
+				if( isAllMixerLoaderReadyForEject() && ((ModelMixer) getModel("0x31")).isReadyForMixing() ) {
+					
+					alreadyLoadedMap.clear();
+					((ModelMixer) getModel("0x31")).startMixing();
+					
+					ArduinoModel model0x21 = ((ArduinoModel) getModel("0x21"));
+					if( model0x21.isStarted()  ) {
+						((MixerLoader) model0x21).startEjecting();
+						alreadyLoadedMap.put(model0x21, model0x21);
+					}
+					else {
+						ejectAllMixerLoader();
+					}
+					
+				}
+				
+			}
+			
+			
+			try {
+				Thread.sleep(DEFAULT_SLEEP_CYCLE);
+			} catch (InterruptedException e) {
+				logger.warning("Sleep cycle interrupted");
+			}
+			
+		}
+		
+	}
+
+	
+	public static void main(String[] args) throws IOException {
+		
+		System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tF %1$tT %4$s %2$s %5$s%6$s%n");
+		
+		MainController.getInstance().mainLoop(args);
+		
+	}
+
+}

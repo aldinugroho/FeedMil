@@ -1,0 +1,9 @@
+package com.uniteksolusi.otomill.util;
+
+public class FileAccessManager {
+
+	public FileAccessManager() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

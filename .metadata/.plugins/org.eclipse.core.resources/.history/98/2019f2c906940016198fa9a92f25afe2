@@ -1,0 +1,199 @@
+package com.uniteksolusi.feedmill.main;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
+import com.pi4j.io.i2c.I2CBus;
+import com.pi4j.io.i2c.impl.I2CBusImpl;
+import com.uniteksolusi.feedmill.i2c.UnitekI2CFactory;
+import com.uniteksolusi.feedmill.model.CrusherBufferArduino;
+import com.uniteksolusi.feedmill.model.SimpleBufferArduino;
+import com.uniteksolusi.feedmill.model.TesterUnoCircuit;
+
+/**
+ * @author nanda
+ *
+ * This class contains the main loop of the program.
+ *
+ */
+public class MainSimpleBuffer {
+	
+	static long sleepCycle = 1000;
+	
+	static I2CBus theBus;
+	
+	static CrusherBufferArduino jagungSbmBuffer;
+	static SimpleBufferArduino mbmKatulGritBuffer;
+	
+//	static LoadCellMultiInArduino jagungLoadCell;
+//	static LoadCellMultiInArduino sbmLoadCell;
+//	
+//	static LoadCellArduino mbmLoadCell;
+//	static LoadCellArduino gritLoadCell;
+//	static LoadCellArduino katulLoadCell;
+//	
+//	static ManualLoadArduino manualLoad;
+//	
+//	static MixerArduino mixer;
+	
+	
+	
+	
+	public static I2CBus getBus() throws IOException {
+		if(theBus == null) {
+			theBus = UnitekI2CFactory.getI2CBus(); //check this
+		}
+		
+		return theBus;
+	}
+	
+	public static void initI2CArduinos() throws IOException {
+		
+		jagungSbmBuffer = new CrusherBufferArduino(getBus(), 0x11);
+		mbmKatulGritBuffer = new SimpleBufferArduino(getBus(), 0x12);
+		
+		////
+		
+//		jagungLoadCell = new LoadCellMultiInArduino(getBus(), 0x21);
+//		sbmLoadCell = new LoadCellMultiInArduino(getBus(), 0x22);
+//		
+//		mbmLoadCell = new LoadCellArduino(getBus(), 0x23);
+//		gritLoadCell = new LoadCellArduino(getBus(), 0x24);
+//		katulLoadCell = new LoadCellArduino(getBus(), 0x25);
+//		
+//		manualLoad = new ManualLoadArduino(getBus(), 0x26);
+		
+		////
+		
+//		mixer = new MixerArduino(getBus(), 0x31);
+		
+		////////////////////
+		
+		jagungSbmBuffer.start();
+		mbmKatulGritBuffer.start();
+		
+		////
+		
+//		jagungLoadCell.start();
+//		sbmLoadCell.start();
+//		
+//		mbmLoadCell.start();
+//		gritLoadCell.start();
+//		katulLoadCell.start();
+//		
+//		manualLoad.start();
+		
+		////
+		
+//		mixer.start();
+		
+	}
+	
+	public static void refreshAll() {
+		
+		//do nothing, they are auto refresh
+		
+//		try {
+//			
+//			jagungSbmBuffer.pullFromDevice();
+//			mbmKatulGritBuffer.pullFromDevice();
+//			jagungLoadCell.pullFromDevice();
+//			sbmLoadCell.pullFromDevice();
+//			mbmLoadCell.pullFromDevice();
+//			gritLoadCell.pullFromDevice();
+//			katulLoadCell.pullFromDevice();
+//			manualLoad.pullFromDevice();
+//			mixer.pullFromDevice();
+//			
+//		} catch (IOException | InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+	}
+	
+	public static boolean isAllLoadCellReadyForEject() {
+		return true;
+//		if(	jagungLoadCell.isReadyForEject()
+//			&& sbmLoadCell.isReadyForEject()
+//			&& mbmLoadCell.isReadyForEject()
+//			&& gritLoadCell.isReadyForEject()
+//			&& katulLoadCell.isReadyForEject()
+//			&& manualLoad.isReadyForEject()
+//			) {
+//			return true;
+//		}
+//		return false;
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		Logger i2cBusLogger = Logger.getLogger(I2CBusImpl.class.getCanonicalName());
+		i2cBusLogger.setLevel(Level.FINER);
+		i2cBusLogger.addHandler(new StreamHandler(System.out, new SimpleFormatter()));
+		
+//		DummyImplSimpleBuffer sb = new DummyImplSimpleBuffer(0x02);
+//		DummyI2CBus.getInstance().registerArduino(0x12, sb);
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+
+		try {
+			
+//			new TesterUnoCircuit(getBus(), 0x11).start();
+			
+			initI2CArduinos();
+			
+		} catch (IOException e) {
+			System.err.println("ERROR on Inits. Exiting.");
+			e.printStackTrace();
+			System.exit(0);
+		}
+		
+		while(true) {
+			
+			//1. refresh all, assume all default running at auto
+			refreshAll();
+			
+			//2. check if ejecting state
+//			if(jagungLoadCell.isEjecting()) {
+//				
+//				if(jagungLoadCell.getCurrentWeight() <= (0.5 * jagungLoadCell.getTargetWeight()) ) {
+//					//if half way, start ejecting others
+//					sbmLoadCell.startEjecting();
+//					mbmLoadCell.startEjecting();
+//					gritLoadCell.startEjecting();
+//					katulLoadCell.startEjecting();
+//				}
+//				
+//			} else {
+//				
+//				//when all load cell full and mixer ready, start ejecting (1st is jagung)
+//				if( isAllLoadCellReadyForEject() && mixer.isReadyForMixing() ) {
+//					mixer.startMixing();
+//					jagungLoadCell.startEjecting();
+//				}
+//				
+//			}
+			
+			
+			try {
+				Thread.sleep(sleepCycle);
+//				System.out.println("main() - main loop.");
+			} catch (InterruptedException e) {
+				System.out.println("Sleep cycle interrupted");
+			}
+			
+		}
+		
+		
+	}
+
+}

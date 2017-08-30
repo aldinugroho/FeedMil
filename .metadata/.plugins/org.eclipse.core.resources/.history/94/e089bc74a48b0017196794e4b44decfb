@@ -1,0 +1,111 @@
+package com.uniteksolusi.otomill.simulator;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import com.google.gson.Gson;
+import com.uniteksolusi.otomill.util.FileAccessManager;
+
+public class StubBufferSiloSimulator implements Runnable {
+	
+	private static final Gson gson = new Gson(); //gson helper class
+	private static final int cycleTime = 3000;
+	
+	File stubStateFile; // = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
+	byte pinLevelSensor[]; // = {14,15,16};
+	byte pinRelayInput; // = 17;
+	
+	
+	boolean shouldRun = false;
+
+	
+	public StubBufferSiloSimulator(File stubStateFile, byte pinLevelSensor[], byte pinRelayInput ) {
+		
+		this.stubStateFile = stubStateFile;
+		this.pinLevelSensor = pinLevelSensor;
+		this.pinRelayInput = pinRelayInput;
+		
+	}
+
+	public void start() {
+		
+		if(!shouldRun) {
+			shouldRun = true;
+			new Thread(this).start();
+		}
+		
+	}
+	
+	public void stop() {
+		shouldRun = false;
+	}
+	
+	
+	@Override
+	public void run() {
+
+		
+		while(shouldRun) {
+		
+			try {
+
+				//read file, get current state
+				FileAccessManager.getInstance().lock(stubStateFile);
+				String fileString = new String(Files.readAllBytes(stubStateFile.toPath()));
+				byte[] curState = gson.fromJson(fileString, byte[].class);
+				FileAccessManager.getInstance().release(stubStateFile);
+
+				if(curState[pinRelayInput] == 1) { //state is filling
+
+					if(curState[pinLevelSensor[1]] == 0) { //level 1 was filled, let's filled level 2
+						curState[pinLevelSensor[2]] = 0;
+					}
+
+					if(curState[pinLevelSensor[0]] == 0) { //level 0 was filled, let's filled level 1
+						curState[pinLevelSensor[1]] = 0;
+					}
+
+					curState[pinLevelSensor[0]] = 0; //let's fill level 0
+
+				} else if(curState[pinRelayInput] == 0) { //state is ejecting
+
+					if(curState[pinLevelSensor[1]] == 1) { //level 1 was empty, let's empty level 0
+						curState[pinLevelSensor[0]] = 1;
+					}
+
+					if(curState[pinLevelSensor[2]] == 1) { //level 2 was empty, let's empty level 1
+						curState[pinLevelSensor[1]] = 1;
+					}
+
+					curState[pinLevelSensor[2]] = 1; //let's empty level 2
+
+				}
+
+
+				//push to file
+				FileAccessManager.getInstance().lock(stubStateFile);
+				FileWriter fw = new FileWriter(stubStateFile, false);
+				fw.write(gson.toJson(curState));
+				fw.flush();
+				fw.close();
+				FileAccessManager.getInstance().release(stubStateFile);
+
+				try {
+					Thread.sleep(cycleTime);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		
+	}
+
+}

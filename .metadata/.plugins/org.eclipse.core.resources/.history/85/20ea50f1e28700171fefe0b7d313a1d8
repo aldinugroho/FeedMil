@@ -1,0 +1,608 @@
+package com.uniteksolusi.otomill.controller;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.InetSocketAddress;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
+import java.util.logging.FileHandler;
+import java.util.logging.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.StreamHandler;
+
+import com.pi4j.io.i2c.I2CBus;
+import com.sun.net.httpserver.HttpServer;
+import com.uniteksolusi.otomill.http.CLIHttpHandler;
+import com.uniteksolusi.otomill.http.WebServiceHandler;
+import com.uniteksolusi.otomill.i2c.UnitekI2CFactory;
+import com.uniteksolusi.otomill.model.ArduinoModel;
+import com.uniteksolusi.otomill.model.ArduinoModelIfc;
+import com.uniteksolusi.otomill.model.LoadCellIfc;
+import com.uniteksolusi.otomill.model.MixerIfc;
+import com.uniteksolusi.otomill.model.MixerLoaderIfc;
+import com.uniteksolusi.otomill.model.ModelCrusherBuffer;
+import com.uniteksolusi.otomill.model.ModelLoadCell;
+import com.uniteksolusi.otomill.model.ModelLoadCellMultiIn;
+import com.uniteksolusi.otomill.model.ModelManualLoad;
+import com.uniteksolusi.otomill.model.ModelMixer;
+import com.uniteksolusi.otomill.model.ModelSimpleBuffer;
+import com.uniteksolusi.otomill.stub.StubI2CBus;
+import com.uniteksolusi.otomill.stub.StubImplCrusherBuffer;
+import com.uniteksolusi.otomill.stub.StubImplLoadCell;
+import com.uniteksolusi.otomill.stub.StubImplManualLoad;
+import com.uniteksolusi.otomill.stub.StubImplMixer;
+import com.uniteksolusi.otomill.stub.StubImplSimpleBuffer;
+import com.uniteksolusi.otomill.stub.StubSerial;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedWriter;
+public class MainController {
+	
+	public static long DEFAULT_SLEEP_CYCLE = 1000;
+	
+	private static MainController instance;
+	
+	public static MainController getInstance() {
+		if(instance == null) {
+			try {
+				instance = new MainController();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return instance;
+	}
+
+	private MainController() throws IOException {
+		
+	}
+	
+	private boolean isInitialized = false;
+	
+	private Logger logger;
+	
+	private I2CBus i2cBus;
+	private Map<String, ArduinoModelIfc> modelMap;
+	private String[] idModels;
+	private String[] idLoaderFirstEject;
+	private int[] minWeightBeforeEjectAll;
+	private String[] idMixerLoader;
+	private String idMixer;
+	
+	private Map<Object, Object> alreadyLoadedMap = new HashMap<Object, Object>();
+
+	public boolean isInitialized() {
+		return isInitialized;
+	}
+	
+	public I2CBus getBus() {
+		return i2cBus;
+	}
+	
+	public Collection<ArduinoModelIfc> getAllModel() {
+		return modelMap.values();
+	}
+	
+	public ArduinoModelIfc getModel(String id) {
+		return modelMap.get(id);
+	}
+	
+	public ArduinoModelIfc registerModel(ArduinoModel model) {
+		return modelMap.put(model.getId(), model);
+	}
+	 
+	
+	private void initModelCrusherBuffer(String id, Properties config) {
+		
+		ModelCrusherBuffer model = new ModelCrusherBuffer(getBus(), Integer.decode(id));
+		
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		
+		model.sbmCleanerOnOff = Byte.valueOf(config.getProperty("model."+id+".attribute.cleaneron.sbm", "0"));
+		model.sbmCleanerOnOff = Byte.valueOf(config.getProperty("model."+id+".attribute.crusheron.sbm", "0"));
+		model.fillLevelJagung1 = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.jagung1", "0"));
+		model.fillLevelJagung2 = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.jagung2", "0"));
+		model.fillLevelSBM1 = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.sbm1", "0"));
+		model.fillLevelSBM2 = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.sbm2", "0"));
+		
+		registerModel(model);
+		
+	}
+	
+	private void initModelSimpleBuffer(String id, Properties config) {
+		
+		ModelSimpleBuffer model = new ModelSimpleBuffer(getBus(), Integer.decode(id));
+		
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		
+		model.fillLevelMBM = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.mbm", "0"));
+		model.fillLevelGrit = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.grit", "0"));
+		model.fillLevelKatul = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.katul", "0"));
+		
+		registerModel(model);
+		
+	}
+	
+	private void initModelLoadCellMultiIn(String id, Properties config) {
+		
+		ModelLoadCellMultiIn model = new ModelLoadCellMultiIn(getBus(), Integer.decode(id));
+		
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		
+		model.targetWeight = Integer.valueOf(config.getProperty("model."+id+".attribute.targetWeight", "10"));
+		model.emptyTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.emptyTolerance", "0"));
+		model.fullTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.fullTolerance", "0"));
+		
+		registerModel(model);
+		
+	}
+	
+	private void initModelLoadCell(String id, Properties config) {
+		
+		ModelLoadCell model = new ModelLoadCell(getBus(), Integer.decode(id));
+		
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		
+		model.targetWeight = Integer.valueOf(config.getProperty("model."+id+".attribute.targetWeight", "10"));
+		model.emptyTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.emptyTolerance", "0"));
+		model.fullTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.fullTolerance", "0"));
+		
+		registerModel(model);
+		
+	}
+	
+	private void initModelManualLoad(String id, Properties config) {
+		
+		ModelManualLoad model = new ModelManualLoad(getBus(), Integer.decode(id));
+		
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		
+		model.buttonDoneReadingRetry = Integer.valueOf(config.getProperty("model."+id+".attribute.buttonDoneReadingRetry", "4"));
+		model.tubeEmptyReadingRetry = Integer.valueOf(config.getProperty("model."+id+".attribute.tubeEmptyReadingRetry", "4"));
+		model.tubeLoadedReadingRetry = Integer.valueOf(config.getProperty("model."+id+".attribute.tubeLoadedReadingRetry", "4"));
+		
+		registerModel(model);
+		
+	}
+	
+	private void initModelMixer(String id, Properties config) {
+		
+		ModelMixer model = new ModelMixer(getBus(), Integer.decode(id));
+		
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		
+		model.mixerEmptyReadingRetry = Integer.valueOf(config.getProperty("model."+id+".attribute.mixerEmptyReadingRetry", "30"));
+		model.mixingDuration = Integer.valueOf(config.getProperty("model."+id+".attribute.mixingDuration", "60000"));
+		model.mixingTimeCalibration = Integer.valueOf(config.getProperty("model."+id+".attribute.mixingTimeCalibration", "500"));
+		
+		registerModel(model);
+		
+	}
+	
+	
+	
+	
+	private void initAllModel(Properties config) throws IOException {
+		
+			for(int i=0; i<idModels.length; i++) {
+				
+//				if("true".equals(config.getProperty("model."+ models[i] + ".enabled"))) {
+					
+					String type = config.getProperty("model."+ idModels[i] + ".type");
+					
+					if(type==null) {
+
+						logger.warning("Type Not Defined for Model " + idModels[i]);
+						
+					} else if(type.equals("ModelCrusherBuffer")) {
+						
+						initModelCrusherBuffer(idModels[i], config);
+						
+					} else if(type.equals("ModelSimpleBuffer")) {
+						
+						initModelSimpleBuffer(idModels[i], config);
+						
+					} else if(type.equals("ModelLoadCellMultiIn")) {
+						
+						initModelLoadCellMultiIn(idModels[i], config);
+						
+					} else if(type.equals("ModelLoadCell")) {
+						
+						initModelLoadCell(idModels[i], config);
+						
+					} else if(type.equals("ModelManualLoad")) {
+						
+						initModelManualLoad(idModels[i], config);
+						
+					} else if(type.equals("ModelMixer")) {
+						
+						initModelMixer(idModels[i], config);
+						
+					}
+//				}
+			}
+		
+		Iterator<ArduinoModelIfc> iter = this.getAllModel().iterator();
+		logger.fine("Model Loaded: ");
+		while(iter.hasNext()) {
+			logger.fine(iter.next().getId());
+		}
+		
+	}
+	
+	private void startAllModel() {
+		
+		Iterator<ArduinoModelIfc> iter = modelMap.values().iterator();
+		while(iter.hasNext()) {
+			iter.next().start();
+		}
+		
+	}
+	
+	
+	private void initLogger(Properties config) {
+		
+		Formatter logFormatter = new SimpleFormatter();
+		
+		StreamHandler sysoutLogHandler = new StreamHandler(System.out, logFormatter);
+		sysoutLogHandler.setLevel(Level.parse(config.getProperty("log.stdout.loglevel", "OFF")));
+		
+		//mainController logger
+		logger.setLevel(Level.ALL);
+		logger.addHandler(sysoutLogHandler);
+		
+		try {
+			
+			FileHandler fileHandler = 
+					new FileHandler(config.getProperty("log.file.dir", "./log") +"/"+ logger.getName() + ".%g.log", 
+										Integer.valueOf(config.getProperty("log.file.maxsize", "10000000")), 
+										Integer.valueOf(config.getProperty("log.file.limitcount", "10")), 
+										true);
+			fileHandler.setFormatter(logFormatter);
+			fileHandler.setLevel(Level.parse(config.getProperty("log.file.loglevel", "OFF")));
+			
+			logger.addHandler(fileHandler);
+			
+		} catch (Exception e) {
+			logger.warning("Init Log FileHandler failed: " + e.getMessage());
+			logger.throwing(this.getClass().getCanonicalName(), "initLogger", e);
+		}
+		
+		
+		
+		//models logger
+		for(int i=0; i<idModels.length; i++) {
+			
+			String logName = "Model-" + idModels[i];
+			
+			Logger theLogger = Logger.getLogger(logName);
+			theLogger.setLevel(Level.ALL);
+			theLogger.addHandler(sysoutLogHandler);
+			
+			try {
+				
+				FileHandler fileHandler = 
+						new FileHandler(config.getProperty("log.file.dir", "./log") +"/"+ logName + ".%g.log", 
+											Integer.valueOf(config.getProperty("log.file.maxsize", "10000000")), 
+											Integer.valueOf(config.getProperty("log.file.limitcount", "10")), 
+											true);
+				fileHandler.setFormatter(logFormatter);
+				fileHandler.setLevel(Level.parse(config.getProperty("log.file.loglevel", "OFF")));
+				
+				theLogger.addHandler(fileHandler);
+				
+			} catch (Exception e) {
+				logger.warning("Init Log FileHandler failed: " + e.getMessage());
+				logger.throwing(this.getClass().getCanonicalName(), "initLogger", e);
+			} 
+				
+		}
+		
+//		Logger i2cBusLogger = Logger.getLogger(I2CBusImpl.class.getCanonicalName());
+//		i2cBusLogger.setLevel(Level.INFO);
+//		i2cBusLogger.addHandler(sysoutLogHandler);
+				
+	}
+	
+	private void initStub(Properties config) {
+		
+		StreamHandler sysoutLogHandler = new StreamHandler(System.out, new SimpleFormatter());
+		sysoutLogHandler.setLevel(Level.parse(config.getProperty("stub.log.stdout.loglevel", "ALL")));
+		
+		Logger stubSerialLogger = Logger.getLogger(StubSerial.class.getCanonicalName());
+		stubSerialLogger.setLevel(Level.ALL);
+		stubSerialLogger.addHandler(sysoutLogHandler);
+		
+		StubImplCrusherBuffer cbb = new StubImplCrusherBuffer(0x11);
+		StubI2CBus.getInstance().registerStub(0x11, cbb);
+		cbb.start();
+		
+		StubImplSimpleBuffer sb = new StubImplSimpleBuffer(0x12);
+		StubI2CBus.getInstance().registerStub(0x12, sb);
+		sb.start();
+		
+		StubImplLoadCell lc21 = new StubImplLoadCell(0x21);
+		StubI2CBus.getInstance().registerStub(0x21, lc21);
+		lc21.start();
+		
+		StubImplLoadCell lc22 = new StubImplLoadCell(0x22);
+		StubI2CBus.getInstance().registerStub(0x22, lc22);
+		lc22.start();
+		
+		StubImplLoadCell lc23 = new StubImplLoadCell(0x23);
+		StubI2CBus.getInstance().registerStub(0x23, lc23);
+		lc23.start();
+		
+		StubImplLoadCell lc24 = new StubImplLoadCell(0x24);
+		StubI2CBus.getInstance().registerStub(0x24, lc24);
+		lc24.start();
+		
+		StubImplLoadCell lc25 = new StubImplLoadCell(0x25);
+		StubI2CBus.getInstance().registerStub(0x25, lc25);
+		lc25.start();
+		
+		StubImplManualLoad ml = new StubImplManualLoad(0x26);
+		StubI2CBus.getInstance().registerStub(0x26, ml);
+		ml.start();
+
+		StubImplMixer mx = new StubImplMixer(0x31);
+		StubI2CBus.getInstance().registerStub(0x31, mx);
+		mx.start();
+		
+		
+		//give some time for stubs to really start
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void initHttpServer(Properties config) throws IOException {
+		
+		int port = Integer.valueOf(config.getProperty("http.port", "8000"));
+
+		HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+        server.createContext("/cli", new CLIHttpHandler());
+        server.createContext("/ws", new WebServiceHandler());
+        server.setExecutor(null); // creates a default executor
+        server.start();
+        
+	}
+	
+	private boolean isAllMixerLoaderReadyForEject() {
+		
+		for(int i=0; i<idMixerLoader.length; i++) {
+			
+			MixerLoaderIfc curModel = (MixerLoaderIfc) this.getModel(idMixerLoader[i]);
+			if(!curModel.isReadyForEject()) {
+				return false;
+			}
+				
+		}
+		
+		return true;
+		
+	}
+	
+	private boolean isMixerReadyForMixing() {
+		
+		MixerIfc mixer = (MixerIfc) this.getModel(idMixer);
+		return mixer.isReadyForMixing();
+		
+	}
+	
+	private boolean isMixerLoadingState() {
+		
+		for(int i=0; i<idMixerLoader.length; i++) {
+			
+			MixerLoaderIfc curModel = (MixerLoaderIfc) this.getModel(idMixerLoader[i]);
+			if(curModel.isEjecting()) {
+				return true;
+			}
+				
+		}
+		
+		return false;
+		
+	}
+	
+	private void ejectFirstMixerLoader() {
+		
+		alreadyLoadedMap.clear();
+		for(int i=0; i<idLoaderFirstEject.length; i++) {
+			MixerLoaderIfc curModel = (MixerLoaderIfc) this.getModel(idLoaderFirstEject[i]);
+			curModel.startEjecting();
+			alreadyLoadedMap.put(idLoaderFirstEject[i], curModel);
+		}
+		
+	}
+	
+	private boolean isReadyForEjectAll() {
+		
+		for(int i=0; i<idLoaderFirstEject.length; i++) {
+			LoadCellIfc curModel = (LoadCellIfc) this.getModel(idLoaderFirstEject[i]);
+			if(curModel.getCurrentWeight() > this.minWeightBeforeEjectAll[i] ) {
+				return false;
+			}
+			else if(curModel.getCurrentWeight() == this.minWeightBeforeEjectAll[i]){
+				return true;
+			}
+		}
+		
+		return true;
+		
+	}
+
+	private void ejectAllLoadcell() {
+		
+		for(int i=0; i<idMixerLoader.length; i++) {
+			
+			MixerLoaderIfc curModel = (MixerLoaderIfc) this.getModel(idMixerLoader[i]);
+			if(alreadyLoadedMap.get(idMixerLoader[i])==null) {
+				curModel.startEjecting();
+				alreadyLoadedMap.put(idMixerLoader[i], curModel);
+			}
+				
+		}
+		
+	}
+	
+	private void startMixing() {
+		
+		MixerIfc mm = (MixerIfc) this.getModel(idMixer);
+		mm.startMixing();
+		
+	}
+	
+	
+	private void initController(Properties config) throws IOException {
+		
+		logger 	 = Logger.getLogger(this.getClass().getSimpleName());
+		
+		i2cBus 	 = UnitekI2CFactory.getI2CBus();
+		modelMap = new HashMap<String, ArduinoModelIfc>();
+		
+		String propString = null;
+		propString = config.getProperty("main.models");
+		if(propString!=null) {
+			idModels = propString.split(",");
+		}
+		
+		propString = config.getProperty("main.mixerloader");
+		if(propString!=null) {
+			idMixerLoader = propString.split(",");
+		}
+		
+		propString = config.getProperty("main.eject.first");
+		if(propString!=null) {
+			idLoaderFirstEject = propString.split(",");
+		}
+		
+		propString = config.getProperty("main.eject.all.minweight");
+		if(propString!=null) {
+			String[] minWeightBeforeEjectAllString = propString.split(",");
+			minWeightBeforeEjectAll = new int[minWeightBeforeEjectAllString.length];
+			for(int i=0; i<minWeightBeforeEjectAllString.length; i++) {
+				minWeightBeforeEjectAll[i] = Integer.valueOf(minWeightBeforeEjectAllString[i]);
+			}
+		}
+		
+		idMixer = config.getProperty("main.mixer");
+		
+	}
+	
+	private void initialize(Properties config) {
+		
+		try {
+			
+			initController(config);
+			
+			initLogger(config);
+			
+			if("true".equals(config.getProperty("stub.enabled"))) {
+				initStub(config);
+			}
+
+			initHttpServer(config);
+
+			initAllModel(config);
+
+			startAllModel();
+			
+			if("true".equals(config.getProperty("cli.enabled"))) {
+				CommandController.startCLI();
+			}
+
+			isInitialized = true;
+			
+			logger.info("Init completed.");
+
+		} catch (IOException e) {
+			logger.severe("ERROR on Inits. Exiting.");
+			logger.severe(e.toString());
+			e.printStackTrace();
+			System.exit(0);
+		}
+				
+	}
+	
+	private void mainLoop() throws Exception, IOException{
+		
+		if(!isInitialized) {
+			throw new RuntimeException("MainController is not initialized");
+		}
+		
+		while(true) {
+			
+			logger.fine("main() - main loop.");
+			
+			//2. check if loader ejecting state / mixer loading state
+			if( isMixerLoadingState() ) {
+				
+				if(isReadyForEjectAll()) {
+					InputStream is = new FileInputStream(new File("./conf/otomill.conf"));
+					System.getProperties().load(is);
+					ModelSimpleBuffer msb = new ModelSimpleBuffer(UnitekI2CFactory.getI2CBus(), 0x21);
+					FileWriter fw = new FileWriter(new File("C:/Users/aldi/Desktop/example.txt"));
+					fw.write(msb.printStateDetails());
+					
+					MainController.getInstance().start();
+					
+					//TODO before eject, log all weight to log file
+					
+					ejectAllLoadcell();
+				}
+				
+			} else {
+
+				//when all load cell full and mixer ready, start ejecting (1st is jagung)
+				if(isAllMixerLoaderReadyForEject() && isMixerReadyForMixing()) {
+					
+					this.startMixing();
+					this.ejectFirstMixerLoader();
+					
+				}
+				
+			}
+			
+			
+			try {
+				Thread.sleep(DEFAULT_SLEEP_CYCLE);
+			} catch (InterruptedException e) {
+				logger.warning("Sleep cycle interrupted");
+			}
+			
+		}
+		
+	}
+	
+	public void start() throws Exception {
+		initialize(System.getProperties());
+		mainLoop();
+	}
+
+	
+	public static void main(String[] args) throws Exception, IOException {
+		
+		
+		InputStream is = new FileInputStream(new File("./conf/otomill.conf"));
+		System.getProperties().load(is);
+		
+		MainController.getInstance().start();
+		
+	
+		
+		
+	}
+
+}

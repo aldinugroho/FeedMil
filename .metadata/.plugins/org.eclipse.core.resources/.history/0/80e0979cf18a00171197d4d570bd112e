@@ -1,0 +1,9 @@
+package com.uniteksolusi.otomill.simulator;
+
+public class StubLoadCellSimulator {
+
+	public StubLoadCellSimulator() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -12,22 +12,29 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	transient byte pinRelayMixer = 3;
 	transient byte pinRelayPneumaticOutput = 4;
 	transient byte pinRelayScrewOut = 5;
+	transient byte pinBucketOut = 10;
+	transient byte pinBufferLevelSiloPakan = 11; // 2 Pins of IR obstacle, Low level, High Level
+	transient byte pinRelaySiloPakan = 13;
 
 	transient byte pinSensorMixerEmpty = 9;
-
+	
+	//when to start filling in auto mode (Silo Pakan) 0 = low, 1 = high;
+	public byte fillLevelSiloPakan = 1;
+	
+	//fill state for each silo. 0=off, 1=fill, 2=auto
+	byte fillStateSiloPakan = 2;
+	
 	transient public int mixerEmptyReadingRetry = 30; //how many times to retry
 
 	/**
 	 * The Mixing duration in milis
 	 */
-	public int mixingDuration = 6000;
-	public int ejectDuration = 6000;
+	public int mixingDuration = 60000;
 	
 	/**
 	 * The expected delay time from start mixing instruction until it is started by the Arduino 
 	 */
 	transient public long mixingTimeCalibration = 500; 
-	transient public long ejectingTimeCalibration = 500;
 	
 	public boolean mixerAlwaysOn = false;
 	public boolean screwOutAlwaysOn = false;
@@ -39,7 +46,6 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	byte mixingState = 0;  //0/1/2/3/4 = ready / mixing / done mixing / ejecting / stop(suspended)
 	
 	transient long startMixingTime = -1;
-	transient long startEjectingTime = -1;
 
 	transient boolean isReadingMixingEmpty = false;
 	transient byte readingMixingEmptyCount = 0;
@@ -50,6 +56,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	boolean isOutputOpen = false;
 	boolean isScrewOutOn = false;
 	boolean isBucketOutOn = false;
+	boolean isFillSiloPakan = false;
 	
 	//boolean isBucketOutOn = false;
 
@@ -68,22 +75,58 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		this.mixingDuration = milisDuration;
 	}
 	
-	public long getEjectDuration() {
-		return ejectDuration;
-	}
-	
-	public void setEjectDuration(int milisDuration) {
-		this.ejectDuration = milisDuration;
-	}
 
 	@Override
 	protected void initialize() {
 		pinMode(pinRelayMixer, OUTPUT);   
 		pinMode(pinRelayPneumaticOutput, OUTPUT);
 		pinMode(pinRelayScrewOut, OUTPUT);
+		pinMode(pinBufferLevelSiloPakan, INPUT);
+		pinMode(pinRelaySiloPakan, OUTPUT);
 		
 		pinMode(pinSensorMixerEmpty, INPUT);
 	}
+	
+	public void SwitchInputMixerOn() {
+		if(digitalRead(pinRelayMixer) == LOW){
+			digitalWrite(pinRelayMixer, HIGH);
+			isMixerOn = true;
+		} else {
+			digitalWrite(pinRelayMixer, LOW);
+			isMixerOn = false;
+		}
+	}
+	
+	public void SwitchOutputOpen() {
+		if(digitalRead(pinRelayPneumaticOutput) == LOW) {
+			digitalWrite(pinRelayPneumaticOutput, HIGH);
+			isOutputOpen = true;
+		} else {
+			digitalWrite(pinRelayPneumaticOutput, LOW);
+			isOutputOpen = false;
+		}
+	}
+	
+	public void SwitchInputScrewOutOn() {
+		if(digitalRead(pinRelayScrewOut) == LOW) {
+			digitalWrite(pinRelayScrewOut, HIGH);
+			isScrewOutOn = true;
+		} else {
+			digitalWrite(pinRelayScrewOut, LOW);
+			isScrewOutOn = false;
+		}
+	}
+	
+	public void SwitchInputBucketOutOn() {
+		if(digitalRead(pinBucketOut) == LOW) {
+			digitalWrite(pinBucketOut, HIGH);
+			isBucketOutOn = true;
+		} else {
+			digitalWrite(pinBucketOut, LOW);
+			isBucketOutOn = false;
+		}
+	}
+	
 
 	@Override
 	protected void mainLoop() {
@@ -113,10 +156,6 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 			
 			logger.finer(this.getId() + " > Mixing State = 3 -> EJECTING");
 			
-			if((System.currentTimeMillis() - startEjectingTime + ejectingTimeCalibration) > (ejectDuration)) {
-				stopEjecting();
-				digitalWrite(pinSensorMixerEmpty, HIGH);
-			}
 			//if empty, go back to ready
 			if(digitalRead(pinSensorMixerEmpty) == HIGH) { //high means no obstacle (empty), repeat the reading x times
 				
@@ -153,7 +192,28 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 				
 			}
 		
-		} 
+		}
+		
+		if(fillStateSiloPakan == 2) {
+			if(digitalRead(pinBufferLevelSiloPakan) == LOW) {
+				digitalWrite(pinRelaySiloPakan, LOW); 
+				isFillSiloPakan = true;
+			} else {
+				digitalWrite(pinRelaySiloPakan, HIGH);
+				isFillSiloPakan = false;
+			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
+		} else if(fillStateSiloPakan == 0) {
+			digitalWrite(pinRelaySiloPakan, LOW); //stop the bucket
+			isFillSiloPakan = false;
+		} else if(fillStateSiloPakan == 1) {
+			if(digitalRead(pinBufferLevelSiloPakan) == LOW){
+				digitalWrite(pinRelaySiloPakan, LOW); 
+				isFillSiloPakan = true;
+			} else {
+				digitalWrite(pinRelaySiloPakan, HIGH); //start the bucket
+				isFillSiloPakan = false;
+			}
+		}
 		
 	}
 
@@ -193,6 +253,8 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 			isMixerOn = true;
 		} 
 		//else mixingState == 1 -> already mixing, or not ready yet, do nothing
+		
+
 	}
 	
 	/* (non-Javadoc)
@@ -205,7 +267,9 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 			digitalWrite(pinRelayMixer, LOW);
 			isMixerOn = false;
 		}
+		
 	}
+
 
 	/* (non-Javadoc)
 	 * @see com.uniteksolusi.otomill.model.MixerIfc#startEjecting()
@@ -222,8 +286,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		isOutputOpen = true;
 		
 	}
-
-
+	
 	/* (non-Javadoc)
 	 * @see com.uniteksolusi.otomill.model.MixerIfc#stopEjecting()
 	 */
@@ -305,13 +368,32 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 				return "OK"; 
 			}
 			
+			if("SwitchInputMixerOn".equals(cmds[0])) {
+				SwitchInputMixerOn();
+				return "OK"; 
+			}
+			
+			if("SwitchOutputOpen".equals(cmds[0])) {
+				SwitchOutputOpen();
+				return "OK"; 
+			}
+			
+			if("SwitchInputScrewOutOn".equals(cmds[0])) {
+				SwitchInputScrewOutOn();
+				return "OK"; 
+			}
+			
+			if("SwitchInputBucketOutOn".equals(cmds[0])) {
+				SwitchInputBucketOutOn();
+				return "OK"; 
+			}
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startMixing, stopMixing, startEjecting, stopEjecting\n";
+								+": startMixing, stopMixing, startEjecting, stopEjecting, SwitchInputMixerOn, SwitchOutputOpen, SwitchInputScrewOutOn, SwitchInputBucketOutOn \n";
 		}
 		return parentResponse;
 	}
