@@ -37,6 +37,7 @@ import com.uniteksolusi.otomill.model.ModelLoadCell;
 import com.uniteksolusi.otomill.model.ModelLoadCellMultiIn;
 import com.uniteksolusi.otomill.model.ModelManualLoad;
 import com.uniteksolusi.otomill.model.ModelMixer;
+import com.uniteksolusi.otomill.model.ModelSiloPakan;
 //import com.uniteksolusi.otomill.model.ModelSimpleBuffer;
 import com.uniteksolusi.otomill.stub.StubI2CBus;
 import com.uniteksolusi.otomill.stub.StubImplCrusherBuffer;
@@ -171,6 +172,16 @@ public class MainController {
 		
 	}
 	
+	private void initModelSiloPakan(String id, Properties config) {
+		ModelSiloPakan siloPakan = new ModelSiloPakan(getBus(), Integer.decode(id));
+		siloPakan.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		siloPakan.targetWeight = Integer.valueOf(config.getProperty("model."+id+".attribute.tagetWeight", "10"));
+		siloPakan.emptyTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.emptyTolerance", "0"));
+		siloPakan.fullTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.fullTolerance", "0"));
+		
+		registerModel(siloPakan);
+	}
+	
 	private void initModelManualLoad(String id, Properties config) {
 		
 		ModelManualLoad model = new ModelManualLoad(getBus(), Integer.decode(id));
@@ -238,6 +249,9 @@ public class MainController {
 						
 						initModelMixer(idModels[i], config);
 						
+					} else if (type.equals("ModelSiloPakan")) {
+						
+						initModelSiloPakan(idModels[i], config);
 					}
 //				}
 			}
@@ -368,6 +382,10 @@ public class MainController {
 		StubImplMixer mx = new StubImplMixer(0x31);
 		StubI2CBus.getInstance().registerStub(0x31, mx);
 		mx.start();
+		
+		StubImplLoadCell pakan = new StubImplLoadCell(0x41);
+		StubI2CBus.getInstance().registerStub(0x41, pakan);
+		pakan.start();
 		
 		
 		//give some time for stubs to really start

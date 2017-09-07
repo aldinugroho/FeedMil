@@ -166,7 +166,7 @@ public abstract class StubArduinoMega extends StubArduino {
 		}
 
 		if(!isInitializedFromMaster) {
-
+			readAllPins();
 			//turn on LED
 			errorLED();
 

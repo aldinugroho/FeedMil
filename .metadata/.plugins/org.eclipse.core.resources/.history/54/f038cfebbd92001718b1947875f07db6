@@ -1,0 +1,200 @@
+package com.uniteksolusi.otomill.model;
+
+import com.pi4j.io.i2c.I2CBus;
+
+public class ModelSiloPakan extends ArduinoUnoModel implements LoadCellIfc, PakanLoaderIfc {
+	
+	public static final byte outputOpen = HIGH;   
+	public static final byte outputClose = LOW;
+	
+	transient byte pinBufferPakan[] = {2,3};  //2 pins obstacle: low, high
+	transient byte pinRelayPakan = 4;
+	
+	public int targetWeight = 10; //target weight in KG
+	public int emptyTolerance = 0; //KG tolerance to indicate it's empty
+	public int fullTolerance = 0; //KG tolerance to indicate it's full
+	
+	//when to start filling in auto mode. 0 = low level, 1 = full.
+	public byte fillLevelPakan = 0;
+	
+	byte fillingState = 0;   //0 = ready, 1 = filling, 2 = full, 3 = ejecting, 4 = stop / suspend
+	int currentWeight = 0;
+	
+	
+	//fill state added from ArduinoUno
+	byte fillStatePakan = 2;
+	
+	//status JSON
+	boolean isPakanFull = false;
+	boolean isBucketPakanOpen = false;
+	boolean isOutputOpen = false;
+	
+	public ModelSiloPakan(I2CBus bus, int address) {
+		// TODO Auto-generated constructor stub
+		super(bus, address, 14, 4, 6); //2 bytes for weight
+	}
+	
+	public ModelSiloPakan(I2CBus bus, int address, int targetWeight) {
+		super(bus, address, 14, 4, 6);
+		this.targetWeight = targetWeight;
+	}
+	
+	public int getCurrentWeight() {
+		return currentWeight;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getTargetWeight()
+	 */
+	public int getTargetWeight() {
+		return targetWeight;
+	}
+	
+	public void setTargetWeight(int target) {
+		this.targetWeight = target;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getEmptyTolerance()
+	 */
+	public int getEmptyTolerance() {
+		return emptyTolerance;
+	}
+	
+	public void setEmptyTolerance(int toleranceKg) {
+		this.emptyTolerance = toleranceKg;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getFullTolerance()
+	 */
+	public int getFullTolerance() {
+		return fullTolerance;
+	}
+	
+	public void setFullTolerance(int toleranceKg) {
+		this.fullTolerance = toleranceKg;
+	}
+	
+	public boolean isReadyForFilling() {
+		if(fillingState == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isFilling() {
+		if(fillingState == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isReadyForEject() {
+		if(fillingState == 2) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isEjecting() {
+		if(fillingState == 3) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void startFilling() {
+		
+		isBucketPakanOpen = true;
+		fillingState = 1;
+	}
+	
+	public void stopFilling() {
+		digitalWrite(pinRela, LOW);
+		isInputScrewOn = false;
+		fillingState = 2;
+	}
+	
+	public void startEjecting() {
+		digitalWrite(pinRelayPneumaticOutput, outputOpen);
+		isOutputOpen = true;
+		fillingState = 3;
+	}
+	
+	public void stopEjecting() {
+		digitalWrite(pinRelayPneumaticOutput, outputClose); 
+		isOutputOpen = false;
+		fillingState = 0;
+	}
+	
+	@Override
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		pinMode(pinBufferPakan[0], INPUT);
+		pinMode(pinBufferPakan[1], INPUT);
+		pinMode(pinRelayPakan, OUTPUT);
+	}
+
+	@Override
+	protected void mainLoop() {
+		// TODO Auto-generated method stub
+		if(fillStatePakan == 2) {
+			if(digitalRead(pinBufferPakan[1]) == LOW) { //level 1 = full, IR obstacle read 0 = there is obstacle
+				digitalWrite(pinRelayPakan, LOW); //full, stop the bucket
+				isBucketPakanOpen = false;
+			} else if(digitalRead(pinBufferPakan[fillLevelPakan]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
+				digitalWrite(pinRelayPakan, HIGH); //lower than fill level, start the bucket
+				isBucketPakanOpen = true;
+			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
+		} else if(fillStatePakan == 0) {
+			digitalWrite(pinRelayPakan, LOW); //stop the bucket
+			isBucketPakanOpen = false;
+		} else if(fillStatePakan == 1) {
+			digitalWrite(pinRelayPakan, HIGH); //start the bucket
+			isBucketPakanOpen = true;
+		}
+		
+	}
+
+	@Override
+	protected void writeRequestByteSpecific(byte[] requestByte) {
+		// nothing special
+		
+	}
+
+	@Override
+	protected void readResponseByteSpecific(byte[] responseByte) {
+		// nothing special
+		
+	}
+	
+	public String getStateString() {
+		
+		switch(pakanState) {
+
+		case 0: 
+			return "READY";
+		case 1: 
+			return "FILL";
+		case 2: 
+			return "FULL";
+		case 3: 
+			return "EJECTING";
+		default: 
+			return "SUSPENDED";
+		}
+	
+	}
+
+	public String printStateDetails() {
+		StringBuffer sb  = new StringBuffer(super.printStateDetails());
+		sb.append("\n");
+		sb.append("\nState:\t " + pakanState + " / " + this.getStateString()); 
+		
+		sb.append("\n");
+		sb.append("\nPakan Off/On:\t " + digitalRead(pinRelayPakan));
+		return sb.toString();
+
+	}
+}

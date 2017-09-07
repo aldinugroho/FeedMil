@@ -13,13 +13,12 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	transient byte pinRelayBucketCrusherOut = 27;
 	
 	transient byte pinRelayScrewCrusherOut = 28;
-	transient byte pinRelayManualScrew = 52;
 
 
 	transient byte pinRelayPneumaticOutJagung1 = 32; //this is a microswitch to stop moving the router at the right output
 	transient byte pinRelayPneumaticOutJagung2 = 33;
 	transient byte pinRelayPneumaticOutSBM1 = 34;
-
+	transient byte pinRelayScrewManual = 35;
 
 
 	//JAGUNG 1
@@ -70,7 +69,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	public byte sharedBucketJagungOrSbm = 0;  //0 = jagung, 1 = sbm
 	public byte sbmCleanerOnOff = 0; //when SBM, clean or not
 	public byte sbmCrusherOnOff = 1; //when SBM, crush or not 
-	public byte manualModeScrewOn = 0; //when Screw, manual or not. 0 = off, 1 = on
+	public byte screwManual = 0; //when Screw, manual or not. 0 = off, 1 = on
 
 	byte curOutput = -1;  //-1,0,1,2 = undefined, jagung1, jagung2, sbm1
 
@@ -89,17 +88,15 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	byte fillStateKatul = 2;
 
 	//when to start filling in auto mode. 0 = low level, 1 = half, 2 = full
-	public byte fillLevelJagung1 = 0;
-	public byte fillLevelJagung2 = 0;
-	public byte fillLevelSBM1 = 0;
-	public byte fillLevelSBM2 = 0;
+	public byte fillLevelJagung1 = 1;
+	public byte fillLevelJagung2 = 1;
+	public byte fillLevelSBM1 = 1;
+	public byte fillLevelSBM2 = 1;
 
 	//when to start filling in auto mode (MBM,Grit,Katul)
 	public byte fillLevelMBM = 1;
 	public byte fillLevelGrit = 1;
 	public byte fillLevelKatul = 1;
-	
-	
 	
 	//status json
 	boolean isCleanerOn = false;
@@ -107,7 +104,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	boolean isCrusherOn = false;
 	boolean isBucketCrusherOutOn = false;
 	boolean isScrewCrusherOutOn = false;
-	boolean isManualScrew = false;
+	boolean isScrewManual = false;
 	
 	boolean isInputJagung1Open = false;
 	boolean isInputJagung2Open = false;
@@ -116,8 +113,6 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	boolean isBucketSBM2On = false;
 	boolean isLedOn = true;
 	boolean isVibroOn = false;
-	
-	
 	
 	
 	//status json (MBM,Grit,Katul)
@@ -139,6 +134,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		pinMode(pinRelayCrusher, OUTPUT);
 		pinMode(pinRelayBucketCrusherOut, OUTPUT);
 		pinMode(pinRelayScrewCrusherOut, OUTPUT);
+		pinMode(pinRelayScrewManual, OUTPUT);
 		
 		pinMode(pinRelayPneumaticOutJagung1, OUTPUT); 
 		pinMode(pinRelayPneumaticOutJagung2, OUTPUT);
@@ -206,9 +202,39 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 
 	@Override
 	protected void mainLoop() {
+	
+		//jagung1
+		if(digitalRead(pinBufferLevelJagung1[0]) == LOW) this.currentFillLevelJagung1 = 0;
+		if(digitalRead(pinBufferLevelJagung1[1]) == LOW) this.currentFillLevelJagung1 = 1;
+		if(digitalRead(pinBufferLevelJagung1[2]) == LOW) this.currentFillLevelJagung1 = 2;
+		
+		//jagung1
+		if(digitalRead(pinBufferLevelJagung2[0]) == LOW) this.currentFillLevelJagung2 = 0;
+		if(digitalRead(pinBufferLevelJagung2[1]) == LOW) this.currentFillLevelJagung2 = 1;
+		if(digitalRead(pinBufferLevelJagung2[2]) == LOW) this.currentFillLevelJagung2 = 2;
+				
+		//sbm1
+		if(digitalRead(pinBufferLevelSBM1[0]) == LOW) this.currentFillLevelSBM1 = 0;
+		if(digitalRead(pinBufferLevelSBM1[1]) == LOW) this.currentFillLevelSBM1 = 1;
+		if(digitalRead(pinBufferLevelSBM1[2]) == LOW) this.currentFillLevelSBM1 = 2;
 
+		//sbm2
+		if(digitalRead(pinBufferLevelSBM2[0]) == LOW) this.currentFillLevelSBM2 = 0;
+		if(digitalRead(pinBufferLevelSBM2[1]) == LOW) this.currentFillLevelSBM2 = 1;
+		if(digitalRead(pinBufferLevelSBM2[2]) == LOW) this.currentFillLevelSBM2 = 2;
 		//check and fill each silos
 		//Fill condition
+		if(digitalRead(pinBufferLevelGrit[0]) == LOW) this.currentFillLevelGrit = 0;
+		if(digitalRead(pinBufferLevelGrit[1]) == LOW) this.currentFillLevelGrit = 1;
+		if(digitalRead(pinBufferLevelGrit[2]) == LOW) this.currentFillLevelGrit = 2;
+		
+		if(digitalRead(pinBufferLevelMBM[0]) == LOW) this.currentFillLevelMBM = 0;
+		if(digitalRead(pinBufferLevelMBM[1]) == LOW) this.currentFillLevelMBM = 1;
+		if(digitalRead(pinBufferLevelMBM[2]) == LOW) this.currentFillLevelMBM = 2;
+
+		if(digitalRead(pinBufferLevelKatul[0]) == LOW) this.currentFillLevelKatul = 0;
+		if(digitalRead(pinBufferLevelKatul[1]) == LOW) this.currentFillLevelKatul = 1;
+		if(digitalRead(pinBufferLevelKatul[2]) == LOW) this.currentFillLevelKatul = 2;
 		
 		
 		if(sharedBucketJagungOrSbm == 0) { //jagung
@@ -220,62 +246,64 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				if(fillStateJagung1 == 2) {
 					
 					if(isJagung1Full()) {
-						digitalWrite(pinLEDJagungSBM, LOW);
-						//turnOffCleanerCrusherLine(); TODO needed?
-						if(fillStateJagung2==2 && !isJagung2Full()) {
 						
-							moveCrusherOutToJagung1();
+						turnOffCleanerCrusherLine(); 
+						if(fillStateJagung2==2 && !isJagung2Full()) {
+							
+							moveCrusherOutToJagung2();
 						
 						} else { //both are full
-							digitalWrite(pinLEDJagungSBM, LOW);
+							
 							turnOffCleanerCrusherLine();
 						
 						}
 						
 					} else if(isJagung1ToFill()) {
-						digitalWrite(pinLEDJagungSBM, HIGH);
+						
 						turnOnCleanerCrusherLine();
 					}
 					
 				} else if(fillStateJagung1 == 1) {
-					digitalWrite(pinLEDJagungSBM, HIGH);
+					
 					turnOnCleanerCrusherLine(); //lower than fill level, start the bucket
 
 				} else if(fillStateJagung1 == 0) { //off
-					digitalWrite(pinLEDJagungSBM, HIGH);
+					
 					turnOffCleanerCrusherLine();
 
 				}
 
 			} if(curOutput == 1) { //jagung2  
 				
-				moveCrusherOutToJagung1();
+				moveCrusherOutToJagung2();
 
 				if(fillStateJagung2 == 2) {
-
+					
 					if(isJagung2Full()) {
-						//turnOffCleanerCrusherLine(); TODO needed?
+						turnOffCleanerCrusherLine(); 
+						
+						
 						if(fillStateJagung1==2 && !isJagung1Full()) {
 							
 							moveCrusherOutToJagung1();
 					
 						} else { //both are full
-							digitalWrite(pinLEDJagungSBM, LOW);
+							
 							turnOffCleanerCrusherLine();
 						
 						}
 						
 					} else if(isJagung2ToFill()) {
-						digitalWrite(pinLEDJagungSBM, HIGH);
+						
 						turnOnCleanerCrusherLine();
 					}
 
 				} else if(fillStateJagung2 == 1) {
-					digitalWrite(pinLEDJagungSBM, HIGH);
+					
 					turnOnCleanerCrusherLine(); //lower than fill level, start the bucket
 
 				} else if(fillStateJagung2 == 0) { //off
-					digitalWrite(pinLEDJagungSBM, HIGH);
+					
 					turnOffCleanerCrusherLine();
 
 				}
@@ -283,7 +311,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			} else { //setting is set for jagung, but crusher out not yet set for jagung
 
 				//let's start with jagung1
-				digitalWrite(pinLEDJagungSBM, HIGH);
+				
 				moveCrusherOutToJagung1();
 
 			}
@@ -299,261 +327,124 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				if(fillStateSBM1 == 2) {
 					
 					if(isSBM1Full()) {
-						digitalWrite(pinLEDJagungSBM, LOW);
+						
 						turnOffCleanerCrusherLine();
 					} else if(isSBM1ToFill()) {
-						digitalWrite(pinLEDJagungSBM, HIGH);
+						
 						turnOnCleanerCrusherLine();
 					}
 					
 				} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
 				
 				else if(fillStateSBM1 == 0) { //stop filling
-					digitalWrite(pinLEDJagungSBM, LOW);
+					
 					turnOffCleanerCrusherLine();					
 
 				} else if(fillStateSBM1 == 1) { //start filling
-					digitalWrite(pinLEDJagungSBM, HIGH);
+					
 					turnOnCleanerCrusherLine();
 
 				}
 
 			} else { //setting is set for SBM1, but crusher out not yet set for SBM1
-				digitalWrite(pinLEDJagungSBM, HIGH);
+				
 				moveCrusherOutToSBM1();
 
 			}
 
 		}
 
-
-
 		//sbm 2
-		digitalWrite(pinLEDSBMHalus, HIGH);
 		if(fillStateSBM2 == 2) { //0=off, 1=on, 2=auto
+//			digitalWrite(pinLEDSBMHalus, HIGH);
 			if(isSBM2Full()) { //level 2 = full, IR obstacle read 0 = there is obstacle
-				digitalWrite(pinLEDSBMHalus, LOW);
+//				digitalWrite(pinLEDSBMHalus, LOW);
 				digitalWrite(pinRelayBucketSBM2, LOW); //full, stop the bucket
 			} else if(isSBM2ToFill()) { //IR read 1 = no obstacle at the fillLevel
-				digitalWrite(pinLEDSBMHalus, HIGH);
+//				digitalWrite(pinLEDSBMHalus, HIGH);
 				digitalWrite(pinRelayBucketSBM2, HIGH); //lower than fill level, start the bucket
 			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
 		} else if(fillStateSBM2 == 0) { //off
-			digitalWrite(pinLEDSBMHalus, LOW);
+//			digitalWrite(pinLEDSBMHalus, LOW);
 			digitalWrite(pinRelayBucketSBM2, LOW); //stop the bucket
 		} else if(fillStateSBM2 == 1) {
-			digitalWrite(pinLEDSBMHalus, HIGH);
+//			digitalWrite(pinLEDSBMHalus, HIGH);
 			digitalWrite(pinRelayBucketSBM2, HIGH); //start the bucket
 		}
 		
 		
 		//New Configuration from ArduinoUno
 		//mbm
-		digitalWrite(pinLEDMBM, HIGH);
 		if(fillStateMBM == 2) {
+//			digitalWrite(pinLEDMBM, HIGH);
 			if(digitalRead(pinBufferLevelMBM[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
-				digitalWrite(pinLEDMBM, LOW);
+//				digitalWrite(pinLEDMBM, LOW);
 				digitalWrite(pinRelayBucketMBM, LOW); //full, stop the bucket
 				isMBMBucketOn = false;
 			} else if(digitalRead(pinBufferLevelMBM[fillLevelMBM]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
-				digitalWrite(pinLEDMBM, HIGH);
+//				digitalWrite(pinLEDMBM, HIGH);
 				digitalWrite(pinRelayBucketMBM, HIGH); //lower than fill level, start the bucket
 				isMBMBucketOn = true;
 			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
 		} else if(fillStateMBM == 0) {
-			digitalWrite(pinLEDMBM, LOW);
+//			digitalWrite(pinLEDMBM, LOW);
 			digitalWrite(pinRelayBucketMBM, LOW); //stop the bucket
 			isMBMBucketOn = false;
 		} else if(fillStateMBM == 1) {
-			digitalWrite(pinLEDMBM, HIGH);
+//			digitalWrite(pinLEDMBM, HIGH);
 			digitalWrite(pinRelayBucketMBM, HIGH); //start the bucket
 			isMBMBucketOn = true;
 		}
 		
 		
 		//Grit
-		digitalWrite(pinLEDGrit, HIGH);
+//		digitalWrite(pinLEDGrit, HIGH);
 		if(fillStateGrit == 2) {
+//			digitalWrite(pinLEDGrit, HIGH);
 			if(digitalRead(pinBufferLevelGrit[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
-				digitalWrite(pinLEDGrit, LOW);
+//				digitalWrite(pinLEDGrit, LOW);
 				digitalWrite(pinRelayBucketGrit, LOW); //full, stop the bucket
 				isGritBucketOn = false;
 			} else if(digitalRead(pinBufferLevelGrit[fillLevelGrit]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
-				digitalWrite(pinLEDGrit, HIGH);
+//				digitalWrite(pinLEDGrit, HIGH);
 				digitalWrite(pinRelayBucketGrit, HIGH); //lower than fill level, start the bucket
 				isGritBucketOn = true;
 			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
 		} else if(fillStateGrit == 0) {
-			digitalWrite(pinLEDGrit, LOW);
+//			digitalWrite(pinLEDGrit, LOW);
 			digitalWrite(pinRelayBucketGrit, LOW); //stop the bucket
 			isGritBucketOn = false;
 		} else if(fillStateGrit == 1) {
-			digitalWrite(pinLEDGrit, HIGH);
+//			digitalWrite(pinLEDGrit, HIGH);
 			digitalWrite(pinRelayBucketGrit, HIGH); //start the bucket
 			isGritBucketOn = true;
 		}
 		
 		
 		//Katul
-		digitalWrite(pinLEDKatul, HIGH);
+	//	digitalWrite(pinLEDKatul, HIGH);
 		if(fillStateKatul == 2) {
+			digitalWrite(pinLEDKatul, LOW);
 			if(digitalRead(pinBufferLevelKatul[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
-				digitalWrite(pinLEDKatul, LOW);
+//				digitalWrite(pinLEDKatul, LOW);
 				digitalWrite(pinRelayBucketKatul, LOW); //full, stop the bucket
 				isKatulBucketOn = false;
 			} else if(digitalRead(pinBufferLevelKatul[fillLevelKatul]) == HIGH) { //IR read 1 = no obstacle at the fillLevel
-				digitalWrite(pinLEDKatul, HIGH);
+//				digitalWrite(pinLEDKatul, HIGH);
 				digitalWrite(pinRelayBucketKatul, HIGH); //lower than fill level, start the bucket
 				isKatulBucketOn = true;
 			} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
 		} else if(fillStateKatul == 0) {
-			digitalWrite(pinLEDKatul, LOW);
+//			digitalWrite(pinLEDKatul, LOW);
 			digitalWrite(pinRelayBucketKatul, LOW); //stop the bucket
 			isKatulBucketOn = false;
 		} else if(fillStateKatul == 1) {
 			digitalWrite(pinRelayBucketKatul, HIGH); //start the bucket
 			isKatulBucketOn = true;
 		}
-		
+	}
 		// ====== Screw Manual Mode =======
 		
-		if(manualModeScrewOn == 1){
-			digitalWrite(pinLEDJagungSBM, HIGH);
-			isLedOn = true;
-			isCrusherOn = true;
-			isBucketCrusherOutOn = true;
-			isScrewCrusherOutOn = true;
-			
-			if(sharedBucketJagungOrSbm == 0) { //jagung
-
-				if(curOutput == 0) { //jagung1  
-					
-					moveCrusherOutToJagung1();
-
-					if(fillStateJagung1 == 2) {
-						
-						if(isJagung1Full()) {
-							//turnOffCleanerCrusherLine(); TODO needed?
-							if(fillStateJagung2==2 && !isJagung2Full()) {
-							
-								moveCrusherOutToJagung1();
-							
-							} else { //both are full
-								
-								turnOffCleanerCrusherLine();
-							
-							}
-							
-						} else if(isJagung1ToFill()) {
-							turnOnCleanerCrusherLine();
-						}
-						
-					} else if(fillStateJagung1 == 1) {
-
-						turnOnCleanerCrusherLine(); //lower than fill level, start the bucket
-
-					} else if(fillStateJagung1 == 0) { //off
-
-						turnOffCleanerCrusherLine();
-
-					}
-
-				} if(curOutput == 1) { //jagung2  
-					
-					moveCrusherOutToJagung1();
-
-					if(fillStateJagung2 == 2) {
-
-						if(isJagung2Full()) {
-							//turnOffCleanerCrusherLine(); TODO needed?
-							if(fillStateJagung1==2 && !isJagung1Full()) {
-								
-								moveCrusherOutToJagung1();
-						
-							} else { //both are full
-							
-								turnOffCleanerCrusherLine();
-							
-							}
-							
-						} else if(isJagung2ToFill()) {
-							turnOnCleanerCrusherLine();
-						}
-
-					} else if(fillStateJagung2 == 1) {
-
-						turnOnCleanerCrusherLine(); //lower than fill level, start the bucket
-
-					} else if(fillStateJagung2 == 0) { //off
-
-						turnOffCleanerCrusherLine();
-
-					}
-
-				} else { //setting is set for jagung, but crusher out not yet set for jagung
-
-					//let's start with jagung1
-					moveCrusherOutToJagung1();
-
-				}
-
-
-			} else if(sharedBucketJagungOrSbm == 1) { //sbm1
-
-				//sbm 1
-				if(curOutput == 2) { //sbm1
-					
-					moveCrusherOutToSBM1();
-					
-					if(fillStateSBM1 == 2) {
-						
-						if(isSBM1Full()) {
-							turnOffCleanerCrusherLine();
-						} else if(isSBM1ToFill()) {
-							turnOnCleanerCrusherLine();
-						}
-						
-					} //else, it means, it is filling already passed fill level, but not yet full, just do nothing and continue
-					
-					else if(fillStateSBM1 == 0) { //stop filling
-
-						turnOffCleanerCrusherLine();					
-
-					} else if(fillStateSBM1 == 1) { //start filling
-
-						turnOnCleanerCrusherLine();
-
-					}
-
-				} else { //setting is set for SBM1, but crusher out not yet set for SBM1
-
-					moveCrusherOutToSBM1();
-
-				}
-
-			}
-			
-			//sbm 2 = On
-				digitalWrite(pinRelayBucketSBM2, HIGH); //start the bucket
-			
-			//mbm
-				digitalWrite(pinRelayBucketMBM, HIGH); //start the bucket
-				isMBMBucketOn = true;
-			
-			//Grit
-				digitalWrite(pinRelayBucketGrit, HIGH); //start the bucket
-				isGritBucketOn = true;
-			
-			//Katul
-				digitalWrite(pinRelayBucketKatul, HIGH); //start the bucket
-				isKatulBucketOn = true;
-			
-
-		} else {
-			// Do Nothing
-		}
-		
-	} 
 	
 	
 	private boolean isJagung1Full() {
@@ -618,24 +509,24 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 
 		curOutput = 0;
 		digitalWrite(pinRelayPneumaticOutJagung1, HIGH);
-		digitalWrite(pinRelayPneumaticOutJagung2, HIGH);
+		digitalWrite(pinRelayPneumaticOutJagung2, LOW);
 		digitalWrite(pinRelayPneumaticOutSBM1, LOW);
-		digitalWrite(pinLEDJagungSBM, HIGH);
+		
 
 	}
 	
 
-/*
+
 	void moveCrusherOutToJagung2() {
 
 		curOutput = 1;
 		digitalWrite(pinRelayPneumaticOutJagung1, LOW);
 		digitalWrite(pinRelayPneumaticOutJagung2, HIGH);
 		digitalWrite(pinRelayPneumaticOutSBM1, LOW);
-		digitalWrite(pinLEDJagungSBM, HIGH);
+		
 
 	}
-*/
+
 
 	void moveCrusherOutToSBM1() {
 
@@ -643,7 +534,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		digitalWrite(pinRelayPneumaticOutJagung1, LOW);
 		digitalWrite(pinRelayPneumaticOutJagung2, LOW);
 		digitalWrite(pinRelayPneumaticOutSBM1, HIGH);
-		digitalWrite(pinLEDJagungSBM, HIGH);
+		
 		
 	}
 
@@ -654,7 +545,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		digitalWrite(pinRelayBucketCleanerOut, LOW); 
 		digitalWrite(pinRelayCrusher, LOW); 
 		digitalWrite(pinRelayBucketCrusherOut, LOW);
-		digitalWrite(pinLEDJagungSBM, LOW);
+		
 	}
 
 
@@ -664,10 +555,6 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 
 	protected void readResponseByteSpecific(byte[] responseByte) {
 		//nothing special
-		//sbm2
-		if(digitalRead(pinBufferLevelSBM2[0]) == LOW) this.currentFillLevelSBM2 = 0;
-		if(digitalRead(pinBufferLevelSBM2[1]) == LOW) this.currentFillLevelSBM2 = 1;
-		if(digitalRead(pinBufferLevelSBM2[2]) == LOW) this.currentFillLevelSBM2 = 2;
 	}
 	
 	
@@ -695,16 +582,6 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				isInputSBM1Open = false;
 			} else if(pinNumber == pinRelayBucketSBM2) {
 				isBucketSBM2On = false;
-			} else if(pinNumber == pinLEDJagungSBM){
-				isLedOn = false;
-			} else if (pinNumber == pinLEDSBMHalus) {
-				isLedOn = false;
-			} else if (pinNumber == pinLEDMBM){
-				isLedOn = false;
-			} else if (pinNumber == pinLEDKatul) {
-				isLedOn = false;
-			} else if (pinNumber == pinLEDGrit) {
-				isLedOn = false;
 			
 			}
 			
@@ -729,33 +606,11 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				isInputSBM1Open = true;
 			} else if(pinNumber == pinRelayBucketSBM2) {
 				isBucketSBM2On = true;
-			} else if (pinNumber == pinLEDJagungSBM) {
-				isLedOn = true;
-			} else if (pinNumber == pinLEDSBMHalus) {
-				isLedOn = true;
-			} else if (pinNumber == pinLEDKatul) {
-				isLedOn = true;
-			} else if (pinNumber == pinLEDMBM) {
-				isLedOn = true;
-			} else if (pinNumber == pinLEDGrit) {
-				isLedOn = true;
 			
 			}
 			
 		} 
-		
-		
-	}
-	
-	public void switchInputManualScrew() {
-		if(digitalRead(pinRelayManualScrew) == LOW) {
-			digitalWrite(pinRelayManualScrew, HIGH);
-			isManualScrew = true;
-		}
-		else {
-			digitalWrite(pinRelayManualScrew, LOW);
-			isManualScrew = false;
-		}
+
 	}
 	
 	public void switchInputIsCleanerOn() {
@@ -765,6 +620,18 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		} else {
 			digitalWrite(pinRelayCleanerBlower, LOW);
 			isCleanerOn = false;
+		}
+	}
+	
+	public void switchInputIsScrewManual() {
+		if(digitalRead(pinRelayScrewManual) == LOW) {
+			digitalWrite(pinRelayScrewManual, HIGH);
+			isScrewManual = true;
+			screwManual = 1;
+		} else if(digitalRead(pinRelayScrewManual) == HIGH){
+			digitalWrite(pinRelayScrewManual, LOW);
+			isScrewManual = false;
+			screwManual = 0;
 		}
 	}
 	
@@ -810,13 +677,15 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	
 	public void switchInputJagungSBM() {
 		if(digitalRead(pinRelayPneumaticOutJagung1) == LOW || digitalRead(pinRelayPneumaticOutJagung2) == LOW) {
-			moveCrusherOutToSBM1();
+			digitalWrite(pinRelayPneumaticOutSBM1, HIGH);
+			isInputJagung1Open = false;
+			isInputJagung2Open = false;
+			isInputSBM1Open = true;
 		} else if (digitalRead(pinRelayPneumaticOutJagung1) == HIGH || digitalRead(pinRelayPneumaticOutJagung2) == HIGH) {
-			moveCrusherOutToJagung1();
-		} else if (digitalRead(pinRelayPneumaticOutSBM1) == HIGH) {
-			moveCrusherOutToSBM1();
-		} else if (digitalRead(pinRelayPneumaticOutSBM1) == LOW) {
-			moveCrusherOutToJagung1();
+			digitalWrite(pinRelayPneumaticOutSBM1, LOW);
+			isInputJagung1Open = true;
+			isInputJagung2Open = true;
+			isInputSBM1Open = false;
 		}
 	}
 	
@@ -859,6 +728,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			isBucketSBM2On = false;
 		}
 	}
+	
 
 	public String printStateDetails() {
 		
@@ -874,23 +744,38 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		sb.append("\nCleaner/OutBucket Status :\t " + digitalRead(pinRelayCleanerBlower) + " / " + digitalRead(pinRelayBucketCleanerOut));
 		sb.append(" || Crusher/OutBucket/Screw Status :\t " + digitalRead(pinRelayCrusher) + " / " + digitalRead(pinRelayBucketCrusherOut));
 		
-		
 		sb.append("\n");
 		String tempString = "STOP";
+		isInputJagung1Open = false;
 		if(curOutput==0 && digitalRead(pinRelayCrusher)==HIGH){
 			tempString = "FILL";
+			isInputJagung1Open = true;
+			
 		}
 		sb.append("\nJagung1 State:\t " + tempString);
 		
 		tempString = "STOP";
+		isInputJagung2Open = false;
 		if(curOutput==1 && digitalRead(pinRelayCrusher)==HIGH){
 			tempString = "FILL";
+			isInputJagung2Open = true;
+			
 		}
-		sb.append(" | Jagung1 State:\t " + tempString);
+		sb.append(" | Jagung2 State:\t " + tempString);
+		
+		// check 
+		if (isInputJagung1Open == false && isInputJagung2Open == false) {
+			digitalWrite(pinLEDJagungSBM, LOW);
+		} else {
+			digitalWrite(pinLEDJagungSBM, HIGH);
+		}
+		
 		
 		tempString = "STOP";
+		
 		if(curOutput==2 && digitalRead(pinRelayCrusher)==HIGH){
 			tempString = "FILL";
+			
 		}
 		sb.append(" | SBM1 State:\t " + tempString);
 		
@@ -898,19 +783,25 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		sb.append("\nJagung1 Level:\t " + digitalRead(this.pinBufferLevelJagung1[0]) +""+ digitalRead(this.pinBufferLevelJagung1[1]) +""+ digitalRead(this.pinBufferLevelJagung1[2])); 
 		sb.append(" || Jagung2 Level:\t " + digitalRead(this.pinBufferLevelJagung2[0]) +""+ digitalRead(this.pinBufferLevelJagung2[1]) +""+ digitalRead(this.pinBufferLevelJagung2[2])); 
 		sb.append(" || SBM1 Level:\t " + digitalRead(this.pinBufferLevelSBM1[0]) +""+ digitalRead(this.pinBufferLevelSBM1[1]) +""+ digitalRead(this.pinBufferLevelSBM1[2])); 
+		sb.append("\n || LED STATUS. . . :\t " + digitalRead(this.pinLEDJagungSBM));
 		
 		sb.append("\n");
 		tempString = "STOP";
+		digitalWrite(pinLEDSBMHalus, LOW);
 		if(digitalRead(pinRelayBucketSBM2)==HIGH){
 			tempString = "FILL";
+			digitalWrite(pinLEDSBMHalus, HIGH);
 		}
 		sb.append("\nSBM2 Fill State:\t " + tempString + " (Conf: " + fillLevelSBM2 + ")");
 		sb.append("\nSBM2 Level . . :\t " + digitalRead(this.pinBufferLevelSBM2[0]) +""+ digitalRead(this.pinBufferLevelSBM2[1]) +""+ digitalRead(this.pinBufferLevelSBM2[2]));
-		sb.append("\nLED STATUS . .  :\t " + digitalRead(this.pinLEDJagungSBM));
+		sb.append("\nLED STATUS . .  :\t " + digitalRead(this.pinLEDSBMHalus));
 		
 		sb.append("\n");
+		tempString = "STOP";
+		digitalWrite(pinLEDMBM, LOW);
 		if(digitalRead(pinRelayBucketMBM)==HIGH){
 			tempString = "FILL";
+			digitalWrite(pinLEDMBM, HIGH);
 		}
 		sb.append("\nMBM Fill State .:\t " + tempString + " (Conf: " + fillLevelMBM + ")");
 		sb.append("\nMBM Level . . . :\t " + digitalRead(this.pinBufferLevelMBM[0]) +""+ digitalRead(this.pinBufferLevelMBM[1]) +""+ digitalRead(this.pinBufferLevelMBM[2]));
@@ -919,8 +810,10 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		
 		sb.append("\n");
 		tempString = "STOP";
+		digitalWrite(pinLEDGrit, LOW);
 		if(digitalRead(pinRelayBucketGrit)==HIGH){
 			tempString = "FILL";
+			digitalWrite(pinLEDGrit, HIGH);
 		}
 		sb.append("\nGrit Fill State :\t " + tempString + " (Conf: " + fillLevelGrit + ")");
 		sb.append("\nGrit Level . . .:\t " + digitalRead(this.pinBufferLevelGrit[0]) +""+ digitalRead(this.pinBufferLevelGrit[1]) +""+ digitalRead(this.pinBufferLevelGrit[2]));
@@ -929,8 +822,10 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		
 		sb.append("\n");
 		tempString = "STOP";
+		digitalWrite(pinLEDKatul, LOW);
 		if(digitalRead(pinRelayBucketKatul)==HIGH){
 			tempString = "FILL";
+			digitalWrite(pinLEDKatul, HIGH);
 		}
 		sb.append("\nKatul Fill State:\t " + tempString + " (Conf: " + fillLevelKatul + ")");
 		sb.append("\nKatul Level . . :\t " + digitalRead(this.pinBufferLevelKatul[0]) +""+ digitalRead(this.pinBufferLevelKatul[1]) +""+ digitalRead(this.pinBufferLevelKatul[2]));
@@ -1000,9 +895,8 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				this.sbmCrusherOnOff=0;
 				return "OK"; 
 			}
-
-			if("switchInputManualScrew".equals(cmds[0])) {
-				this.switchInputManualScrew();
+			if("switchInputIsScrewManual".equals(cmds[0])){
+				switchInputIsScrewManual();
 				return "OK";
 			}
 			if("switchInputIsCleanerOn".equals(cmds[0])){
@@ -1051,7 +945,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+ ": setJagung, setSBM, startSBMCrusher, stopSBMCrusher, switchInputManualScrew \n"
+								+ ": setJagung, setSBM, startSBMCrusher, stopSBMCrusher, switchInputIsScrewManual  \n"
 								+ "\n"
 								+ "Available commands "+this.getClass().getSimpleName()
 								+ ": switchInputIsCleanerOn, switchInputIsBucketCleanerOutOn, switchInputIsCrusherOn, switchInputIsBucketCrusherOutOn, "

@@ -1,0 +1,36 @@
+package com.uniteksolusi.otomill.model;
+
+import com.pi4j.io.i2c.I2CBus;
+
+public class ModelSiloPakan extends ArduinoUnoModel {
+
+	public ModelSiloPakan(I2CBus bus, int address) {
+		// TODO Auto-generated constructor stub
+		super(bus, address);
+	}
+
+	@Override
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void mainLoop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void writeRequestByteSpecific(byte[] requestByte) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void readResponseByteSpecific(byte[] responseByte) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

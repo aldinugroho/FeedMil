@@ -6,22 +6,23 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="readResponseByteSpecific" key="selection"/>
+		<item value="serialSiloPakan" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="serialLoadCell"/>
+			<item value="pinRelayBucketMBM"/>
 			<item value="readResponseByteSpecific"/>
 			<item value="switchInput()"/>
 			<item value="switchInput"/>
 			<item value="0x22"/>
 			<item value="NOT the same"/>
 			<item value="NOT the"/>
-			<item value="toString"/>
-			<item value="digitalWrite"/>
 		</list>
 		<list key="replacehistory">
+			<item value="serialSiloPakan"/>
 			<item value="this.getId()"/>
 			<item value="logger.finer(this.getId()"/>
 			<item value=""/>
@@ -29,7 +30,6 @@
 			<item value="byte"/>
 			<item value="int"/>
 			<item value="logger.fine(this.getClass().getSimpleName() + &quot;(&quot;+this.i2cDevice.getAddress()+&quot;)&quot; + "/>
-			<item value="this.getClass().getSimpleName() + &quot;(&quot;+this.i2cDevice.getAddress()+&quot;)&quot; +  "/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

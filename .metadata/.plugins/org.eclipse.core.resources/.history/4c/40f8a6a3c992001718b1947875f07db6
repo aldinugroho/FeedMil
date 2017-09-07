@@ -1,0 +1,15 @@
+package com.uniteksolusi.otomill.model;
+
+public interface SiloPakanIfc {
+	
+	boolean isReadyForFilling();
+
+	void startFilling();
+
+	void stopFilling();
+
+	void startEjecting();
+
+	void stopEjecting();
+
+}

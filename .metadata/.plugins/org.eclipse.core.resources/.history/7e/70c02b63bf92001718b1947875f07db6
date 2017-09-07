@@ -1,0 +1,5 @@
+package com.uniteksolusi.otomill.model;
+
+public interface PakanLoaderIfc {
+
+}

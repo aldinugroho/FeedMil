@@ -11,7 +11,7 @@
 	<item value="500" key="CallHierarchyViewPart.ratio3"/>
 	<item value="false" key="TypeHierarchyViewPart.qualifiednames"/>
 	<item value="0" key="CallHierarchyViewPart.call_mode"/>
-	<item value="C:\Users\aldi\Downloads\javacsv2.1" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="C:\Users\aldi\Downloads" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="false" key="InstanceOf"/>
 	<item value="3" key="CallHierarchyViewPart.orientation"/>
 	<item value="filter_imports;" key="filters_last_used"/>

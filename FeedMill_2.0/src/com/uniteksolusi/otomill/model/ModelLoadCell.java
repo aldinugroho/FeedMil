@@ -1,6 +1,7 @@
 package com.uniteksolusi.otomill.model;
 
 import com.pi4j.io.i2c.I2CBus;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 
 public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, LoadCellIfc {
@@ -19,11 +20,22 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 	public int fullTolerance = 0; //KG tolerance to indicate it's full	
 	
 	///### END of CONFIGURATION ###///
-
-
+	//vibro runtime
+	public int vibratingDuration = 6000;
+	transient public long vibratingTimeCalibration = 500;
+	transient long startVibratingTime = -1;
+	public long getVibratingDuration() {
+		return vibratingDuration;
+	}
+	
+	public void setVibratingDuration(int milisDuration) {
+		this.vibratingDuration = milisDuration;
+	}
+	
 	//### running variables ###//
 	byte fillingState = 0;   //0 = ready, 1 = filling, 2 = full, 3 = ejecting, 4 = stop / suspend
 	int currentWeight = 0;
+	byte vibro = 0; // 0 = off, 1 = on
 
 	//### end of running variables ###//
 	
@@ -41,7 +53,6 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 		super(bus, address, 14, 4, 6);
 		this.targetWeight = targetWeight;
 	}
-	
 	
 	
 	/* (non-Javadoc)
@@ -113,6 +124,14 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 		return false;
 	}
 	
+	public boolean isVibroOn(){
+		if(vibro == 1){
+			
+			return true;
+		}
+		return false;
+	}
+	
 	public void startFilling() {
 		digitalWrite(pinRelayScrewConveyor, HIGH);
 		isInputScrewOn = true;
@@ -137,6 +156,20 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 		fillingState = 0;
 	}
 	
+	public void startVibro() {
+		// TODO Auto-generated method stub
+		digitalWrite(pinVibro, HIGH);
+		isVibroOn = true;
+		vibro = 1;
+		startVibratingTime = System.currentTimeMillis();
+	}
+	
+	public void stopVibro() {
+		digitalWrite(pinVibro, LOW);
+		isVibroOn = false;
+		vibro = 0;
+	}
+	
 	@Override
 	protected void initialize() {
 		pinMode(pinRelayScrewConveyor, OUTPUT);
@@ -144,30 +177,19 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 		//Vibro
 		pinMode(pinVibro, OUTPUT);
 	}
-	
-	public void switchInputScrew() {
-		if(digitalRead(pinRelayScrewConveyor) == LOW){
-			digitalWrite(pinRelayScrewConveyor, HIGH);
-			isInputScrewOn = true;
-		} else {
-			digitalWrite(pinRelayScrewConveyor, LOW);
-			isInputScrewOn = false;
-		}
-	}
-	
-	public void switchInputVibro() {
-		if (digitalRead(pinVibro) == LOW) {
-			digitalWrite(pinVibro, HIGH);
-			isVibroOn = true;
-		} else {
-			digitalWrite(pinVibro, LOW);
-			isVibroOn = false;
-		}
-	}
 
+	
 
 	@Override
 	protected void mainLoop() {
+		
+		//check vibro runtime
+		if(vibro == 1){
+			if( (System.currentTimeMillis() - startVibratingTime + vibratingTimeCalibration) > (vibratingDuration) ) {
+				//it's time, stop
+				stopVibro();
+			} 	
+		}
 		
 		//fillingState 0 = ready, 1 = filling, 2 = full, 3 = ejecting
 		
@@ -280,7 +302,7 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 		sb.append("\n");
 		sb.append("\nState:\t " + fillingState + " / " + this.getStateString()); 
 		sb.append("\nWeight:\t " + this.getCurrentWeight() + " / " + this.getTargetWeight() );
-		sb.append("\nVIBRO :\t " + digitalRead(this.pinVibro));
+		sb.append("\nVIBRO :\t " + digitalRead(pinVibro));
 		
 		sb.append("\n");
 		sb.append("\nOutput Close/Open:\t " + digitalRead(pinRelayPneumaticOutput));
@@ -317,22 +339,29 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 				return "OK"; 
 			}
 			
-			if("switchInputScrew".equals(cmds[0])) {
-				switchInputScrew();
+			if("startVibro".equals(cmds[0])) {
+				this.startVibro();
 				return "OK";
 			}
 			
-			if("switchInputVibro".equals(cmds[0])) {
-				switchInputVibro();
+			if("stopVibro".equals(cmds[0])) {
+				this.stopVibro();
 				return "OK";
 			}
+			
+			if("setTarget".equals(cmds[0])) {
+				int target = Integer.valueOf(cmds[1]);
+				this.setTargetWeight(target);
+				return "OK";
+			}
+			
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startFilling, stopFilling, startEjecting, stopEjecting, switchInputScrew, switchInputVibro \n";
+								+": startFilling, stopFilling, startEjecting, stopEjecting, startVibro, stopVibro, setTarget(spasi)(new Target Weight)\n";
 		}
 		return parentResponse;
 	}

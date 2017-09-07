@@ -168,7 +168,7 @@ public abstract class StubArduinoUno extends StubArduino {
 		}
 
 		if(!isInitializedFromMaster) {
-
+			readAllPins();
 			//turn on LED
 			errorLED();
 

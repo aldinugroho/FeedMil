@@ -1,0 +1,242 @@
+package com.uniteksolusi.otomill.model;
+
+import com.pi4j.io.i2c.I2CBus;
+
+public class ModelSiloPakan extends ArduinoUnoModel implements LoadCellIfc, PakanLoaderIfc {
+	
+	public static final byte outputOpen = HIGH;   
+	public static final byte outputClose = LOW;
+	
+	transient byte pinBufferPakan[] = {2,3};  //2 pins obstacle: low, high
+	transient byte pinRelayPakan = 4;
+	transient byte pinRelayPneumaticOutput = 5;
+	
+	public int targetWeight = 20; //target weight in KG
+	public int emptyTolerance = 0; //KG tolerance to indicate it's empty
+	public int fullTolerance = 0; //KG tolerance to indicate it's full
+	
+	//when to start filling in auto mode. 0 = low level, 1 = full.
+	public byte fillLevelPakan = 0;
+	
+	byte fillingState = 0;   //0 = ready, 1 = filling, 2 = full, 3 = ejecting, 4 = stop / suspend
+	int currentWeight = 0;
+	
+	
+	//fill state added from ArduinoUno
+	byte fillStatePakan = 2;
+	
+	//status JSON
+	boolean isPakanFull = false;
+	boolean isBucketPakanOpen = false;
+	boolean isOutputOpen = false;
+	
+	public ModelSiloPakan(I2CBus bus, int address) {
+		// TODO Auto-generated constructor stub
+		super(bus, address, 14, 4, 6); //2 bytes for weight
+	}
+	
+	public ModelSiloPakan(I2CBus bus, int address, int targetWeight) {
+		super(bus, address, 14, 4, 6);
+		this.targetWeight = targetWeight;
+	}
+	
+	public int getCurrentWeight() {
+		return currentWeight;
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getTargetWeight()
+	 */
+	public int getTargetWeight() {
+		return targetWeight;
+	}
+	
+	public void setTargetWeight(int target) {
+		this.targetWeight = target;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getEmptyTolerance()
+	 */
+	public int getEmptyTolerance() {
+		return emptyTolerance;
+	}
+	
+	public void setEmptyTolerance(int toleranceKg) {
+		this.emptyTolerance = toleranceKg;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.uniteksolusi.otomill.model.LoadCellIfc#getFullTolerance()
+	 */
+	public int getFullTolerance() {
+		return fullTolerance;
+	}
+	
+	public void setFullTolerance(int toleranceKg) {
+		this.fullTolerance = toleranceKg;
+	}
+	
+	public boolean isReadyForFilling() {
+		if(fillingState == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isFilling() {
+		if(fillingState == 1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isReadyForEject() {
+		if(fillingState == 2) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isEjecting() {
+		if(fillingState == 3) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void startFilling() {
+		
+		isBucketPakanOpen = true;
+		fillingState = 1;
+	}
+	
+	public void stopFilling() {
+		
+		isBucketPakanOpen = false;
+		fillingState = 2;
+	}
+	
+	public void startEjecting() {
+		digitalWrite(pinRelayPakan, outputOpen);
+		isOutputOpen = true;
+		fillingState = 3;
+	}
+	
+	public void stopEjecting() {
+		digitalWrite(pinRelayPneumaticOutput, outputClose); 
+		isOutputOpen = false;
+		fillingState = 0;
+	}
+	
+	@Override
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		pinMode(pinBufferPakan[0], INPUT);
+		pinMode(pinBufferPakan[1], INPUT);
+		pinMode(pinRelayPakan, OUTPUT);
+	}
+
+	@Override
+	protected void mainLoop() {
+		// TODO Auto-generated method stub
+		//check and fill each silos
+				int weightRead = -1;
+				weightRead = getCurrentWeight();
+				
+				if(weightRead == -1) { 	
+					//do nothing, retry next loop
+				} else { //if(weightRead != -1) {
+				
+					int tempCurrentWeight = weightRead;
+					
+					if(fillingState == 0) { //when it's ready to start, just start immediately   
+						
+						startFilling(); 
+						
+					} else if(fillingState == 1) {
+						
+						if(tempCurrentWeight >= (targetWeight - fullTolerance) )  {
+							stopFilling();
+						}
+						
+					} else if(fillingState == 2) {
+						
+						//do nothing, wait for eject command
+					
+					} else if(fillingState == 3) {
+					
+						if(tempCurrentWeight <= (0 + emptyTolerance) ) {
+							stopEjecting();
+						}
+						
+					} 
+				
+				} 
+	}
+
+	@Override
+	protected void writeRequestByteSpecific(byte[] requestByte) {
+		// nothing special
+		
+	}
+
+	private int lastWeight = -1;
+	
+	
+	@Override
+	protected void readResponseByteSpecific(byte[] responseByte) {
+		// nothing special
+		logger.fine(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " > READ RESPONSE SPECIFIC: ");
+
+		lastWeight = currentWeight;
+
+		//read the current weight from byte[3] and [4]
+		currentWeight =     (  Math.abs((responseByte[3] >> 4)                       * 1000   )) +
+
+							(  Math.abs(( responseByte[3] - ((responseByte[3] >> 4)*16) ) * 100    )) +
+
+							(  Math.abs((responseByte[4] >> 4)                       * 10     )) +
+
+							(  Math.abs(( responseByte[4] - ((responseByte[4] >> 4)*16) ) * 1      )) ;
+
+		if(currentWeight < 0) {
+
+			logger.warning(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " Current Weight is NEGATIVE!! : " + currentWeight );
+		}
+
+		logger.fine(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " Cur/Tar Weight: " + currentWeight + "  /  " + targetWeight);
+		
+		//check if lastWeight have same weight with currentWeight
+	}
+	
+	public String getStateString() {
+		
+		switch(fillingState) {
+
+		case 0: 
+			return "READY";
+		case 1: 
+			return "FILLING";
+		case 2: 
+			return "WAITING FOR EJECT (FULL)";
+		case 3: 
+			return "EJECTING";
+		default: 
+			return "STOPPED";
+
+		}
+	
+	}
+
+	public String printStateDetails() {
+		StringBuffer sb  = new StringBuffer(super.printStateDetails());
+		sb.append("\n");
+		sb.append("\nState:\t " + pakanState + " / " + this.getStateString()); 
+		
+		sb.append("\n");
+		sb.append("\nPakan Off/On:\t " + digitalRead(pinRelayPakan));
+		return sb.toString();
+
+	}
+}

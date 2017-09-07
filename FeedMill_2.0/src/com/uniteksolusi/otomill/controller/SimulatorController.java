@@ -27,11 +27,12 @@ public class SimulatorController {
 	private StubLoadCellSimulator x23Simulator;
 	private StubLoadCellSimulator x24Simulator;
 	private StubLoadCellSimulator x25Simulator;
-//	private StubLoadCellSimulator x26Simulator;
+	private StubLoadCellSimulator x26Simulator;
+	private StubLoadCellSimulator x41Simulator;
 	private StubBufferSiloSimulator sbm1SiloSimulator;
 	private StubBufferSiloSimulator sbm2SiloSimulator;
-//	private StubBufferSiloSimulator jagung1SiloSimulator;
-//	private StubBufferSiloSimulator jagung2SiloSimulator;
+	private StubBufferSiloSimulator jagung1SiloSimulator;
+	private StubBufferSiloSimulator jagung2SiloSimulator;
 	private StubBufferSiloSimulator mbmSiloSimulator;
 	private StubBufferSiloSimulator gritSiloSimulator;
 	private StubBufferSiloSimulator katulSiloSimulator;
@@ -74,6 +75,14 @@ public class SimulatorController {
 		byte x25PinRelayEject = 4;
 		x25Simulator = new StubLoadCellSimulator(x25StateFile, x25SoftwareSerialFile, x25PinRelayInputScrew, x25PinRelayEject);
 		
+		//x41
+		File x41StateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x41" + ".state");
+		File x41SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" +"0x41" + ".softwareserial");
+		byte x41PinRelayInputScrew = 3;
+		byte x41PinRelayEject = 4;
+		x41Simulator = new StubLoadCellSimulator(x41StateFile, x41SoftwareSerialFile, x41PinRelayInputScrew, x41PinRelayEject);
+
+		
 /*		//x26
 		File x26StateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x26" + ".state");
 		File x26SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" +"0x26" + ".softwareserial");
@@ -86,22 +95,25 @@ public class SimulatorController {
 		byte pinBufferLevelSBM2[] = {14,15,16};
 		byte pinRelayBucketSBM2 = 17;
 		sbm2SiloSimulator = new StubBufferSiloSimulator(sbm2StateFile, pinBufferLevelSBM2, pinRelayBucketSBM2);
-/*		
+		
 		//SBM1
 		File sbm1StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
 		byte pinBufferLevelSBM1[] = {10,11,12};
-		sbm1SiloSimulator = new StubBufferSiloSimulator(sbm1StateFile, pinBufferLevelSBM1);
+		byte pinRelayPneumaticOutSBM1 = 34;
+		sbm1SiloSimulator = new StubBufferSiloSimulator(sbm1StateFile, pinBufferLevelSBM1, pinRelayPneumaticOutSBM1);
 		
 		//Jagung1
 		File jagung1StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
 		byte pinBufferLevelJagung1[] = {2,3,4};
-		jagung1SiloSimulator = new StubBufferSiloSimulator(jagung1StateFile, pinBufferLevelJagung1);
+		byte pinRelayPneumaticOutJagung1 = 32;
+		jagung1SiloSimulator = new StubBufferSiloSimulator(jagung1StateFile, pinBufferLevelJagung1, pinRelayPneumaticOutJagung1);
 		
 		//Jagung1
 		File jagung2StateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
 		byte pinBufferLevelJagung2[] = {6,7,8};
-		jagung2SiloSimulator = new StubBufferSiloSimulator(jagung2StateFile, pinBufferLevelJagung2);
-*/		
+		byte pinRelayPneumaticOutJagung2 = 33;
+		jagung2SiloSimulator = new StubBufferSiloSimulator(jagung2StateFile, pinBufferLevelJagung2, pinRelayPneumaticOutJagung2);
+		
 		//MBM
 		File mbmStateFile = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
 		byte pinBufferLevelMBM[] = {18,19,20};
@@ -119,12 +131,12 @@ public class SimulatorController {
 		byte pinBufferLevelKatul[] = {41,42,43};
 		byte pinRelayBucketKatul = 44;
 		katulSiloSimulator = new StubBufferSiloSimulator(katulStateFile, pinBufferLevelKatul, pinRelayBucketKatul);
-	
+		
 	}
 	
 	
 	public synchronized void start() {
-		
+		// if(true)return;
 		if(!shouldRun) {
 			
 			shouldRun = true;
@@ -138,7 +150,11 @@ public class SimulatorController {
 			x24Simulator.start();
 			x25Simulator.start();
 //			x26Simulator.start();
+			x41Simulator.start();
 			
+			jagung1SiloSimulator.start();
+			jagung2SiloSimulator.start();
+			sbm1SiloSimulator.start();
 			sbm2SiloSimulator.start();
 			mbmSiloSimulator.start();
 			gritSiloSimulator.start();
@@ -159,8 +175,15 @@ public class SimulatorController {
 		x24Simulator.stop();
 		x25Simulator.stop();
 //		x26Simulator.stop();
-
+		x41Simulator.stop();
+		
+		jagung1SiloSimulator.stop();
+		jagung2SiloSimulator.stop();
+		sbm1SiloSimulator.stop();
 		sbm2SiloSimulator.stop();
+		mbmSiloSimulator.stop();
+		gritSiloSimulator.stop();
+		katulSiloSimulator.stop();
 		
 	
 	}
