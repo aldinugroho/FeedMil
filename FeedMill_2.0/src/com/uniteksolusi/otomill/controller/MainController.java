@@ -44,6 +44,7 @@ import com.uniteksolusi.otomill.stub.StubImplCrusherBuffer;
 import com.uniteksolusi.otomill.stub.StubImplLoadCell;
 import com.uniteksolusi.otomill.stub.StubImplManualLoad;
 import com.uniteksolusi.otomill.stub.StubImplMixer;
+import com.uniteksolusi.otomill.stub.StubImplSiloPakan;
 //import com.uniteksolusi.otomill.stub.StubImplSimpleBuffer;
 import com.uniteksolusi.otomill.stub.StubSerial;
 import java.io.File;
@@ -344,6 +345,7 @@ public class MainController {
 		Logger stubSerialLogger = Logger.getLogger(StubSerial.class.getCanonicalName());
 		stubSerialLogger.setLevel(Level.ALL);
 		stubSerialLogger.addHandler(sysoutLogHandler);
+
 		
 		StubImplCrusherBuffer cbb = new StubImplCrusherBuffer(0x11);
 		StubI2CBus.getInstance().registerStub(0x11, cbb);
@@ -381,9 +383,10 @@ public class MainController {
 		StubI2CBus.getInstance().registerStub(0x31, mx);
 		mx.start();
 		
-		StubImplLoadCell pakan = new StubImplLoadCell(0x41);
-		StubI2CBus.getInstance().registerStub(0x41, pakan);
-		pakan.start();
+		StubImplSiloPakan sPakan = new StubImplSiloPakan(0x41);
+		StubI2CBus.getInstance().registerStub(0x41, sPakan);
+		sPakan.start();
+		
 		
 		
 		//give some time for stubs to really start

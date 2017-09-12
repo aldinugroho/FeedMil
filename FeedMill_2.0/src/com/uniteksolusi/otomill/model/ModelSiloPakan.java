@@ -1,177 +1,81 @@
 package com.uniteksolusi.otomill.model;
 
 import com.pi4j.io.i2c.I2CBus;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
-public class ModelSiloPakan extends ArduinoUnoModel implements MixerLoaderIfc, LoadCellIfc {
+public class ModelSiloPakan extends ArduinoUnoModel {
 
-	public static final byte outputOpen = HIGH;   
-	public static final byte outputClose = LOW; 
-	
-	transient byte pinRelayPneumaticOutput = 4;
-	transient byte pinBufferLevelSilo[] = {6,7};
-	transient byte pinRelayBucketSilo = 8;
-	
-	boolean manualSilo = false;
-	boolean isInputSilo = false;
-	boolean isOutputSilo = false;
+	transient byte pinBufferLevelSilo[] = {2,3};
+	transient byte pinRelayBucketSilo = 4;
+	transient byte pinLEDsilo = 5;
 	
 	byte currentFillLevelSilo = 0;
-	byte fillingState = 0;
-	byte fillState = 2; //0=off,1=fill,2=auto
-	int currentWeight = 0;
-	public byte fillLevelSilo = 1; //0 = empty. 1 = full
-	public int targetWeight = 10;
-	public int emptyTolerance = 0;
-	public int fullTolerance = 0;
+	byte fillStateSilo = 2; //0=off,1=fill,2=auto
+	
+	//when to start filling in auto mode
+	public byte fillLevelSilo = 0;
+	
+	//status json
+	boolean isSiloStartFilling = false;
+	boolean manualMode = false;
 	
 	public ModelSiloPakan(I2CBus bus, int address) {
 		// TODO Auto-generated constructor stub
-		super(bus, address, 14, 4, 6); //2 bytes for weight
-	}
-	
-	public ModelSiloPakan(I2CBus bus, int address, int targetWeight) {
-		super(bus, address, 14, 4, 6);
-		this.targetWeight = targetWeight;
-	}
-
-
-
-	@Override
-	public int getCurrentWeight() {
-		// TODO Auto-generated method stub
-		return currentWeight;
-	}
-
-	@Override
-	public int getTargetWeight() {
-		// TODO Auto-generated method stub
-		return targetWeight;
-	}
-	
-	public void setTargetWeight(int target) {
-		this.targetWeight = target;
-	}
-
-	@Override
-	public int getEmptyTolerance() {
-		// TODO Auto-generated method stub
-		return emptyTolerance;
-	}
-	
-	public void setEmptyTolerance(int toleranceKg) {
-		this.emptyTolerance = toleranceKg;
-	}
-
-	@Override
-	public int getFullTolerance() {
-		// TODO Auto-generated method stub
-		return fullTolerance;
-	}
-
-	@Override
-	public void startFilling() {
-		// TODO Auto-generated method stub
-		isInputSilo = true;
-		fillingState = 1;
-		
-	}
-
-	@Override
-	public void stopFilling() {
-		// TODO Auto-generated method stub
-		isInputSilo = false;
-		fillingState = 2;
-		
-	}
-
-	@Override
-	public void startEjecting() {
-		// TODO Auto-generated method stub
-		digitalWrite(pinRelayPneumaticOutput, outputOpen);
-		isOutputSilo = true;
-		fillingState = 3;
-		
-	}
-
-	@Override
-	public void stopEjecting() {
-		// TODO Auto-generated method stub
-		digitalWrite(pinRelayPneumaticOutput, outputClose);
-		isOutputSilo = false;
-		fillingState = 0;
-	}
-
-	@Override
-	public boolean isReadyForFilling() {
-		// TODO Auto-generated method stub
-		if (fillingState == 0){
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean isFilling() {
-		// TODO Auto-generated method stub
-		if (fillingState == 1) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean isReadyForEject() {
-		// TODO Auto-generated method stub
-		if (fillingState == 2) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public boolean isEjecting() {
-		// TODO Auto-generated method stub
-		if (fillingState == 3) {
-			return true;
-		}
-		return false;
+		super(bus, address);
 	}
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		pinMode(pinRelayPneumaticOutput, OUTPUT);
+		pinMode(pinRelayBucketSilo, OUTPUT);
 		pinMode(pinBufferLevelSilo[0], INPUT);
 		pinMode(pinBufferLevelSilo[1], INPUT);
-		pinMode(pinRelayBucketSilo, OUTPUT);
+		pinMode(pinLEDsilo, INPUT);
+		pinMode(pinLEDsilo, OUTPUT);
+		
 	}
 
 	@Override
 	protected void mainLoop() {
+		// TODO Auto-generated method stub
+		if (digitalRead(pinBufferLevelSilo[0]) == LOW) this.currentFillLevelSilo = 0;
+		if (digitalRead(pinBufferLevelSilo[1]) == LOW) this.currentFillLevelSilo = 1;
 		
-		if(digitalRead(pinBufferLevelSilo[0]) == LOW) this.currentFillLevelSilo = 0;
-		if(digitalRead(pinBufferLevelSilo[1]) == LOW) this.currentFillLevelSilo = 1;
-		
-		if (manualSilo == false) {
-			if (fillState == 2) {
-				if (digitalRead(pinBufferLevelSilo[fillLevelSilo]) == LOW) {
+		if (manualMode == false) {
+			if (fillStateSilo == 2) {
+				if (isSiloFull()) {
 					digitalWrite(pinRelayBucketSilo, LOW);
-					isInputSilo = false;
-				} else if (digitalRead(pinBufferLevelSilo[0]) == HIGH) {
+				} else if (isSiloToFill()) {
 					digitalWrite(pinRelayBucketSilo, HIGH);
-					isInputSilo = true;
 				}
-			} else if (fillingState == 0) {
+			} else if (fillStateSilo == 0) {
 				digitalWrite(pinRelayBucketSilo, LOW);
-				isInputSilo = false;
-			} else if (fillState == 1) {
+			} else if (fillStateSilo == 1) {
 				digitalWrite(pinRelayBucketSilo, HIGH);
-				isInputSilo = true;
 			}
-		} else {
-			
 		}
+		
+	}
+	
+	void digitalWrite(byte pinNumber, byte highLow) {
+		super.digitalWrite(pinNumber, highLow);
+		
+		if (highLow == LOW) {
+			if (pinNumber == pinRelayBucketSilo) {
+				isSiloStartFilling = false;
+			}
+		} else if (highLow == HIGH) {
+			if (pinNumber == pinRelayBucketSilo) {
+				isSiloStartFilling = true;
+			}
+		}
+	}
+	
+	private boolean isSiloFull() {
+		return (digitalRead(pinBufferLevelSilo[1]) == LOW);
+	}
+	
+	private boolean isSiloToFill() {
+		return (digitalRead(pinBufferLevelSilo[fillLevelSilo]) == HIGH);
 	}
 
 	@Override
@@ -180,67 +84,22 @@ public class ModelSiloPakan extends ArduinoUnoModel implements MixerLoaderIfc, L
 		
 	}
 
-	private int lastWeight = -1;
-	
 	@Override
 	protected void readResponseByteSpecific(byte[] responseByte) {
 		// TODO Auto-generated method stub
 		
-		logger.fine(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " > READ RESPONSE SPECIFIC: ");
-
-		lastWeight = currentWeight;
-
-		//read the current weight from byte[3] and [4]
-		currentWeight =     (  Math.abs((responseByte[3] >> 4)                       * 1000   )) +
-
-							(  Math.abs(( responseByte[3] - ((responseByte[3] >> 4)*16) ) * 100    )) +
-
-							(  Math.abs((responseByte[4] >> 4)                       * 10     )) +
-
-							(  Math.abs(( responseByte[4] - ((responseByte[4] >> 4)*16) ) * 1      )) ;
-
-		if(currentWeight < 0) {
-
-			logger.warning(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " Current Weight is NEGATIVE!! : " + currentWeight );
-		}
-
-		logger.fine(this.getClass().getSimpleName() + "("+this.i2cDevice.getAddress()+")" + " Cur/Tar Weight: " + currentWeight + "  /  " + targetWeight);
-		
-		//check if lastWeight have same weight with currentWeight
-		
 	}
 	
 	public void manualSilo() {
-		if (manualSilo == true) {
-			manualSilo = false;
+		if (manualMode == true) {
+			manualMode = false;
 		} else {
-			manualSilo = true;
+			manualMode = true;
 		}
-	}
-	
-public String getStateString() {
-		
-		switch(fillingState) {
-
-		case 0: 
-			return "READY";
-		case 1: 
-			return "FILLING";
-		case 2: 
-			return "WAITING FOR EJECT (FULL)";
-		case 3: 
-			return "EJECTING";
-		default: 
-			return "STOPPED";
-
-		}
-	
 	}
 	
 	public String printStateDetails() {
-		
-		StringBuffer sb  = new StringBuffer(super.printStateDetails());
-		
+		StringBuffer sb = new StringBuffer(super.printStateDetails());
 		sb.append("\n");
 		String tempString = "STOP";
 		if (digitalRead(pinRelayBucketSilo)==HIGH) {
@@ -250,59 +109,27 @@ public String getStateString() {
 		sb.append("\nSILO Level . . . :\t " + digitalRead(this.pinBufferLevelSilo[0]) +""+ digitalRead(this.pinBufferLevelSilo[1]));
 		
 		sb.append("\n");
-		sb.append("\nOutput Close/Open:\t " + digitalRead(pinRelayPneumaticOutput));
+		sb.append("\nOutput Close/Open:\t " + digitalRead(pinRelayBucketSilo));
 		
 		return sb.toString();
 		
 	}
-
 	
 	public String processCommand(String stringCommand) {
-		
 		String[] cmds = stringCommand.trim().split(" ");
-		
-		if(cmds.length > 0) {
-		
-			if("startFilling".equals(cmds[0])) {
-				this.startFilling();
-				return "OK";
-			}
-			
-			if("stopFilling".equals(cmds[0])) {
-				this.stopFilling();
-				return "OK"; 
-			}
-			
-			if("startEjecting".equals(cmds[0])) {
-				this.startEjecting();
-				return "OK"; 
-			}
-			
-			if("stopEjecting".equals(cmds[0])) {
-				this.stopEjecting();
-				return "OK"; 
-			}
-			
-			if("setTarget".equals(cmds[0])) {
-				int target = Integer.valueOf(cmds[1]);
-				this.setTargetWeight(target);
-				return "OK";
-			}
-			
-			if ("manualSilo".equals(cmds[0])) {
+		if (cmds.length > 0) {
+			if ("manualMode".equals(cmds[0])) {
 				this.manualSilo();
 				return "OK";
 			}
-			
 		}
-		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startFilling, stopFilling, startEjecting, stopEjecting, manualSilo, setTarget(spasi)(new Target Weight)\n";
+								+": manualMode\n";
 		}
 		return parentResponse;
 	}
-	
+
 }

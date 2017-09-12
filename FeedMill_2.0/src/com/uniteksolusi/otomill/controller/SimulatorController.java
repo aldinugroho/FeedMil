@@ -78,8 +78,8 @@ public class SimulatorController {
 		
 		//x41
 		File SiloStateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x41" + ".state");
-		byte pinBufferLevelSilo[] = {6,7};
-		byte pinRelayBucketSilo = 8;
+		byte pinBufferLevelSilo[] = {2,3};
+		byte pinRelayBucketSilo = 4;
 		siloSimulator = new StubBufferSiloSimulatorBaru(SiloStateFile, pinBufferLevelSilo, pinRelayBucketSilo);
 
 		

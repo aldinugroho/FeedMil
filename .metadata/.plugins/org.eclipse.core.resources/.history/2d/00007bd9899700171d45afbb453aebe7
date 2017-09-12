@@ -1,0 +1,9 @@
+package com.uniteksolusi.otomill.model;
+
+public class ModelSiloPakan {
+
+	public ModelSiloPakan() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

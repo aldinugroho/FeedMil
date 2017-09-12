@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.nio.file.Files"/>
-<fullyQualifiedTypeName name="java.nio.file.Paths"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.controller.CommandController"/>
@@ -46,7 +44,6 @@
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubImplLoadCell"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubI2CBus"/>
 <fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubBufferSiloSimulator"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubLoadCellSimulator"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.ModelSiloPakan"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.fastinfoset.tools.FI_StAX_SAX_Or_XML_SAX_SAXEvent"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubBufferSiloSimulator"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubBufferSiloSimulatorBaru"/>
 </qualifiedTypeNameHistroy>

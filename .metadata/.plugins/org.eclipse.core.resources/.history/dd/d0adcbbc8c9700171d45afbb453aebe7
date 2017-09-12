@@ -1,6 +1,10 @@
 package com.uniteksolusi.otomill.controller;
 
 import java.io.File;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +21,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.StreamHandler;
 
+import com.csvreader.CsvWriter;
 import com.pi4j.io.i2c.I2CBus;
 import com.sun.net.httpserver.HttpServer;
 import com.uniteksolusi.otomill.http.CLIHttpHandler;
@@ -32,13 +37,14 @@ import com.uniteksolusi.otomill.model.ModelLoadCell;
 import com.uniteksolusi.otomill.model.ModelLoadCellMultiIn;
 import com.uniteksolusi.otomill.model.ModelManualLoad;
 import com.uniteksolusi.otomill.model.ModelMixer;
-import com.uniteksolusi.otomill.model.ModelSimpleBuffer;
+import com.uniteksolusi.otomill.model.ModelSiloPakan;
+//import com.uniteksolusi.otomill.model.ModelSimpleBuffer;
 import com.uniteksolusi.otomill.stub.StubI2CBus;
 import com.uniteksolusi.otomill.stub.StubImplCrusherBuffer;
 import com.uniteksolusi.otomill.stub.StubImplLoadCell;
 import com.uniteksolusi.otomill.stub.StubImplManualLoad;
 import com.uniteksolusi.otomill.stub.StubImplMixer;
-import com.uniteksolusi.otomill.stub.StubImplSimpleBuffer;
+//import com.uniteksolusi.otomill.stub.StubImplSimpleBuffer;
 import com.uniteksolusi.otomill.stub.StubSerial;
 import java.io.File;
 import java.io.FileWriter;
@@ -49,6 +55,7 @@ public class MainController {
 	public static long DEFAULT_SLEEP_CYCLE = 1000;
 	
 	private static MainController instance;
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 	
 	public static MainController getInstance() {
 		if(instance == null) {
@@ -73,6 +80,7 @@ public class MainController {
 	private Map<String, ArduinoModelIfc> modelMap;
 	private String[] idModels;
 	private String[] idLoaderFirstEject;
+	private String[] idLoaderAllEject;
 	private int[] minWeightBeforeEjectAll;
 	private String[] idMixerLoader;
 	private String idMixer;
@@ -113,10 +121,14 @@ public class MainController {
 		model.fillLevelSBM1 = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.sbm1", "0"));
 		model.fillLevelSBM2 = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.sbm2", "0"));
 		
+		model.fillLevelMBM = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.mbm", "0"));
+		model.fillLevelGrit = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.grit", "0"));
+		model.fillLevelKatul = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.katul", "0"));
+		
 		registerModel(model);
 		
 	}
-	
+/*	
 	private void initModelSimpleBuffer(String id, Properties config) {
 		
 		ModelSimpleBuffer model = new ModelSimpleBuffer(getBus(), Integer.decode(id));
@@ -130,6 +142,7 @@ public class MainController {
 		registerModel(model);
 		
 	}
+*/	
 	
 	private void initModelLoadCellMultiIn(String id, Properties config) {
 		
@@ -157,6 +170,14 @@ public class MainController {
 		
 		registerModel(model);
 		
+	}
+	
+	private void initModelSiloPakan(String id, Properties config) {
+		ModelSiloPakan model = new ModelSiloPakan(getBus(), Integer.decode(id));
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		model.fillLevelSilo = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.silo", "0"));
+		
+		registerModel(model);
 	}
 	
 	private void initModelManualLoad(String id, Properties config) {
@@ -206,12 +227,12 @@ public class MainController {
 						
 						initModelCrusherBuffer(idModels[i], config);
 						
-					} else if(type.equals("ModelSimpleBuffer")) {
+	//				} else if(type.equals("ModelSimpleBuffer")) {
 						
-						initModelSimpleBuffer(idModels[i], config);
+	//					initModelSimpleBuffer(idModels[i], config);
 						
 					} else if(type.equals("ModelLoadCellMultiIn")) {
-						
+					
 						initModelLoadCellMultiIn(idModels[i], config);
 						
 					} else if(type.equals("ModelLoadCell")) {
@@ -226,6 +247,9 @@ public class MainController {
 						
 						initModelMixer(idModels[i], config);
 						
+					} else if (type.equals("ModelSiloPakan")) {
+						
+						initModelSiloPakan(idModels[i], config);
 					}
 //				}
 			}
@@ -325,7 +349,7 @@ public class MainController {
 		StubI2CBus.getInstance().registerStub(0x11, cbb);
 		cbb.start();
 		
-		StubImplSimpleBuffer sb = new StubImplSimpleBuffer(0x12);
+		StubImplCrusherBuffer sb = new StubImplCrusherBuffer(0x12);
 		StubI2CBus.getInstance().registerStub(0x12, sb);
 		sb.start();
 		
@@ -356,6 +380,10 @@ public class MainController {
 		StubImplMixer mx = new StubImplMixer(0x31);
 		StubI2CBus.getInstance().registerStub(0x31, mx);
 		mx.start();
+		
+		StubImplLoadCell pakan = new StubImplLoadCell(0x41);
+		StubI2CBus.getInstance().registerStub(0x41, pakan);
+		pakan.start();
 		
 		
 		//give some time for stubs to really start
@@ -425,6 +453,16 @@ public class MainController {
 			alreadyLoadedMap.put(idLoaderFirstEject[i], curModel);
 		}
 		
+	}
+	
+	private void ejectAllMixer(){
+		
+		alreadyLoadedMap.clear();
+		for(int i=0; i<idLoaderAllEject.length; i++){
+			MixerLoaderIfc curModel = (MixerLoaderIfc) this.getModel(idLoaderAllEject[i]);
+			curModel.startEjecting();
+			alreadyLoadedMap.put(idLoaderAllEject[i], curModel);
+		}
 	}
 	
 	private boolean isReadyForEjectAll() {
@@ -536,8 +574,11 @@ public class MainController {
 				
 	}
 	
-	private void mainLoop() {
-		
+	private void mainLoop() throws IOException  {
+		Date date = new Date();
+		long time = date.getTime();
+		Timestamp timestamp = new Timestamp(time);
+		String tString = String.valueOf(timestamp);
 		if(!isInitialized) {
 			throw new RuntimeException("MainController is not initialized");
 		}
@@ -549,18 +590,52 @@ public class MainController {
 			//2. check if loader ejecting state / mixer loading state
 			if( isMixerLoadingState() ) {
 				
-				if(isReadyForEjectAll()) {
+					if(isReadyForEjectAll()) {
+						
+						//TODO before eject, log all weight to log file
 					
-					//TODO before eject, log all weight to log file
-					
-					ejectAllLoadcell();
-				}
+						ejectAllLoadcell();
+					}
 				
 			} else {
 
 				//when all load cell full and mixer ready, start ejecting (1st is jagung)
 				if(isAllMixerLoaderReadyForEject() && isMixerReadyForMixing()) {
 					
+					String outputFile = "C:/Users/aldi/Desktop/Feedmill/log/log.csv";
+					boolean alreadyExists = new File(outputFile).exists();
+					try {
+						// use FileWriter constructor that specifies open for appending
+						CsvWriter csvOutput = new CsvWriter(new FileWriter(outputFile, true), ',');
+						
+						// if the file didn't already exist then we need to write out the header line
+						if (!alreadyExists)
+						{
+							csvOutput.write("Tanggal");
+							csvOutput.write("0x21");
+							csvOutput.write("0x22");
+							csvOutput.write("0x23");
+							csvOutput.write("0x24");
+							csvOutput.write("0x25");
+							csvOutput.write("0x26");
+							csvOutput.write("Weight");
+							csvOutput.endRecord();
+						}
+						// else assume that the file already has the correct header line
+						
+						// write out a few records
+						csvOutput.write(tString);
+						for (int i=0; i<idMixerLoader.length; i++){
+							LoadCellIfc curModel = (LoadCellIfc) this.getModel(idMixerLoader[i]);
+							csvOutput.write(String.valueOf(curModel.getCurrentWeight()));
+						}	
+						csvOutput.endRecord();
+						csvOutput.close();
+						
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
 					this.startMixing();
 					this.ejectFirstMixerLoader();
 					
@@ -581,26 +656,22 @@ public class MainController {
 	
 	public void start() throws Exception {
 		initialize(System.getProperties());
+		SimulatorController.getInstance().start();
 		mainLoop();
 	}
+	
+//	public void checkVibro() throws Exception {
+		
+//	}
 
 	
 	public static void main(String[] args) throws Exception, IOException {
-		
-		
 		InputStream is = new FileInputStream(new File("./conf/otomill.conf"));
 		System.getProperties().load(is);
+		MainController.getInstance().start();
+			
 		
 
-		ModelSimpleBuffer msb = new ModelSimpleBuffer(UnitekI2CFactory.getI2CBus(), 0x12);
-		FileWriter fw = new FileWriter(new File("C:/Users/aldi/Desktop/example.txt"));
-		fw.write(msb.printStateDetails());
-		
-		MainController.getInstance().start();
-		
-	
-		
-		
 	}
 
 }

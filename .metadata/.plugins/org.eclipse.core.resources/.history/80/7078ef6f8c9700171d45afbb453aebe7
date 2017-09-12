@@ -1,0 +1,9 @@
+package com.uniteksolusi.otomill.stub;
+
+public class StubImplSiloPakan {
+
+	public StubImplSiloPakan() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

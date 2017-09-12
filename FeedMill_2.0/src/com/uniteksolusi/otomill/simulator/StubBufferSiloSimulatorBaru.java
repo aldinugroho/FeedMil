@@ -11,9 +11,9 @@ public class StubBufferSiloSimulatorBaru implements Runnable {
 	private static final Gson gson = new Gson(); //gson helper class
 	private static final int cycleTime = 3000;
 	
-	File stubStateFile; // = new File(STUB_STATE_FOLDER + "stub-" + "0x11" + ".state");
-	byte pinLevelSensor[]; // = {14,15,16};
-	byte pinRelayInput; // = 17;
+	File stubStateFile; // = new File(STUB_STATE_FOLDER + "stub-" + "0x41" + ".state");
+	byte pinLevelSensor[]; // = {2,3};
+	byte pinRelayInput; // = 4;
 	
 	boolean shouldRun = false;
 
@@ -52,7 +52,7 @@ public class StubBufferSiloSimulatorBaru implements Runnable {
 
 				if(curState[pinRelayInput] == 1) { //state is filling
 
-					if(curState[pinLevelSensor[0]] == 0) { //level 0 was filled, let's filled level 2
+					if(curState[pinLevelSensor[0]] == 0) { //level 0 was filled, let's filled level 1
 						curState[pinLevelSensor[1]] = 0;
 					}
 
@@ -63,6 +63,7 @@ public class StubBufferSiloSimulatorBaru implements Runnable {
 					if(curState[pinLevelSensor[1]] == 1) { //level 1 was empty, let's empty level 0
 						curState[pinLevelSensor[0]] = 1;
 					}
+					curState[pinLevelSensor[1]] = 1;
 	
 				}
 
