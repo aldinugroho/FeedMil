@@ -9,13 +9,18 @@ public class ModelSiloPakan extends ArduinoUnoModel implements MixerLoaderIfc, L
 	public static final byte outputClose = LOW; 
 	
 	transient byte pinRelayPneumaticOutput = 4;
+	transient byte pinBufferLevelSilo[] = {6,7};
+	transient byte pinRelayBucketSilo = 8;
 	
+	boolean manualSilo = false;
 	boolean isInputSilo = false;
 	boolean isOutputSilo = false;
 	
+	byte currentFillLevelSilo = 0;
 	byte fillingState = 0;
+	byte fillState = 2; //0=off,1=fill,2=auto
 	int currentWeight = 0;
-	
+	public byte fillLevelSilo = 1; //0 = empty. 1 = full
 	public int targetWeight = 10;
 	public int emptyTolerance = 0;
 	public int fullTolerance = 0;
@@ -137,43 +142,36 @@ public class ModelSiloPakan extends ArduinoUnoModel implements MixerLoaderIfc, L
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		pinMode(pinRelayPneumaticOutput, OUTPUT);
+		pinMode(pinBufferLevelSilo[0], INPUT);
+		pinMode(pinBufferLevelSilo[1], INPUT);
+		pinMode(pinRelayBucketSilo, OUTPUT);
 	}
 
 	@Override
 	protected void mainLoop() {
-		// TODO Auto-generated method stub
-		int weightRead = -1;
-		weightRead = getCurrentWeight();
 		
-		if(weightRead == -1) { 	
-			//do nothing, retry next loop
-		} else { //if(weightRead != -1) {
+		if(digitalRead(pinBufferLevelSilo[0]) == LOW) this.currentFillLevelSilo = 0;
+		if(digitalRead(pinBufferLevelSilo[1]) == LOW) this.currentFillLevelSilo = 1;
 		
-			int tempCurrentWeight = weightRead;
-			
-			if(fillingState == 0) { //when it's ready to start, just start immediately   
-				
-				startFilling(); 
-				
-			} else if(fillingState == 1) {
-				
-				if(tempCurrentWeight >= (targetWeight - fullTolerance) )  {
-					stopFilling();
+		if (manualSilo == false) {
+			if (fillState == 2) {
+				if (digitalRead(pinBufferLevelSilo[fillLevelSilo]) == LOW) {
+					digitalWrite(pinRelayBucketSilo, LOW);
+					isInputSilo = false;
+				} else if (digitalRead(pinBufferLevelSilo[0]) == HIGH) {
+					digitalWrite(pinRelayBucketSilo, HIGH);
+					isInputSilo = true;
 				}
-				
-			} else if(fillingState == 2) {
-				
-				//do nothing, wait for eject command
+			} else if (fillingState == 0) {
+				digitalWrite(pinRelayBucketSilo, LOW);
+				isInputSilo = false;
+			} else if (fillState == 1) {
+				digitalWrite(pinRelayBucketSilo, HIGH);
+				isInputSilo = true;
+			}
+		} else {
 			
-			} else if(fillingState == 3) {
-			
-				if(tempCurrentWeight <= (0 + emptyTolerance) ) {
-					stopEjecting();
-				}
-				
-			} 
-		
-		} 
+		}
 	}
 
 	@Override
@@ -212,6 +210,14 @@ public class ModelSiloPakan extends ArduinoUnoModel implements MixerLoaderIfc, L
 		
 	}
 	
+	public void manualSilo() {
+		if (manualSilo == true) {
+			manualSilo = false;
+		} else {
+			manualSilo = true;
+		}
+	}
+	
 public String getStateString() {
 		
 		switch(fillingState) {
@@ -234,9 +240,14 @@ public String getStateString() {
 	public String printStateDetails() {
 		
 		StringBuffer sb  = new StringBuffer(super.printStateDetails());
+		
 		sb.append("\n");
-		sb.append("\nState:\t " + fillingState + " / " + this.getStateString()); 
-		sb.append("\nWeight:\t " + this.getCurrentWeight() + " / " + this.getTargetWeight() );
+		String tempString = "STOP";
+		if (digitalRead(pinRelayBucketSilo)==HIGH) {
+			tempString = "FILL";
+		}
+		sb.append("\nSILO Fill State .:\t " + tempString + " (Conf: " + fillLevelSilo + ")");
+		sb.append("\nSILO Level . . . :\t " + digitalRead(this.pinBufferLevelSilo[0]) +""+ digitalRead(this.pinBufferLevelSilo[1]));
 		
 		sb.append("\n");
 		sb.append("\nOutput Close/Open:\t " + digitalRead(pinRelayPneumaticOutput));
@@ -278,13 +289,18 @@ public String getStateString() {
 				return "OK";
 			}
 			
+			if ("manualSilo".equals(cmds[0])) {
+				this.manualSilo();
+				return "OK";
+			}
+			
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startFilling, stopFilling, startEjecting, stopEjecting, setTarget(spasi)(new Target Weight)\n";
+								+": startFilling, stopFilling, startEjecting, stopEjecting, manualSilo, setTarget(spasi)(new Target Weight)\n";
 		}
 		return parentResponse;
 	}

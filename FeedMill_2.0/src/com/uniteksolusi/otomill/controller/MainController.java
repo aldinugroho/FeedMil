@@ -173,13 +173,11 @@ public class MainController {
 	}
 	
 	private void initModelSiloPakan(String id, Properties config) {
-		ModelSiloPakan siloPakan = new ModelSiloPakan(getBus(), Integer.decode(id));
-		siloPakan.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
-		siloPakan.targetWeight = Integer.valueOf(config.getProperty("model."+id+".attribute.tagetWeight", "10"));
-		siloPakan.emptyTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.emptyTolerance", "0"));
-		siloPakan.fullTolerance = Integer.valueOf(config.getProperty("model."+id+".attribute.fullTolerance", "0"));
+		ModelSiloPakan model = new ModelSiloPakan(getBus(), Integer.decode(id));
+		model.cycleDelay = Integer.valueOf(config.getProperty("model."+id+".cycletime", "500"));
+		model.fillLevelSilo = Byte.valueOf(config.getProperty("model."+id+".attribute.filllevel.silo", "0"));
 		
-		registerModel(siloPakan);
+		registerModel(model);
 	}
 	
 	private void initModelManualLoad(String id, Properties config) {

@@ -1,0 +1,30 @@
+package com.uniteksolusi.otomill.controller;
+
+import java.io.IOException;
+
+public class MainCtrl {
+	
+	public static long DEFAULT_SLEEP_CYCLE = 1000;
+	private static MainCtrl instance;
+
+	public static MainCtrl getInstance() throws IOException {
+		if(instance == null) {
+			try {
+				instance = new MainCtrl();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return instance;
+	}
+	
+	private MainCtrl() throws IOException {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

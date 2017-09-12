@@ -1,0 +1,9 @@
+package com.uniteksolusi.otomill.simulator;
+
+public class StubBufferSiloSimulatorBaru {
+
+	public StubBufferSiloSimulatorBaru() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

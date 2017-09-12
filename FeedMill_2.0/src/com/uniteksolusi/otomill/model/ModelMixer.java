@@ -12,6 +12,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	transient byte pinRelayMixer = 3;
 	transient byte pinRelayPneumaticOutput = 4;
 	transient byte pinRelayScrewOut = 5;
+	transient byte pinRelayBucketOut = 6;
 	transient byte pinBufferLevelPakan[] = {10,11}; //low and full
 	byte currentFillLevelPakan = 0;
 	byte fillStatePakan = 1; //0=manual, 1=auto
@@ -54,6 +55,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	boolean isOutputOpen = false;
 	boolean isScrewOutOn = false;
 	boolean isBucketOutOn = false;
+	boolean manualMode = false;
 	
 	//boolean isBucketOutOn = false;
 
@@ -85,6 +87,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		pinMode(pinRelayMixer, OUTPUT);   
 		pinMode(pinRelayPneumaticOutput, OUTPUT);
 		pinMode(pinRelayScrewOut, OUTPUT);
+		pinMode(pinRelayBucketOut, OUTPUT);
 		pinMode(pinBufferLevelPakan[0], INPUT);
 		pinMode(pinBufferLevelPakan[1], INPUT);
 		pinMode(pinSensorMixerEmpty, INPUT);
@@ -104,69 +107,75 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		
 		//0/1/2/3 = ready / mixing / done mixing / ejecting
 		
-		if(mixingState == 0) { //ready, do nothing, wait for instruction
-			
-			logger.finer(this.getId() + " > Mixing State = 0 -> Ready, WAIT for input");
-			
-		} else if(mixingState == 1) { //mixing process
-			
-			logger.finer(this.getId() + " > Mixing State = 1 -> MIXING");
-			
-			if( (System.currentTimeMillis() - startMixingTime + mixingTimeCalibration) > (mixingDuration) ) {
-				//it's time, stop
-				stopMixing();
-			} 
-			
-		} else if(mixingState == 2) { //done mixing
-			
-			logger.finer(this.getId() + " > Mixing State = 2 -> Mixing DONE");
-			
-			startEjecting(); //TODO eject directly?
-		
-		} else if(mixingState == 3) { //ejecting state
-			
-			logger.finer(this.getId() + " > Mixing State = 3 -> EJECTING");
-			if( (System.currentTimeMillis() - startEjectingTime + ejectingTimeCalibration) > (ejectingDuration) ) {
-				//it's time, stop
-				stopEjecting();
-			}
-			//if empty, go back to ready
-			if(digitalRead(pinSensorMixerEmpty) == HIGH) { //high means no obstacle (empty), repeat the reading x times
+		if(manualMode == false){
+			if(mixingState == 0) { //ready, do nothing, wait for instruction
 				
-				if(!isReadingMixingEmpty) { //first time reading
-					
-					isReadingMixingEmpty = true;
-					readingMixingEmptyCount = 1;
-					
+				logger.finer(this.getId() + " > Mixing State = 0 -> Ready, WAIT for input");
+				
+			} else if(mixingState == 1) { //mixing process
+				
+				logger.finer(this.getId() + " > Mixing State = 1 -> MIXING");
+				
+				if( (System.currentTimeMillis() - startMixingTime + mixingTimeCalibration) > (mixingDuration) ) {
+					//it's time, stop
+					stopMixing();
 				} 
 				
-				if(readingMixingEmptyCount < mixerEmptyReadingRetry) { //not enough retry yet
+			} else if(mixingState == 2) { //done mixing
+				
+				logger.finer(this.getId() + " > Mixing State = 2 -> Mixing DONE");
+				
+				startEjecting(); //TODO eject directly?
+			
+			} else if(mixingState == 3) { //ejecting state
+				
+				logger.finer(this.getId() + " > Mixing State = 3 -> EJECTING");
+				if( (System.currentTimeMillis() - startEjectingTime + ejectingTimeCalibration) > (ejectingDuration) ) {
+					//it's time, stop
+					stopEjecting();
+				}
+				//if empty, go back to ready
+				if(digitalRead(pinSensorMixerEmpty) == HIGH) { //high means no obstacle (empty), repeat the reading x times
+					
+					if(!isReadingMixingEmpty) { //first time reading
+						
+						isReadingMixingEmpty = true;
+						readingMixingEmptyCount = 1;
+						
+					} 
+					
+					if(readingMixingEmptyCount < mixerEmptyReadingRetry) { //not enough retry yet
 
-					readingMixingEmptyCount++;
-//					try {
-//						Thread.sleep(mixerEmptyReadingCycle);
-//					} catch (InterruptedException e) {
-//						System.err.println(this + " > sleep interrupted.");
-//					}
-				
-				} else { //enough retry, stop ejecting
-				
+						readingMixingEmptyCount++;
+//						try {
+//							Thread.sleep(mixerEmptyReadingCycle);
+//						} catch (InterruptedException e) {
+//							System.err.println(this + " > sleep interrupted.");
+//						}
+					
+					} else { //enough retry, stop ejecting
+					
+						isReadingMixingEmpty = false; 
+						readingMixingEmptyCount = 0;
+						
+						stopEjecting();
+						
+					}
+					
+					
+				} else if(digitalRead(pinSensorMixerEmpty) == LOW) { //some obstacle, not empty yet
+					
 					isReadingMixingEmpty = false; 
 					readingMixingEmptyCount = 0;
 					
-					stopEjecting();
-					
 				}
-				
-				
-			} else if(digitalRead(pinSensorMixerEmpty) == LOW) { //some obstacle, not empty yet
-				
-				isReadingMixingEmpty = false; 
-				readingMixingEmptyCount = 0;
-				
-			}
+			
+			}	
+		} else{
+			
+		}
 		
-		} 
+		 
 		
 	}
 
@@ -230,11 +239,12 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	public void startEjecting() {
 
 		mixingState = 3;
-		digitalWrite(pinRelayScrewOut, HIGH); 
+		digitalWrite(pinRelayScrewOut, HIGH);
+		digitalWrite(pinRelayBucketOut, HIGH);
 		isScrewOutOn = true;
 		isBucketOutOn = true;
 		startEjectingTime = System.currentTimeMillis();
-
+//kurang pin relay write
 		digitalWrite(pinRelayPneumaticOutput, outputOpen);
 		isOutputOpen = true;
 		
@@ -250,7 +260,9 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 
 		digitalWrite(pinRelayPneumaticOutput, outputClose);
 		isOutputOpen = false;
-
+		isBucketOutOn = false;
+		digitalWrite(pinRelayScrewOut, LOW);
+		digitalWrite(pinRelayBucketOut, LOW);
 		if(!screwOutAlwaysOn) {
 			digitalWrite(pinRelayScrewOut, LOW); 
 			isScrewOutOn = false;
@@ -258,7 +270,33 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		
 	}
 
+	public void switchInputBucketOutOn() {
+		if(digitalRead(pinRelayBucketOut) == LOW) {
+			digitalWrite(pinRelayBucketOut, HIGH);
+			isBucketOutOn = true;
+		} else {
+			digitalWrite(pinRelayBucketOut, LOW);
+			isBucketOutOn = false;
+		}
+	}
 	
+	public void switchInputScrewOutOn() {
+		if(digitalRead(pinRelayScrewOut) == LOW) {
+			digitalWrite(pinRelayScrewOut, HIGH);
+			isScrewOutOn = true;
+		} else {
+			digitalWrite(pinRelayScrewOut, LOW);
+			isScrewOutOn = false;
+		}
+	}
+	
+	public void switchToManualMode() {
+		if(manualMode == true) {
+			manualMode = false;
+		} else {
+			manualMode = true;
+		}
+	}
 
 	public String getStateString() {
 		
@@ -322,13 +360,28 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 				return "OK"; 
 			}
 			
+			if("switchInputScrewOutOn".equals(cmds[0])) {
+				this.switchInputScrewOutOn();
+				return "OK"; 
+			}
+			
+			if("switchInputBucketOutOn".equals(cmds[0])) {
+				this.switchInputBucketOutOn();
+				return "OK"; 
+			}
+			
+			if("switchToManualMode".equals(cmds[0])) {
+				this.switchToManualMode();
+				return "OK"; 
+			}
+			
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startMixing, stopMixing, startEjecting, stopEjecting\n";
+								+": startMixing, stopMixing, startEjecting, stopEjecting, switchInputSrewOutOn, switchInputBucketOutOn, switchToManualMode\n";
 		}
 		return parentResponse;
 	}

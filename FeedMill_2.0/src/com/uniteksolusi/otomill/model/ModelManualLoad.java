@@ -24,6 +24,7 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 	
 	transient public int tubeEmptyReadingRetry = 4; //how many times to retry
 	
+	
 	//waiting for 5 seconds, reading every 0.5 sec. So total 10 readings
 
 	
@@ -48,7 +49,7 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 	boolean isFilled = false;
 	boolean isReadyToEject = false;
 	boolean isOutputOpen = false;
-	
+	boolean isejecting = false;
 	
 	public ModelManualLoad(I2CBus bus, int address) {
 		super(bus, address);
@@ -192,7 +193,7 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 			
 //			System.out.println
 			logger.finer(this.getId() + " > Filling State = 3 -> EJECTING");
-
+			isejecting = true;
 			toggleEjectLED();
 			if(digitalRead(pinSensorTubeLoaded) == HIGH) { //high means no obstacle (empty), repeat the reading x times
 				
@@ -273,6 +274,7 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 		isFilled = false;
 		isReadyToEject = false;
 		isOutputOpen = true;
+		isejecting = true;
 
 	}
 	
@@ -281,6 +283,7 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 		digitalWrite(pinRelayReadyForEjectLight, LOW);
 		digitalWrite(pinRelayReadyForFilling, HIGH);
 		fillingState = 0;
+		isejecting = false;
 	}
 	
 

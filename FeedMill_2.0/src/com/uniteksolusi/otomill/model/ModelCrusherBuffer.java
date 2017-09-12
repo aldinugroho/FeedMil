@@ -120,6 +120,17 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	boolean isGritBucketOn = false;
 	boolean isKatulBucketOn = false;
 
+	//status manual mode
+	boolean manualJagung1 = false;
+	boolean manualJagung2 = false;
+	boolean manualSBM1 = false;
+	boolean manualGrit = false;
+	boolean manualKatul = false;
+	boolean manualSBM2 = false;
+	boolean manualMBM = false;
+	boolean manualCleaner = false;
+	boolean manualCrusher = false;
+	
 	public ModelCrusherBuffer(I2CBus bus, int address) {
 		super(bus, address);
 	}
@@ -236,6 +247,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		if(digitalRead(pinBufferLevelKatul[1]) == LOW) this.currentFillLevelKatul = 1;
 		if(digitalRead(pinBufferLevelKatul[2]) == LOW) this.currentFillLevelKatul = 2;
 		
+	if (manualJagung1 == false) {
 		
 		if(sharedBucketJagungOrSbm == 0) { //jagung
 			
@@ -273,51 +285,65 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 
 				}
 
-			} if(curOutput == 1) { //jagung2  
+			}
+	} else {
+		
+	}
+		
+	if (manualJagung2) {
+		
+		if(curOutput == 1) { //jagung2  
+			
+			moveCrusherOutToJagung2();
+
+			if(fillStateJagung2 == 2) {
 				
-				moveCrusherOutToJagung2();
-
-				if(fillStateJagung2 == 2) {
+				if(isJagung2Full()) {
+					turnOffCleanerCrusherLine(); 
 					
-					if(isJagung2Full()) {
-						turnOffCleanerCrusherLine(); 
-						
-						
-						if(fillStateJagung1==2 && !isJagung1Full()) {
-							
-							moveCrusherOutToJagung1();
 					
-						} else { //both are full
-							
-							turnOffCleanerCrusherLine();
+					if(fillStateJagung1==2 && !isJagung1Full()) {
 						
-						}
+						moveCrusherOutToJagung1();
+				
+					} else { //both are full
 						
-					} else if(isJagung2ToFill()) {
-						
-						turnOnCleanerCrusherLine();
+						turnOffCleanerCrusherLine();
+					
 					}
-
-				} else if(fillStateJagung2 == 1) {
 					
-					turnOnCleanerCrusherLine(); //lower than fill level, start the bucket
-
-				} else if(fillStateJagung2 == 0) { //off
+				} else if(isJagung2ToFill()) {
 					
-					turnOffCleanerCrusherLine();
-
+					turnOnCleanerCrusherLine();
 				}
 
-			} else { //setting is set for jagung, but crusher out not yet set for jagung
-
-				//let's start with jagung1
+			} else if(fillStateJagung2 == 1) {
 				
-				moveCrusherOutToJagung1();
+				turnOnCleanerCrusherLine(); //lower than fill level, start the bucket
+
+			} else if(fillStateJagung2 == 0) { //off
+				
+				turnOffCleanerCrusherLine();
 
 			}
 
+		} else { //setting is set for jagung, but crusher out not yet set for jagung
 
-		} else if(sharedBucketJagungOrSbm == 1) { //sbm1
+			//let's start with jagung1
+			
+			moveCrusherOutToJagung1();
+
+		}
+
+
+	}
+	} else {
+		
+	}
+		
+	if (manualSBM1 ==  false) {
+		
+		if(sharedBucketJagungOrSbm == 1) { //sbm1
 
 			//sbm 1
 			if(curOutput == 2) { //sbm1
@@ -354,7 +380,13 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 
 		}
 
+	} else {
+		
+	}
+		
+		
 		//sbm 2
+	if (manualSBM2 == false) {
 		if(fillStateSBM2 == 2) { //0=off, 1=on, 2=auto
 //			digitalWrite(pinLEDSBMHalus, HIGH);
 			if(isSBM2Full()) { //level 2 = full, IR obstacle read 0 = there is obstacle
@@ -372,9 +404,14 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			digitalWrite(pinRelayBucketSBM2, HIGH); //start the bucket
 		}
 		
-		
+	} else {
+
+	}
+	
+	
 		//New Configuration from ArduinoUno
 		//mbm
+	if (manualMBM == false) {
 		if(fillStateMBM == 2) {
 //			digitalWrite(pinLEDMBM, HIGH);
 			if(digitalRead(pinBufferLevelMBM[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
@@ -395,10 +432,13 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			digitalWrite(pinRelayBucketMBM, HIGH); //start the bucket
 			isMBMBucketOn = true;
 		}
+	} else {
 		
+	}
 		
 		//Grit
 //		digitalWrite(pinLEDGrit, HIGH);
+	if (manualGrit == false) {
 		if(fillStateGrit == 2) {
 //			digitalWrite(pinLEDGrit, HIGH);
 			if(digitalRead(pinBufferLevelGrit[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
@@ -419,10 +459,13 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			digitalWrite(pinRelayBucketGrit, HIGH); //start the bucket
 			isGritBucketOn = true;
 		}
+	} else {
 		
+	}
 		
 		//Katul
 	//	digitalWrite(pinLEDKatul, HIGH);
+	if (manualKatul == false) {
 		if(fillStateKatul == 2) {
 			digitalWrite(pinLEDKatul, LOW);
 			if(digitalRead(pinBufferLevelKatul[2]) == LOW) { //level 2 = full, IR obstacle read 0 = there is obstacle
@@ -442,11 +485,12 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			digitalWrite(pinRelayBucketKatul, HIGH); //start the bucket
 			isKatulBucketOn = true;
 		}
-	}
-		// ====== Screw Manual Mode =======
+	} else {
 		
-	
-	
+	}
+		
+	}
+		
 	private boolean isJagung1Full() {
 		return (digitalRead(pinBufferLevelJagung1[2]) == LOW);
 	}
@@ -558,6 +602,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 	}
 	
 	
+	
 	void digitalWrite(byte pinNumber, byte highLow) {
 		
 		super.digitalWrite(pinNumber, highLow);
@@ -611,6 +656,61 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			
 		} 
 
+	}
+	
+	public void manualJagung1() {
+		if (manualJagung1 == true) {
+			manualJagung1 = false;
+		} else {
+			manualJagung1 = true;
+		}
+	}
+
+	public void manualJagung2() {
+		if (manualJagung2 == true) {
+			manualJagung2 = false;
+		} else {
+			manualJagung2 = true;
+		}
+	}
+	
+	public void manualSBM1() {
+		if (manualSBM1 == true) {
+			manualSBM1 = false;
+		} else {
+			manualSBM1 = true;
+		}
+	}
+	public void manualMBM() {
+		if (manualMBM == true) {
+			manualMBM = false;
+		} else {
+			manualMBM = true;
+		}
+	}
+	
+	public void manualGrit() {
+		if (manualGrit == true) {
+			manualGrit = false;
+		} else {
+			manualGrit = true;
+		}
+	}
+	
+	public void manualKatul() {
+		if (manualKatul == true) {
+			manualKatul = false;
+		} else {
+			manualKatul = true;
+		}
+	}
+	
+	public void manualSBM2() {
+		if (manualSBM2 == true) {
+			manualSBM2 = false;
+		} else {
+			manualSBM2 = true;
+		}
 	}
 	
 	public void switchInputIsCleanerOn() {
@@ -680,12 +780,14 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 			digitalWrite(pinRelayPneumaticOutSBM1, HIGH);
 			isInputJagung1Open = false;
 			isInputJagung2Open = false;
+			// curOutput = 2;
 			isInputSBM1Open = true;
 		} else if (digitalRead(pinRelayPneumaticOutJagung1) == HIGH || digitalRead(pinRelayPneumaticOutJagung2) == HIGH) {
 			digitalWrite(pinRelayPneumaticOutSBM1, LOW);
 			isInputJagung1Open = true;
 			isInputJagung2Open = true;
 			isInputSBM1Open = false;
+			//curOutput = 0;
 		}
 	}
 	
@@ -939,6 +1041,34 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				switchInputIsBucketSBM2On();
 				return "OK";
 			}
+			if("manualSBM2".equals(cmds[0])){
+				manualSBM2();
+				return "OK";
+			}
+			if("manualMBM".equals(cmds[0])){
+				manualMBM();
+				return "OK";
+			}
+			if("manualKatul".equals(cmds[0])){
+				manualKatul();
+				return "OK";
+			}
+			if("manualGrit".equals(cmds[0])){
+				manualGrit();
+				return "OK";
+			}
+			if ("manualJagung1".equals(cmds[0])) {
+				manualJagung1();
+				return "OK, go to manual mode!";
+			}
+			if ("manualJagung2".equals(cmds[0])) {
+				manualJagung2();
+				return "OK, go to manual mode!";
+			}
+			if ("manualSBM1".equals(cmds[0])) {
+				manualSBM1();
+				return "OK, go to manual mode!";
+			}
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
@@ -949,7 +1079,9 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 								+ "\n"
 								+ "Available commands "+this.getClass().getSimpleName()
 								+ ": switchInputIsCleanerOn, switchInputIsBucketCleanerOutOn, switchInputIsCrusherOn, switchInputIsBucketCrusherOutOn, "
-								+ "switchInputIsScrewCrusherOutOn, switchInputJagungSBM, switchInputIsMBMBucketOn, switchInputIsGritBucketOn, switchInputIsKatulBucketOn, switchInputIsBucketSBM2On \n";
+								+ "switchInputIsScrewCrusherOutOn, switchInputJagungSBM, switchInputIsMBMBucketOn, switchInputIsGritBucketOn, switchInputIsKatulBucketOn, switchInputIsBucketSBM2On \n"
+								+ "\n"
+								+ "Available commands : manualJagung1, manualJagung2, manualSBM1, manualSBM2, manualMBM, manualGrit, manualKatul";
 								
 		}
 		return parentResponse;

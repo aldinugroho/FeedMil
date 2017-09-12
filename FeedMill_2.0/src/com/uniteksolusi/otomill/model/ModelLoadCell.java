@@ -359,10 +359,14 @@ public class ModelLoadCell extends ArduinoUnoModel implements MixerLoaderIfc, Lo
 		
 		String parentResponse = super.processCommand(stringCommand);
 		if(parentResponse.startsWith("NOK")) {
-			parentResponse = parentResponse 
+			parentResponse = parentResponse
+								+ "\n"
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startFilling, stopFilling, startEjecting, stopEjecting, startVibro, stopVibro, setTarget(spasi)(new Target Weight)\n";
+								+ ": startFilling, stopFilling, startEjecting, stopEjecting, startVibro, stopVibro, setTarget(spasi)(new Target Weight)\n"
+								+ "\n"
+								+ "Available commands : manualSBM2, manualMBM, manualGrit, manualKatul";
 		}
+		
 		return parentResponse;
 	}
 		

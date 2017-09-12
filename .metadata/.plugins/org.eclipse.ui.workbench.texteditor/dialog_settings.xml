@@ -6,12 +6,13 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="serialSiloPakan" key="selection"/>
+		<item value="SimulatorController" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="SimulatorController"/>
 			<item value="serialLoadCell"/>
 			<item value="pinRelayBucketMBM"/>
 			<item value="readResponseByteSpecific"/>
@@ -19,7 +20,6 @@
 			<item value="switchInput"/>
 			<item value="0x22"/>
 			<item value="NOT the same"/>
-			<item value="NOT the"/>
 		</list>
 		<list key="replacehistory">
 			<item value="serialSiloPakan"/>

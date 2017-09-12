@@ -3,6 +3,7 @@ package com.uniteksolusi.otomill.controller;
 import java.io.File;
 
 import com.uniteksolusi.otomill.simulator.StubBufferSiloSimulator;
+import com.uniteksolusi.otomill.simulator.StubBufferSiloSimulatorBaru;
 import com.uniteksolusi.otomill.simulator.StubLoadCellSimulator;
 
 public class SimulatorController {
@@ -28,7 +29,7 @@ public class SimulatorController {
 	private StubLoadCellSimulator x24Simulator;
 	private StubLoadCellSimulator x25Simulator;
 	private StubLoadCellSimulator x26Simulator;
-	private StubLoadCellSimulator x41Simulator;
+	private StubBufferSiloSimulatorBaru siloSimulator;
 	private StubBufferSiloSimulator sbm1SiloSimulator;
 	private StubBufferSiloSimulator sbm2SiloSimulator;
 	private StubBufferSiloSimulator jagung1SiloSimulator;
@@ -76,11 +77,10 @@ public class SimulatorController {
 		x25Simulator = new StubLoadCellSimulator(x25StateFile, x25SoftwareSerialFile, x25PinRelayInputScrew, x25PinRelayEject);
 		
 		//x41
-		File x41StateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x41" + ".state");
-		File x41SoftwareSerialFile = new File(STUB_STATE_FOLDER + "stub-" +"0x41" + ".softwareserial");
-		byte x41PinRelayInputScrew = 3;
-		byte x41PinRelayEject = 4;
-		x41Simulator = new StubLoadCellSimulator(x41StateFile, x41SoftwareSerialFile, x41PinRelayInputScrew, x41PinRelayEject);
+		File SiloStateFile = new File(STUB_STATE_FOLDER + "stub-" +"0x41" + ".state");
+		byte pinBufferLevelSilo[] = {6,7};
+		byte pinRelayBucketSilo = 8;
+		siloSimulator = new StubBufferSiloSimulatorBaru(SiloStateFile, pinBufferLevelSilo, pinRelayBucketSilo);
 
 		
 /*		//x26
@@ -150,7 +150,7 @@ public class SimulatorController {
 			x24Simulator.start();
 			x25Simulator.start();
 //			x26Simulator.start();
-			x41Simulator.start();
+			siloSimulator.start();
 			
 			jagung1SiloSimulator.start();
 			jagung2SiloSimulator.start();
@@ -175,7 +175,7 @@ public class SimulatorController {
 		x24Simulator.stop();
 		x25Simulator.stop();
 //		x26Simulator.stop();
-		x41Simulator.stop();
+		siloSimulator.stop();
 		
 		jagung1SiloSimulator.stop();
 		jagung2SiloSimulator.stop();

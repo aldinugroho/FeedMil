@@ -1,0 +1,167 @@
+package com.uniteksolusi.otomill.controller;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Collection;
+import java.util.Iterator;
+
+import com.uniteksolusi.otomill.model.ArduinoModelIfc;
+
+public class CommandController implements Runnable {
+	
+	private static CommandController instance;
+	
+	public static CommandController getInstance() {
+		if(instance == null) {
+			instance = new CommandController();
+		}
+		return instance;
+	}
+
+	private CommandController() {
+		
+	}
+	
+	BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+
+	public String processCommand(String inputString) throws IOException, Exception {
+		
+		String[] cmds = inputString.trim().split(" ");
+		
+		StringBuffer response = new StringBuffer();
+		
+		if(cmds.length > 0) {
+		
+			if("?".equalsIgnoreCase(cmds[0])) {
+				//show help
+				response.append("?                     show this help");
+				response.append("\n");
+				response.append("show all              show all arduinos status");
+				response.append("\n");
+				response.append("show 0x01             show status of arduino of specific IDs");
+				response.append("\n");
+				response.append("cmd 0x01 command      send command to arduino of specific IDs.");
+				response.append("\n");
+				response.append("cmd automatic         switch this machine to auto mode");
+				response.append("\n");
+				response.append("cmd manual            switch this machine to manual mode");
+				response.append("\n");
+
+			} else if(cmds[0].equals("show")) {
+
+				if(cmds.length > 0) { 
+
+
+					if(cmds[1].equals("all")) {
+						//show all status
+						Collection<ArduinoModelIfc> all = MainController.getInstance().getAllModel();
+						Iterator<ArduinoModelIfc> iter = all.iterator();
+						while(iter.hasNext()) {
+							response.append(iter.next().printStateDetails());
+							response.append("\n");
+						}
+
+					} else {
+
+						response.append(MainController.getInstance().getModel(cmds[1]));
+						response.append("\n");
+
+					}
+
+				}
+
+
+			} else if(cmds[0].equals("cmd")) {
+
+				if(cmds.length > 0) { 
+					
+					if(cmds[1].equals("automatic")) {
+						// Doing some stuff to automate machine, assign from MainController
+						MainController.getInstance().start();
+						return "OK";
+					}
+					else if (cmds[1].equals("manual")) {
+						// Doing some stuff to manual machine, assign from MainController
+						MainController.getInstance().startManual();
+						return "OK";
+					}
+					else {
+						
+						//send command to arduino
+						ArduinoModelIfc model = MainController.getInstance().getModel(cmds[1]);
+						if(model != null) {
+							StringBuffer subCommand = new StringBuffer();
+							for(int i=2; i<cmds.length; i++) {
+								subCommand.append(cmds[i] + " ");
+							}
+							response.append(model.processCommand(subCommand.toString()));
+						}
+					}
+				}
+
+			} else {
+
+				response.append("Invalid command : " + inputString);
+				response.append("\n");
+				response.append("Available commands : ");
+				response.append("\n");
+				response.append(processCommand("?"));
+
+			}
+
+		}
+		
+		return response.toString();
+	}
+	
+	
+	private static boolean cliStarted = false;
+	
+	public static boolean isCliStarted() {
+		return cliStarted;
+	}
+	
+	public static void startCLI() {
+		
+		if(!cliStarted) {
+			cliStarted = true;
+			new Thread(CommandController.getInstance()).start();
+		}
+		
+	}
+	
+	public static void stopCLI() {
+		cliStarted = false;
+	}
+	
+	
+	@Override
+	public void run() {
+
+		while(cliStarted) {
+			
+			System.out.print("feedmill-shell$ > ");
+			
+			try {
+				
+				String inputString = inputReader.readLine();
+
+				System.out.println(processCommand(inputString));
+				
+				
+				System.out.println(); //just a new line
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
+	
+}
