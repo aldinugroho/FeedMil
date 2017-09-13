@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.controller.CommandController"/>
-<fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="java.nio.charset.Charset"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
@@ -35,14 +33,9 @@
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.ArduinoModelIfc"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.PakanLoaderIfc"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubArduino"/>
-<fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubArduinoUno"/>
-<fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubImplSiloPakan"/>
-<fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.ArduinoUnoModel"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.MixerLoaderIfc"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.LoadCellIfc"/>
-<fullyQualifiedTypeName name="com.pi4j.io.i2c.I2CBus"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubImplLoadCell"/>
-<fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubI2CBus"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubLoadCellSimulator"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
@@ -56,8 +49,15 @@
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.controller.MainController"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.fastinfoset.tools.FI_StAX_SAX_Or_XML_SAX_SAXEvent"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubBufferSiloSimulator"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="com.uniteksolusi.otomill.simulator.StubBufferSiloSimulatorBaru"/>
+<fullyQualifiedTypeName name="com.uniteksolusi.otomill.model.ArduinoUnoModel"/>
+<fullyQualifiedTypeName name="com.pi4j.io.i2c.I2CBus"/>
+<fullyQualifiedTypeName name="javax.sql.rowset.serial.SerialStruct"/>
+<fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubArduinoUno"/>
+<fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubImplSiloPakan"/>
+<fullyQualifiedTypeName name="com.uniteksolusi.otomill.stub.StubI2CBus"/>
 </qualifiedTypeNameHistroy>

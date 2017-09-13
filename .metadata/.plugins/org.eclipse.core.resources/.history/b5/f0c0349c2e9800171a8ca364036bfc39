@@ -717,56 +717,6 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 		}
 	}
 	
-	public void manualCleaner() {
-		if (manualCleaner == true) {
-			manualCleaner = false;
-			isCleanerOn = false;
-		} else {
-			manualCleaner = true;
-			isCleanerOn = true;
-		}
-	}
-	
-	public void manualCrusher() {
-		if (manualCrusher == true) {
-			manualCrusher = false;
-			isCrusherOn = false;
-		} else {
-			manualCrusher = true;
-			isCrusherOn = true;
-		}
-	}
-	
-	public void manualBucketCleaner() {
-		if (manualBucketCleaner == true) {
-			manualBucketCleaner = false;
-			isBucketCleanerOutOn = false;
-		} else {
-			manualBucketCleaner = true;
-			isBucketCleanerOutOn = true;
-		}
-	}
-	
-	public void manualBucketCrusher() {
-		if (manualBucketCrusher == true) {
-			manualBucketCrusher = false;
-			isBucketCrusherOutOn = false;
-		} else {
-			manualBucketCrusher = true;
-			isBucketCrusherOutOn = true;
-		}
-	}
-	
-	public void manualScrewCrusher() {
-		if (manualScrewCrusher == true) {
-			manualScrewCrusher = false;
-			isScrewCrusherOutOn = false;
-		} else {
-			manualScrewCrusher = true;
-			isScrewCrusherOutOn = true;
-		}
-	}
-	
 	public void switchInputIsCleanerOn() {
 		if(digitalRead(pinRelayCleanerBlower) == LOW) {
 			digitalWrite(pinRelayCleanerBlower, HIGH);
@@ -1123,26 +1073,6 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 				manualSBM1();
 				return "OK, go to manual mode!";
 			}
-			if ("manualCleaner".equals(cmds[0])) {
-				manualCleaner();
-				return "OK, go to manual mode!";
-			}
-			if ("manualCrusher".equals(cmds[0])) {
-				manualCrusher();
-				return "OK, go to manual mode!";
-			}
-			if ("manualBucketCleaner".equals(cmds[0])) {
-				manualBucketCleaner();
-				return "OK, go to manual mode!";
-			}
-			if ("manualBucketCrusher".equals(cmds[0])) {
-				manualBucketCrusher();
-				return "OK, go to manual mode!";
-			}
-			if ("manualScrewCrusher".equals(cmds[0])) {
-				manualScrewCrusher();
-				return "OK, go to manual mode!";
-			}
 		}
 		
 		String parentResponse = super.processCommand(stringCommand);
@@ -1155,7 +1085,7 @@ public class ModelCrusherBuffer extends ArduinoMegaModel {
 								+ ": switchInputIsCleanerOn, switchInputIsBucketCleanerOutOn, switchInputIsCrusherOn, switchInputIsBucketCrusherOutOn, "
 								+ "switchInputIsScrewCrusherOutOn, switchInputJagungSBM, switchInputIsMBMBucketOn, switchInputIsGritBucketOn, switchInputIsKatulBucketOn, switchInputIsBucketSBM2On \n"
 								+ "\n"
-								+ "Available commands : manualJagung1, manualJagung2, manualSBM1, manualSBM2, manualMBM, manualGrit, manualKatul, manualCleaner, manualCrusher, manualBucketCleaner, manualBucketCrusher, manualScrewCrusher";
+								+ "Available commands : manualJagung1, manualJagung2, manualSBM1, manualSBM2, manualMBM, manualGrit, manualKatul";
 								
 		}
 		return parentResponse;
