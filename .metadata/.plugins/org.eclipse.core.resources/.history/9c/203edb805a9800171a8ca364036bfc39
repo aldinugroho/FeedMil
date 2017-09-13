@@ -143,20 +143,17 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 					}
 					
 					
-					
 				} else if(digitalRead(pinSensorTubeLoaded) == HIGH) { 
 					
 					isReadingTubeLoaded = false; 
 					readingTubeLoadedCount = 0;
 					
 				}
-				isFilled = false;
 
 			}
 						
 		} else if(fillingState == 1) {
 			if (digitalRead(pinBufferLevelManualLoad) == LOW) {
-				digitalWrite(pinLEDmanualLoad, HIGH);
 				logger.finer(this.getId() + " > Filling State = 1 -> FILLING");
 				
 				if(digitalRead(pinButtonDoneLoading) == HIGH) { //high means pressed, repeat the reading x times
@@ -194,7 +191,7 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 					readingButtonDoneCount = 0;
 					
 				}
-				isFilled = true;
+				digitalWrite(pinLEDmanualLoad, HIGH);
 
 			}
 			
@@ -202,13 +199,11 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 			
 		} else if(fillingState == 2) {
 			if (digitalRead(pinBufferLevelManualLoad) == HIGH) {
-				digitalWrite(pinLEDmanualLoad, LOW);
 				logger.finer(this.getId() + " > Filling State = 2 -> WAITING for Eject");
 				
 				//do nothing, waiting for eject command
 			}
-			isFilled = true;
-			
+			digitalWrite(pinLEDmanualLoad, LOW);
 			
 			
 		} else if(fillingState == 3) {
@@ -252,7 +247,6 @@ public class ModelManualLoad extends ArduinoUnoModel implements MixerLoaderIfc {
 				
 			}
 			digitalWrite(pinLEDmanualLoad, HIGH);
-			isFilled = false;
 				
 		} 
 		

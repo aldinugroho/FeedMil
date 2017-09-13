@@ -127,12 +127,8 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 				
 				logger.finer(this.getId() + " > Mixing State = 2 -> Mixing DONE");
 				
-				if (isSiloPakanFull == true) {
-					mixingState = 2;
-				} else {
-					startEjecting(); //TODO eject directly?
-				}
-				
+				startEjecting(); //TODO eject directly?
+			
 			} else if(mixingState == 3) { //ejecting state
 				
 				logger.finer(this.getId() + " > Mixing State = 3 -> EJECTING");

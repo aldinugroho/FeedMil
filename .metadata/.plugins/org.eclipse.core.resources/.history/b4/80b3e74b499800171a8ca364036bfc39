@@ -55,9 +55,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	boolean isOutputOpen = false;
 	boolean isScrewOutOn = false;
 	boolean isBucketOutOn = false;
-	boolean mixerManualMode = false;
-	boolean screwManualMode = false;
-	boolean bucketManualMode = false;
+	boolean manualMode = false;
 	
 	//boolean isBucketOutOn = false;
 
@@ -109,7 +107,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		
 		//0/1/2/3 = ready / mixing / done mixing / ejecting
 		
-		if(mixerManualMode == false){
+		if(manualMode == false){
 			if(mixingState == 0) { //ready, do nothing, wait for instruction
 				
 				logger.finer(this.getId() + " > Mixing State = 0 -> Ready, WAIT for input");
@@ -127,12 +125,8 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 				
 				logger.finer(this.getId() + " > Mixing State = 2 -> Mixing DONE");
 				
-				if (isSiloPakanFull == true) {
-					mixingState = 2;
-				} else {
-					startEjecting(); //TODO eject directly?
-				}
-				
+				startEjecting(); //TODO eject directly?
+			
 			} else if(mixingState == 3) { //ejecting state
 				
 				logger.finer(this.getId() + " > Mixing State = 3 -> EJECTING");
@@ -245,14 +239,10 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 	public void startEjecting() {
 
 		mixingState = 3;
-		if(screwManualMode == false){
-			isScrewOutOn = true;
-			digitalWrite(pinRelayScrewOut, HIGH);
-		}
-		if(bucketManualMode == false){
-			isBucketOutOn = true;
-			digitalWrite(pinRelayBucketOut, HIGH);
-		}
+		digitalWrite(pinRelayScrewOut, HIGH);
+		digitalWrite(pinRelayBucketOut, HIGH);
+		isScrewOutOn = true;
+		isBucketOutOn = true;
 		startEjectingTime = System.currentTimeMillis();
 //kurang pin relay write
 		digitalWrite(pinRelayPneumaticOutput, outputOpen);
@@ -270,14 +260,14 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 
 		digitalWrite(pinRelayPneumaticOutput, outputClose);
 		isOutputOpen = false;
-		if(screwManualMode == false){
+		isBucketOutOn = false;
+		digitalWrite(pinRelayScrewOut, LOW);
+		digitalWrite(pinRelayBucketOut, LOW);
+		if(!screwOutAlwaysOn) {
+			digitalWrite(pinRelayScrewOut, LOW); 
 			isScrewOutOn = false;
-			digitalWrite(pinRelayScrewOut, LOW);
 		}
-		if(bucketManualMode == false){
-			isBucketOutOn = false;
-			digitalWrite(pinRelayBucketOut, LOW);
-		}
+		
 	}
 
 	public void switchInputBucketOutOn() {
@@ -300,27 +290,11 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		}
 	}
 	
-	public void switchToMixerManualMode() {
-		if(mixerManualMode == true) {
-			mixerManualMode = false;
+	public void switchToManualMode() {
+		if(manualMode == true) {
+			manualMode = false;
 		} else {
-			mixerManualMode = true;
-		}
-	}
-	
-	public void switchToScrewManualMode() {
-		if(screwManualMode == true) {
-			screwManualMode = false;
-		} else {
-			screwManualMode = true;
-		}
-	}
-	
-	public void switchToBucketManualMode() {
-		if(bucketManualMode == true) {
-			bucketManualMode = false;
-		} else {
-			bucketManualMode = true;
+			manualMode = true;
 		}
 	}
 
@@ -396,18 +370,8 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 				return "OK"; 
 			}
 			
-			if("switchToMixerManualMode".equals(cmds[0])) {
-				this.switchToMixerManualMode();
-				return "OK"; 
-			}
-			
-			if("switchToScrewManualMode".equals(cmds[0])) {
-				this.switchToScrewManualMode();
-				return "OK"; 
-			}
-			
-			if("switchToBucketManualMode".equals(cmds[0])) {
-				this.switchToBucketManualMode();
+			if("switchToManualMode".equals(cmds[0])) {
+				this.switchToManualMode();
 				return "OK"; 
 			}
 			
@@ -417,7 +381,7 @@ public class ModelMixer extends ArduinoUnoModel implements MixerIfc {
 		if(parentResponse.startsWith("NOK")) {
 			parentResponse = parentResponse 
 								+ "Available commands "+this.getClass().getSimpleName()
-								+": startMixing, stopMixing, startEjecting, stopEjecting, switchInputSrewOutOn, switchInputBucketOutOn, switchToMixerManualMode\n";
+								+": startMixing, stopMixing, startEjecting, stopEjecting, switchInputSrewOutOn, switchInputBucketOutOn, switchToManualMode\n";
 		}
 		return parentResponse;
 	}
